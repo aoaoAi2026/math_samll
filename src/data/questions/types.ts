@@ -1,5 +1,6 @@
 // 题目类型定义
 export interface Teaching {
+  concept?: string;    // 概念讲解
   point: string;       // 知识点讲解
   method: string;      // 解题思路
   steps: string[];     // 分步解析

@@ -92,8 +92,8 @@ function migrateData(data: unknown): unknown {
     const wrongQuestions = (progress.wrongQuestions as WrongQuestionRecord[]) || [];
     progress.wrongQuestions = wrongQuestions.map(w => ({
       ...w,
-      chapter: (w as Record<string, unknown>).chapter || 0,
-      difficulty: (w as Record<string, unknown>).difficulty || 1,
+      chapter: (w as unknown as Record<string, unknown>).chapter || 0,
+      difficulty: (w as unknown as Record<string, unknown>).difficulty || 1,
     }));
   }
 
@@ -101,7 +101,7 @@ function migrateData(data: unknown): unknown {
     const wrongQuestions = (progress.wrongQuestions as WrongQuestionRecord[]) || [];
     progress.wrongQuestions = wrongQuestions.map(w => ({
       ...w,
-      teaching: (w as Record<string, unknown>).teaching || undefined,
+      teaching: (w as unknown as Record<string, unknown>).teaching || undefined,
     }));
   }
 
@@ -350,7 +350,7 @@ export const useGameStore = create(
       name: 'math-olympiad-storage',
       version: DATA_VERSION,
       migrate: (persistedState, version) => {
-        return migrateData(persistedState) as typeof persistedState;
+        return migrateData(persistedState) as GameState;
       },
     }
   )

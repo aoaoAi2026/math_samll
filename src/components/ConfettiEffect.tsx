@@ -21,7 +21,7 @@ const COLORS = [
 const SHAPES: Particle['shape'][] = ['circle', 'star', 'square'];
 
 interface Props {
-  onDone: () => void;
+  onDone?: () => void;
   count?: number;
   duration?: number;
 }
@@ -50,7 +50,7 @@ export default function ConfettiEffect({ onDone, count = 40, duration = 2200 }: 
     }
     setParticles(newParticles);
 
-    const timer = setTimeout(onDone, duration);
+    const timer = setTimeout(() => onDone?.(), duration);
     return () => clearTimeout(timer);
   }, [count, duration, onDone]);
 
