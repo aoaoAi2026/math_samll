@@ -63,12 +63,22 @@ export interface WrongQuestionRecord {
   explanation: string;
   type: 'choice' | 'blank' | 'answer';
   grade: number;
+  chapter: number;
+  difficulty: number;
   topicId?: number;
   topicName?: string;
   source: 'practice' | 'exam'; // 错题来源
   addedAt: string;              // 加入错题库时间
   consecutiveCorrect: number;   // 连续答对次数
   totalAttempts: number;        // 总练习次数
+  // 完整教学解析（便于错题回顾时查看）
+  teaching?: {
+    point: string;
+    method: string;
+    steps: string[];
+    memory: string;
+    example: string;
+  };
 }
 
 export interface ExamRecord {

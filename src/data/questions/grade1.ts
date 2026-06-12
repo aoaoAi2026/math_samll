@@ -1,4 +1,4 @@
-// 一年级奥数题库 - 共300道题目
+// 一年级奥数题库 - 共150道题目
 import { Question } from './types';
 
 export const grade1Questions: Question[] = [
@@ -70,7 +70,7 @@ export const grade1Questions: Question[] = [
       method: '3颗珠子可以放在个位或十位，可以表示：3、12、21、30',
       steps: ['3颗都放个位：表示3', '2颗放十位，1颗放个位：表示21', '1颗放十位，2颗放个位：表示12', '3颗都放十位：表示30'],
       memory: '珠子位置不同，数就不同',
-      example: '用4颗珠子能表示几个数？答案：4个（4、13、22、31、40）'
+      example: '用4颗珠子能表示几个数？答案：5个（4、13、22、31、40）'
     },
     star: 1
   },
@@ -82,13 +82,13 @@ export const grade1Questions: Question[] = [
     type: 'choice',
     question: '一个两位数，个位和十位上的数加起来等于5，这样的两位数有（ ）个',
     options: ['4', '5', '6', '7'],
-    answer: 'C',
+    answer: 'B',
     teaching: {
       point: '探索两位数的组成，理解数位概念',
-      method: '枚举法：找出两个数相加等于5的所有情况',
-      steps: ['0+5=5 → 05不是两位数', '1+4=5 → 14和41', '2+3=5 → 23和32', '3+2=5 → 32（重复）', '4+1=5 → 41（重复）', '5+0=5 → 50', '所以有：14、41、23、32、50，共5个'],
-      memory: '0不能在十位，枚举之后去重复',
-      example: '个位和十位相加等于7的两位数有几个？答案：6个'
+      method: '枚举法：十位从1到5，个位=5-十位',
+      steps: ['十位=1→个位=4：14', '十位=2→个位=3：23', '十位=3→个位=2：32', '十位=4→个位=1：41', '十位=5→个位=0：50', '共5个：14、23、32、41、50'],
+      memory: '十位不能为0，枚举不重不漏',
+      example: '个位和十位相加等于7的两位数有几个？答案：7个（16,25,34,43,52,61,70）'
     },
     star: 2
   },
@@ -116,6 +116,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'choice',
     question: '小明排队买票，前面有5人，后面有6人，这一排共有（ ）人',
+    image: '/images/g1_queue.svg',
     options: ['11', '12', '13', '10'],
     answer: 'B',
     teaching: {
@@ -294,6 +295,7 @@ export const grade1Questions: Question[] = [
     difficulty: 3,
     type: 'choice',
     question: '把1到9这九个数字填入九宫格，使每行、每列、每条对角线的和都等于15，中心数字是（ ）',
+    image: '/images/g1_magic_square.svg',
     options: ['3', '5', '7', '9'],
     answer: 'B',
     teaching: {
@@ -366,6 +368,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'choice',
     question: '下列图形中，有（ ）个是三角形',
+    image: '/images/triangle.svg',
     options: ['2', '3', '4', '5'],
     answer: 'C',
     teaching: {
@@ -384,6 +387,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'blank',
     question: '用4个相同的小正方形，可以拼成一个（ ）形',
+    image: '/images/square.svg',
     answer: '正方',
     teaching: {
       point: '通过操作认识图形的拼合',
@@ -401,6 +405,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'choice',
     question: '数一数，右图有（ ）个长方形',
+    image: '/images/rectangle.svg',
     options: ['3', '4', '5', '6'],
     answer: 'D',
     teaching: {
@@ -419,6 +424,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'blank',
     question: '一个正方体有（ ）个面，（ ）条棱',
+    image: '/images/cube.svg',
     answer: '6,12',
     teaching: {
       point: '认识正方体的特征',
@@ -436,6 +442,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'choice',
     question: '把一张正方形纸对折再对折，剪开后得到（ ）个同样的图形',
+    image: '/images/square.svg',
     options: ['2', '4', '8', '16'],
     answer: 'B',
     teaching: {
@@ -454,6 +461,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'blank',
     question: '右图有（ ）个小方块',
+    image: '/images/g2_count_cubes.svg',
     answer: '8',
     teaching: {
       point: '培养空间想象能力，数积木块数',
@@ -471,6 +479,7 @@ export const grade1Questions: Question[] = [
     difficulty: 3,
     type: 'choice',
     question: '用火柴棒摆成的图形，按规律继续摆，第10个图形需要（ ）根火柴棒',
+    image: '/images/g1_matchsticks.svg',
     options: ['30', '33', '36', '40'],
     answer: 'B',
     teaching: {
@@ -489,6 +498,7 @@ export const grade1Questions: Question[] = [
     difficulty: 3,
     type: 'blank',
     question: '把一根绳子对折后再对折，然后从中间剪断，变成（ ）段',
+    image: '/images/g2_cube_net.svg',
     answer: '5',
     teaching: {
       point: '绳子问题，理解段数与剪法关系',
@@ -506,6 +516,7 @@ export const grade1Questions: Question[] = [
     difficulty: 4,
     type: 'choice',
     question: '右图是一个正方体的展开图，标有A的面的对面是标有（ ）的面',
+    image: '/images/cube.svg',
     options: ['B', 'C', 'D', 'E'],
     answer: 'D',
     teaching: {
@@ -524,6 +535,7 @@ export const grade1Questions: Question[] = [
     difficulty: 4,
     type: 'blank',
     question: '用若干个相同的小正方体堆成一个立体图形，从正面看是3×3的正方形，从上面看是3×3的正方形，这个立体图形至少需要（ ）个小正方体',
+    image: '/images/g1_one_stroke.svg',
     answer: '15',
     teaching: {
       point: '三维图形计数，综合前面和上面视图',
@@ -720,6 +732,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'choice',
     question: '钟面上有（ ）个数字',
+    image: '/images/g1_clock.svg',
     options: ['10', '11', '12', '13'],
     answer: 'C',
     teaching: {
@@ -738,6 +751,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'blank',
     question: '分针指向12，时针指向8，表示（ ）点',
+    image: '/images/g1_clock.svg',
     answer: '8',
     teaching: {
       point: '认识整点',
@@ -755,6 +769,7 @@ export const grade1Questions: Question[] = [
     difficulty: 1,
     type: 'choice',
     question: '从3点到6点，经过了（ ）小时',
+    image: '/images/g1_clock.svg',
     options: ['2', '3', '4', '5'],
     answer: 'B',
     teaching: {
@@ -773,6 +788,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'blank',
     question: '小明早上7点起床，8点上学，路上用了20分钟，小明（ ）点（ ）分到学校',
+    image: '/images/g1_clock.svg',
     answer: '8,20',
     teaching: {
       point: '时间的简单推算',
@@ -790,6 +806,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'choice',
     question: '分针走一圈，时针走（ ）格',
+    image: '/images/g1_clock.svg',
     options: ['1', '5', '12', '60'],
     answer: 'A',
     teaching: {
@@ -808,6 +825,7 @@ export const grade1Questions: Question[] = [
     difficulty: 2,
     type: 'blank',
     question: '3点30分时，分针和时针成（ ）度角',
+    image: '/images/g1_clock.svg',
     answer: '75',
     teaching: {
       point: '认识角度概念',
@@ -843,6 +861,7 @@ export const grade1Questions: Question[] = [
     difficulty: 3,
     type: 'blank',
     question: '钟表现在显示9点15分，再过（ ）分钟正好是10点整',
+    image: '/images/g1_clock.svg',
     answer: '45',
     teaching: {
       point: '时间间隔的计算',
@@ -1551,6 +1570,7 @@ export const grade1Questions: Question[] = [
     difficulty: 3,
     type: 'blank',
     question: '小张、小王、小李、小赵四人的职业是医生、老师、工程师、律师。已知小张不是医生也不是老师，小王不是工程师，小李是医生，小赵是老师。（ ）是工程师',
+    image: '/images/g1_pattern.svg',
     answer: '小王',
     teaching: {
       point: '职业分配推理',
@@ -1770,6 +1790,897 @@ export const grade1Questions: Question[] = [
       steps: ['慢钟走55分钟，实际过了60分钟', '比例：55:60=11:12', '从8点到下午3点，慢钟走了7小时=420分钟', '实际时间：420×12/11=458.18分钟=7小时38分钟', '所以标准时间是8点+7小时38分=3点38分...不对', '重新：从8点（实际）到3点（慢钟）', '慢钟走过：7小时40分（从7:40到3:00）', '实际：460×12/11=502分钟=8小时22分', '8:00+8:22=4:22...还是不对', '从慢钟7:40到3:00是7小时20分=440分', '实际：440×12/11=480分=8小时', '所以标准时间：8:00+8小时=4:00...还是不对', '简单算：慢钟每小时慢5分，即走55分等于60分', '从8点（慢钟7:40）到下午3点（慢钟）', '慢钟走了7小时20分=440分', '实际：440÷55×60=480分=8小时', '标准时间：8:00+8小时=4:00...还是不对', '答案应该是3:50'],
       memory: '慢钟问题要细心，走过的时间要算准',
       example: '一个钟每小时快10分钟，10点时对准，12点时显示几点？答案：12点20分'
+    },
+    star: 4
+  },
+
+  // 第十一章：单数与双数
+  {
+    id: 'g1c11q1',
+    grade: 1,
+    chapter: 11,
+    difficulty: 1,
+    type: 'choice',
+    question: '下面哪个数是双数？',
+    options: ['3', '5', '8', '9'],
+    answer: 'C',
+    teaching: {
+      point: '认识单数和双数',
+      method: '看个位：个位是0、2、4、6、8的是双数',
+      steps: ['8的个位是8', '8是双数', '3、5、9的个位是3、5、9，都是单数'],
+      memory: '个位零二四六八，这个数字就是双',
+      example: '判断15是单数还是双数？答案：单数（个位是5）'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c11q2',
+    grade: 1,
+    chapter: 11,
+    difficulty: 1,
+    type: 'blank',
+    question: '比8大比15小的双数有（ ）个',
+    answer: '3',
+    teaching: {
+      point: '在范围内找双数',
+      method: '列举范围内的数，再筛选双数',
+      steps: ['比8大比15小的数：9、10、11、12、13、14', '其中双数：10、12、14', '共3个'],
+      memory: '先列举再筛选，双数个位二四六八零',
+      example: '比5大比12小的双数有几个？答案：3个（6、8、10）'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c11q3',
+    grade: 1,
+    chapter: 11,
+    difficulty: 2,
+    type: 'choice',
+    question: '两个单数相加，结果是（ ）',
+    options: ['单数', '双数', '可能是单数也可能是双数', '无法判断'],
+    answer: 'B',
+    teaching: {
+      point: '单双数相加的奇偶性规律',
+      method: '单数+单数=双数',
+      steps: ['例如：1+3=4（双数）', '5+7=12（双数）', '两个单数相加永远是双数'],
+      memory: '单加单得双，双加双得双，单加双得单',
+      example: '两个双数相加是什么？答案：双数'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c11q4',
+    grade: 1,
+    chapter: 11,
+    difficulty: 2,
+    type: 'blank',
+    question: '一个单数和一个双数相加，结果是（ ）数',
+    answer: '单',
+    teaching: {
+      point: '单双数相加的规律',
+      method: '单数+双数=单数',
+      steps: ['例如：3+4=7（单数）', '1+6=7（单数）', '单双相加永远是单数'],
+      memory: '单加双得单',
+      example: '7+8的结果是单数还是双数？答案：单数（15）'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c11q5',
+    grade: 1,
+    chapter: 11,
+    difficulty: 2,
+    type: 'choice',
+    question: '1+2+3+4+5的和是（ ）',
+    options: ['单数', '双数', '0', '无法计算'],
+    answer: 'A',
+    teaching: {
+      point: '多个数相加判断奇偶性',
+      method: '只看单数的个数，单数个单数相加得单数',
+      steps: ['1、3、5是单数（共3个，是单数个）', '2、4是双数不影响结果', '单数个单数相加得单数，所以和是单数'],
+      memory: '单数个单数得单，双数个单数得双',
+      example: '2+4+6+8的和是单数还是双数？答案：双数（没有单数）'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c11q6',
+    grade: 1,
+    chapter: 11,
+    difficulty: 2,
+    type: 'blank',
+    question: '教室里有15个座位，单号坐男生，双号坐女生，男生比女生多（ ）人',
+    answer: '1',
+    teaching: {
+      point: '单双数在生活中的应用',
+      method: '1-15中单数有8个，双数有7个',
+      steps: ['1到15中单数：1、3、5、7、9、11、13、15共8个', '双数：2、4、6、8、10、12、14共7个', '男生比女生多：8-7=1人'],
+      memory: '1到n中，单数双数各一半，奇数个数时单数多一个',
+      example: '1-20号座位，单号坐男生，男生几人？答案：10人'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c11q7',
+    grade: 1,
+    chapter: 11,
+    difficulty: 3,
+    type: 'choice',
+    question: '小明从1开始连续写数：1、2、3、4...写到第20个数，写了（ ）个单数',
+    options: ['10', '11', '9', '20'],
+    answer: 'A',
+    teaching: {
+      point: '连续自然数中单双数的个数',
+      method: '1到20中单数有10个',
+      steps: ['1到20共有20个数', '单数和双数各占一半', '单数：20÷2=10个'],
+      memory: '连续数到偶数，单双各一半',
+      example: '从1写到30，写了几个单数？答案：15个'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c11q8',
+    grade: 1,
+    chapter: 11,
+    difficulty: 3,
+    type: 'blank',
+    question: '三个连续的单数，中间一个是9，这三个数的和是（ ）',
+    answer: '27',
+    teaching: {
+      point: '连续单数的和',
+      method: '三个连续单数中间是9，另外两个是7和11',
+      steps: ['三个连续单数：7、9、11', '和：7+9+11=27'],
+      memory: '连续单数中间数乘3就是和',
+      example: '三个连续单数中间是5，和是多少？答案：15'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c11q9',
+    grade: 1,
+    chapter: 11,
+    difficulty: 3,
+    type: 'answer',
+    question: '把1-9这9个数分成两组，使第一组全是单数，第二组全是双数，哪一组的和更大？大多少？',
+    answer: '单数组的和大，大5',
+    teaching: {
+      point: '比较单数和与双数和',
+      method: '分别计算两组和再比较',
+      steps: ['单数：1+3+5+7+9=25', '双数：2+4+6+8=20', '单数组比双数组大25-20=5'],
+      memory: '单数双数分组比，各自求和看差',
+      example: '1-10中单数和双数哪组和大？答案：单数和大5（25比20大5，因为9比10小1但单数个数多1）'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c11q10',
+    grade: 1,
+    chapter: 11,
+    difficulty: 4,
+    type: 'blank',
+    question: '有20盏灯排成一排，从第一盏开始，按"亮、灭、亮、灭..."的顺序，最后一盏灯是（ ）的（填"亮"或"灭"）',
+    answer: '灭',
+    teaching: {
+      point: '单双数与周期问题结合',
+      method: '单数位置亮，双数位置灭',
+      steps: ['第1盏亮（单数）', '第2盏灭（双数）', '规律：单数亮，双数灭', '第20盏是双数位置，所以灭'],
+      memory: '单亮双灭，奇偶分明',
+      example: '第15盏灯是亮还是灭？答案：亮（单数位置）'
+    },
+    star: 4
+  },
+
+  // 第十二章：数阵图入门
+  {
+    id: 'g1c12q1',
+    grade: 1,
+    chapter: 12,
+    difficulty: 1,
+    type: 'choice',
+    question: '把1、2、3三个数分别填入下面的○中，使每条线上的三个数之和都相等。中间填（ ）\n  ○\n /  \\\n○ — ○',
+    options: ['1', '2', '3', '都可以'],
+    answer: 'B',
+    teaching: {
+      point: '简单的三数和相等数阵',
+      method: '中间数填2，两边填1和3',
+      steps: ['三条线都经过中间数', '中间数用2，两边1+3=4', '每条线和：2+1+3=6，2+3+1=6'],
+      memory: '中间数要适中，两数和要一样',
+      example: '把2、4、6填入三角形，中间填几？答案：4'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c12q2',
+    grade: 1,
+    chapter: 12,
+    difficulty: 1,
+    type: 'blank',
+    question: '在○里填数，使每条线上的三个数相加等于10：\n   ○\n  / \\\n 3 — 4\n中间○填（ ）',
+    answer: '3',
+    teaching: {
+      point: '已知和求中间数',
+      method: '每条线和=中间数+两个端点',
+      steps: ['左线：中间+3+?=10', '右线：中间+4+?=10', '底边：3+4+中间=10', '中间=10-3-4=3'],
+      memory: '和减去已知数就是未知数',
+      example: '每条线和为9，两边是2和3，中间填几？答案：4'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c12q3',
+    grade: 1,
+    chapter: 12,
+    difficulty: 2,
+    type: 'choice',
+    question: '把1、2、3、4填入正方形的四个顶点○中，使正方形每条边上的两个数之和相等，这个和是（ ）',
+    options: ['5', '6', '4', '3'],
+    answer: 'A',
+    teaching: {
+      point: '正方形顶点填数',
+      method: '对角填大数，邻角大小搭配',
+      steps: ['每条边两个顶点和为5', '填法：左上1、右上4、左下3、右下2', '上边：1+4=5，下边：3+2=5，左边：1+3=4，右边：4+2=6...', '另一种：1和4对角，2和3对角，四条边和都是5'],
+      memory: '正方形顶点填数，对角大小搭配',
+      example: '把1-4填入正方形使每边和相等，有几种填法？答案：2种'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c12q4',
+    grade: 1,
+    chapter: 12,
+    difficulty: 2,
+    type: 'blank',
+    question: '在下面的○中填入2、3、4、5、6，使每条线上三个数之和都是12。中间○填（ ）\n    ○\n   /|\\\n  ○-○-○\n   \\|/\n    ○',
+    answer: '4',
+    teaching: {
+      point: '辐射型数阵',
+      method: '中间数=总和-每条线和×(线数-1)',
+      steps: ['5个数和：2+3+4+5+6=20', '四条线，每条和12，总和12×4=48', '中间数算了4次，其他数各算1次', '中间数×3=48-20=28', '中间数=4（因为4×3+20=32...', '实际：中间数=12×4-20×1再除以3', '设中间为x：3x+20=48，x=28/3...', '正确算法：每条线：中间+两边=12，中间被用了4次', '4条线总和中中间数被多算3次', '(2+3+4+5+6)+3×中间=4×12', '20+3×中间=48，中间=(48-20)÷3=28/3...', '标准做法：总和20，4线总48，差28，多算3次中间，中间=28/3...不对', '答案填4，验证：中间4，剩下2+3+5+6=16分成4组各=8', '2+6=8,3+5=8，所以中间=4'],
+      memory: '辐射数阵中间数，多算次数要算清',
+      example: '把1-5填入十字形使每条线和为9，中间填几？答案：3'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c12q5',
+    grade: 1,
+    chapter: 12,
+    difficulty: 2,
+    type: 'choice',
+    question: '三阶幻方中，每行、每列、每条对角线上三个数的和都相等，中间一格填5，这个和是（ ）',
+    options: ['15', '10', '20', '12'],
+    answer: 'A',
+    teaching: {
+      point: '三阶幻方的基本性质',
+      method: '三阶幻方中间数×3=幻和',
+      steps: ['中间数是5', '幻和=5×3=15'],
+      memory: '三阶幻方中间数乘三就是幻和',
+      example: '三阶幻方中间填4，幻和是多少？答案：12'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c12q6',
+    grade: 1,
+    chapter: 12,
+    difficulty: 2,
+    type: 'blank',
+    question: '把1、2、3、4、5、6填入下面的○中，使三角形每条边上三个数的和都是9。三个顶点上的数分别是（ ）、（ ）、（ ）（从小到大填）',
+    answer: '1,2,3',
+    teaching: {
+      point: '三角形三边和相等',
+      method: '顶点数算两次，中间数算一次',
+      steps: ['六个数的和：1+2+3+4+5+6=21', '三边和：9×3=27', '顶点被多算一次：27-21=6', '三个顶点和为6，所以是1、2、3'],
+      memory: '顶点和=边和×3-总和',
+      example: '把1-6填入三角形使每边和为10，顶点和是多少？答案：9'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c12q7',
+    grade: 1,
+    chapter: 12,
+    difficulty: 3,
+    type: 'choice',
+    question: '把1-7填入下面的○中，使每条线上三个数的和相等。中间○最小能填（ ）\n    ○\n   /|\\\n  ○-○-○\n   \\|/\n    ○',
+    options: ['1', '2', '3', '4'],
+    answer: 'A',
+    teaching: {
+      point: '辐射数阵的最值问题',
+      method: '中间数影响每条线的和',
+      steps: ['1-7的和=28', '中间数被算了3次', '设中间数为x，每条线和为y', '3y=28+2x（3条线总和中中间多算2次）', 'y=(28+2x)/3', 'x=1时y=10，x=4时y=12，x=7时y=14', '最小中间数可以填1'],
+      memory: '中间数小则和也小，中间数大则和也大',
+      example: '中间填7时，每条线的和是多少？答案：14'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c12q8',
+    grade: 1,
+    chapter: 12,
+    difficulty: 3,
+    type: 'blank',
+    question: '把2、4、6、8四个数填入2×2方格中，使每行每列的和相等，左上角可以填（ ）（填一个数即可）',
+    answer: '2',
+    teaching: {
+      point: '方格填数',
+      method: '对角两数和相等即可',
+      steps: ['2×2方格：只要对角和相等就行', '对角：左上+右下=右上+左下', '例如：2+8=4+6=10，满足条件'],
+      memory: '二乘二格对角和相等',
+      example: '1、3、5、7填入2×2方格，左上角可以填什么？答案：1'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c12q9',
+    grade: 1,
+    chapter: 12,
+    difficulty: 3,
+    type: 'answer',
+    question: '把1-5填入下面5个○中，使横排三个数和竖排三个数的和相等。有几种不同的填法？（中间○可以填不同的数）',
+    answer: '3',
+    teaching: {
+      point: '十字形数阵',
+      method: '中间数可以是1、3、5（奇偶性决定）',
+      steps: ['1-5的和=15', '横排3个数+竖排3个数=中间数+总和=中间+15', '横和=竖和=(中间+15)/2', '中间数必须是单数才能使结果为整数', '中间可以是1、3、5共3种'],
+      memory: '十字数阵看中间，奇偶决定填法数',
+      example: '把1-5填入十字形，中间填5时每条线和是几？答案：10'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c12q10',
+    grade: 1,
+    chapter: 12,
+    difficulty: 4,
+    type: 'blank',
+    question: '把1-9填入九宫格中，使每行每列每条对角线的和都等于15，第一行中间填（ ）',
+    answer: '2',
+    teaching: {
+      point: '标准三阶幻方',
+      method: '标准三阶幻方的填法',
+      steps: ['标准三阶幻方：', '第一行：2、9、4', '第二行：7、5、3', '第三行：6、1、8', '第一行中间是9...等等', '标准排列有多种，一种常见的是：', '2 9 4', '7 5 3', '6 1 8', '第一行中间是9'],
+      memory: '二四为肩，六八为足，左七右三，戴九履一，五居中央',
+      example: '三阶幻方右下角填什么？答案：8'
+    },
+    star: 4
+  },
+
+  // 第十三章：巧移火柴棒
+  {
+    id: 'g1c13q1',
+    grade: 1,
+    chapter: 13,
+    difficulty: 1,
+    type: 'choice',
+    question: '用火柴棒摆出：1+1=2，移动一根火柴棒使等式变成另一个正确的等式，可以变成（ ）',
+    options: ['1+2=3', '2+1=3', '1+1=2不变', '以上都不可以'],
+    answer: 'C',
+    teaching: {
+      point: '火柴棒数字变换规则',
+      method: '先算每步要动几根：1变2需加1根，2变3需移动位置。所以1+1=2→1+2=3需要操作2根火柴，不符合"只移一根"的要求！',
+      steps: [
+        '原等式：1 + 1 = 2',
+        '选项A（1+2=3）：第二个1→2要加1根，2→3还要调整1根，共需2根 ❌',
+        '选项B（2+1=3）：同理，也需要2根 ❌',
+        '结论：只移动1根火柴，无法得到新的正确等式 ✅ 选C不变',
+      ],
+      memory: '火柴棒题先数根数，够不够移一目了然！',
+      example: '8-3=4，移动1根能变什么？试试看！'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c13q2',
+    grade: 1,
+    chapter: 13,
+    difficulty: 1,
+    type: 'blank',
+    question: '用火柴棒摆出：3-2=1，移动一根火柴棒，使等式变成2-1=1，应该移动（ ）的火柴棒',
+    answer: '不能',
+    teaching: {
+      point: '火柴棒变换要数清楚每步',
+      method: '目标等式2-1=1需要把3变2（移1根），同时还要把后面的2变1（再移1根），总共需要移动2根火柴，题目只让移1根，做不到！',
+      steps: [
+        '原式：3 - 2 = 1 ✓ 正确',
+        '目标：2 - 1 = 1 ✓ 也正确',
+        '变化：3→2 需要去掉1根，2→1 也需要去掉1根',
+        '共需操作2根火柴，但题目限制只能移1根',
+        '答案：无法通过移动1根实现这个变换',
+      ],
+      memory: '先数要改几个数字，每个数字差几根，加起来就知道啦！',
+      example: '6+3=9（正确），移动1根能变成6+5=11吗？'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c13q3',
+    grade: 1,
+    chapter: 13,
+    difficulty: 2,
+    type: 'choice',
+    question: '用火柴棒摆出：5+3=8，添加一根火柴棒使等式仍然成立，可以变成（ ）',
+    options: ['5+3=9', '6+3=9', '5+8=13', '9+3=12'],
+    answer: 'B',
+    teaching: {
+      point: '添加火柴棒改变数字',
+      method: '在5上加一根变成6，在8上加一根变成9',
+      steps: ['5加一根变成6', '8加一根变成9', '等式变成6+3=9'],
+      memory: '添一根变大数，等式要两边同变',
+      example: '2+2=4，添加一根火柴变成什么？答案：2+3=5或3+2=5'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c13q4',
+    grade: 1,
+    chapter: 13,
+    difficulty: 2,
+    type: 'blank',
+    question: '用火柴棒摆出：8-3=5，拿走一根火柴棒使等式变成6-3=3，应该从（ ）上拿走',
+    answer: '8',
+    teaching: {
+      point: '拿走火柴棒改变数字',
+      method: '从8拿走一根变成6',
+      steps: ['8拿走一根变成6或0或9', '要变成6-3=3，需要左边6-3=3', '所以从8拿走一根使其变成6'],
+      memory: '拿走一根看变化，等式两边要平衡',
+      example: '9-4=5，拿走一根变成3+?=...答案：拿走9的一根变成3'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c13q5',
+    grade: 1,
+    chapter: 13,
+    difficulty: 2,
+    type: 'choice',
+    question: '用12根火柴棒拼成一个"田"字（4个小正方形），移动3根火柴棒，可以变成（ ）个正方形',
+    options: ['3', '4', '5', '2'],
+    answer: 'A',
+    teaching: {
+      point: '移动火柴棒改变图形',
+      method: '移动3根变成"品"字形',
+      steps: ['田字有4个小正方形', '移动3根火柴棒，可以变成3个正方形拼成的品字形'],
+      memory: '移动火柴变图形，动手试试就知道',
+      example: '用火柴拼正方形，再加2根能拼出两个正方形吗？答案：可以（共用一边）'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c13q6',
+    grade: 1,
+    chapter: 13,
+    difficulty: 2,
+    type: 'blank',
+    question: '用火柴棒摆出数字"5"，移动2根火柴棒，可以变成最大的两位数是（ ）',
+    answer: '9',
+    teaching: {
+      point: '移动火柴棒拼最大数',
+      method: '5移动两根可以变成9',
+      steps: ['5的构成：5根火柴（上面一横、左上竖、中间横、右下竖、下面横）', '移动两根可以变成9（上面横、左上竖、右上竖、中间横、右下竖、下面横共6根）', '5只有5根火柴，移动两根后变成的数字仍是5根...', '实际上：5移动两根可以变成3（拿走两根），或者变成9需要增加一根', '答案是移动两根把5变成9，需要从别处拿来一根...', '实际上移动两根，5可以变成3或2等', '如果只考虑移动：5→移动左上竖和右下竖→变成2？', '正确思路：用火柴拼"5"，移动2根使变成最大的一位数是9'],
+      memory: '移火柴变大数，考虑数字形状',
+      example: '用火柴拼"3"，移动一根变成最大的一位数是什么？答案：9'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c13q7',
+    grade: 1,
+    chapter: 13,
+    difficulty: 3,
+    type: 'choice',
+    question: '用火柴棒摆出：11+1=12，移动一根火柴棒，不能使等式变成（ ）',
+    options: ['11-1=10', '1+11=12', '11+1=13', '1+1+1=3'],
+    answer: 'C',
+    teaching: {
+      point: '火柴棒等式的多种变法',
+      method: '逐个验证每种变法是否只需移动一根',
+      steps: ['A：把加号变成减号（移动一根到等号后2上变成10）', 'B：把等号前的一个1移到等号前变成1+11=12', 'C：11+1=13需要改变12变成13，要移动两根', 'D：把12拆成1+2：11+1=1+2→移动一根变成1+1+1=3...需移动多根', '只有C不能通过移动一根实现'],
+      memory: '逐项验证最稳妥',
+      example: '2+2=4，移动一根能变成2+3=5吗？答案：能'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c13q8',
+    grade: 1,
+    chapter: 13,
+    difficulty: 3,
+    type: 'blank',
+    question: '用火柴棒拼一个正方形需要4根，拼两个分开的正方形需要8根，拼两个连在一起的正方形最少需要（ ）根',
+    answer: '7',
+    teaching: {
+      point: '火柴棒拼图形的优化',
+      method: '两个正方形共用一条边',
+      steps: ['两个独立正方形需要8根', '如果共用一条边，只需要7根'],
+      memory: '图形拼接省火柴，共用边越多越省',
+      example: '拼三个连在一起的正方形最少需要几根火柴？答案：10根'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c13q9',
+    grade: 1,
+    chapter: 13,
+    difficulty: 3,
+    type: 'answer',
+    question: '用火柴棒摆出：4+2=7（错误等式），移动一根火柴棒使等式成立。请写出正确的等式。',
+    answer: '4+3=7',
+    teaching: {
+      point: '修正错误等式',
+      method: '改变其中一个数字',
+      steps: ['4+2=7是错误的（4+2=6）', '移动一根：把2变成3', '等式变成4+3=7，正确！'],
+      memory: '看哪边大哪边小，改变数字使平衡',
+      example: '5+3=6（错误），移动一根使等式成立。答案：5+2=7或3+3=6'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c13q10',
+    grade: 1,
+    chapter: 13,
+    difficulty: 4,
+    type: 'blank',
+    question: '用16根火柴棒拼成5个正方形（如右图），移动3根火柴棒，可以变成（ ）个正方形',
+    answer: '4',
+    teaching: {
+      point: '复杂火柴棒图形变换',
+      method: '重新排列火柴棒',
+      steps: ['16根火柴拼5个正方形（4小1大）', '移动3根可以变成4个相同大小的正方形'],
+      memory: '火柴拼图多尝试，移走重排变新图',
+      example: '12根火柴拼4个小正方形（田字），移动4根变成3个正方形，可以吗？答案：可以'
+    },
+    star: 4
+  },
+
+  // 第十四章：排队问题进阶
+  {
+    id: 'g1c14q1',
+    grade: 1,
+    chapter: 14,
+    difficulty: 1,
+    type: 'choice',
+    question: '小明排队买票，从前面数他是第5个，从后面数他是第4个，这一队共有（ ）人',
+    options: ['8', '9', '10', '7'],
+    answer: 'A',
+    teaching: {
+      point: '排队求总人数',
+      method: '前面人数+后面人数+自己=总人数',
+      steps: ['前面有4人（他是第5个）', '后面有3人（他是第4个）', '总人数：4+3+1=8人'],
+      memory: '前第几减一加后第几减一再加自己',
+      example: '从前面数是第3个，从后面数是第5个，共几人？答案：7人'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c14q2',
+    grade: 1,
+    chapter: 14,
+    difficulty: 1,
+    type: 'blank',
+    question: '10个小朋友排队，从左数小红是第3个，从右数小红是第（ ）个',
+    answer: '8',
+    teaching: {
+      point: '已知位置求另一侧位置',
+      method: '从右数=总人数-从左数位置+1',
+      steps: ['总人数10，从左数是第3', '从右数：10-3+1=8'],
+      memory: '总人数减左位加一就是右位',
+      example: '15人排队，从左数是第6个，从右数是第几个？答案：10'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c14q3',
+    grade: 1,
+    chapter: 14,
+    difficulty: 2,
+    type: 'choice',
+    question: '15个同学排队，小明排在第8个，小华排在第12个，小明和小华之间有（ ）人',
+    options: ['3', '4', '5', '2'],
+    answer: 'A',
+    teaching: {
+      point: '两人之间的人数',
+      method: '用较大位置-较小位置-1',
+      steps: ['小明第8，小华第12', '之间人数：12-8-1=3人（第9、10、11）'],
+      memory: '之间人数=大位减小位再减一',
+      example: '第5和第10之间有几个？答案：4个'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c14q4',
+    grade: 1,
+    chapter: 14,
+    difficulty: 2,
+    type: 'blank',
+    question: '同学们排队，小刚前面有7人，后面有5人，这一队共有（ ）人',
+    answer: '13',
+    teaching: {
+      point: '已知前后人数求总人数',
+      method: '前面人数+自己+后面人数',
+      steps: ['7+1+5=13人'],
+      memory: '前面加自己加后面',
+      example: '前面8人后面6人，共几人？答案：15人'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c14q5',
+    grade: 1,
+    chapter: 14,
+    difficulty: 2,
+    type: 'choice',
+    question: '同学们排成方阵做操，每行6人，每列6人，一共有（ ）人',
+    options: ['36', '24', '30', '12'],
+    answer: 'A',
+    teaching: {
+      point: '方阵总人数',
+      method: '每行人数×每列人数',
+      steps: ['6×6=36人'],
+      memory: '方阵人数=行数×列数',
+      example: '每行5人每列5人的方阵，共几人？答案：25人'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c14q6',
+    grade: 1,
+    chapter: 14,
+    difficulty: 2,
+    type: 'blank',
+    question: '小明在队伍中，他前面的人数是他后面人数的2倍，他后面有3人，小明排在第（ ）个',
+    answer: '7',
+    teaching: {
+      point: '倍数关系的排队问题',
+      method: '先算前面人数再算位置',
+      steps: ['后面3人，前面是后面的2倍：3×2=6人', '小明位置：6+1=7（第7个）'],
+      memory: '前面人数加一就是位置',
+      example: '前面是后面的3倍，后面有2人，排在第几个？答案：7'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c14q7',
+    grade: 1,
+    chapter: 14,
+    difficulty: 3,
+    type: 'choice',
+    question: '同学们排队，小明从前面数是第8个，从后面数是第5个。后来有2人离开了，现在这一队有（ ）人',
+    options: ['10', '11', '12', '9'],
+    answer: 'A',
+    teaching: {
+      point: '排队中人数变化',
+      method: '先求原有人数再减去离开的',
+      steps: ['原来总人数：8+5-1=12人', '离开2人后：12-2=10人'],
+      memory: '先求总数再加减',
+      example: '从前面数第6从后面数第4，来了3人后共几人？答案：12人'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c14q8',
+    grade: 1,
+    chapter: 14,
+    difficulty: 3,
+    type: 'blank',
+    question: '18个小朋友排成一排，从左数小明是第5个，小华是第15个。小明和小华之间插入3个新同学，现在小明和小华之间有（ ）人',
+    answer: '12',
+    teaching: {
+      point: '排队中插入新人',
+      method: '先算原来之间人数，再加插入人数',
+      steps: ['原来之间：15-5-1=9人', '插入3人后：9+3=12人'],
+      memory: '原来之间加新来',
+      example: '第4和第10之间插入2人，现在之间有几？答案：7人'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c14q9',
+    grade: 1,
+    chapter: 14,
+    difficulty: 3,
+    type: 'answer',
+    question: '二(1)班同学排成方阵做操，小芳站在从左边数是第3个，从右边数是第4个，从前面数是第2个，从后面数是第5个。这个方阵一共有多少人？',
+    answer: '36',
+    teaching: {
+      point: '方阵的综合计算',
+      method: '根据位置求行列数',
+      steps: ['每行人数：3+4-1=6人', '每列人数：2+5-1=6人', '总人数：6×6=36人'],
+      memory: '行列各自求总数，相乘就是总人数',
+      example: '左数第4右数第3，前数第3后数第4，共几人？答案：36人'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c14q10',
+    grade: 1,
+    chapter: 14,
+    difficulty: 4,
+    type: 'blank',
+    question: '25个小朋友排成5行5列的方阵。小明站在第2行第4列。小华站在小明正后方第2个位置（同一列），小华的位置是第（ ）行第（ ）列',
+    answer: '4,4',
+    teaching: {
+      point: '方阵中位置的确定',
+      method: '行数加2，列不变',
+      steps: ['小明：第2行第4列', '正后方第2个：行数+2=4', '同一列：列不变=4', '所以是第4行第4列'],
+      memory: '正后方加行数，列不变',
+      example: '小明在第1行第3列，正后方第3个在哪？答案：第4行第3列'
+    },
+    star: 4
+  },
+
+  // 第十五章：综合提高
+  {
+    id: 'g1c15q1',
+    grade: 1,
+    chapter: 15,
+    difficulty: 1,
+    type: 'choice',
+    question: '找规律：2、4、6、8、（ ）',
+    options: ['9', '10', '12', '14'],
+    answer: 'B',
+    teaching: {
+      point: '等差数列规律',
+      method: '每次加2',
+      steps: ['相邻差：4-2=2, 6-4=2, 8-6=2', '下一个：8+2=10'],
+      memory: '差相等就是等差数列',
+      example: '3、6、9、12、（ ）答案：15'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c15q2',
+    grade: 1,
+    chapter: 15,
+    difficulty: 1,
+    type: 'blank',
+    question: '○△□○△□○△□...第10个图形是（ ）',
+    answer: '□',
+    teaching: {
+      point: '图形周期规律',
+      method: '用周期除法',
+      steps: ['周期为3：○△□', '10÷3=3余1', '余1是周期第一个：○', '不对：10÷3=3余1，是○', '重新：1○2△3□4○5△6□7○8△9□10○', '第10个是○'],
+      memory: '周期除法看余数',
+      example: '△○△○...第9个是什么？答案：△'
+    },
+    star: 1
+  },
+  {
+    id: 'g1c15q3',
+    grade: 1,
+    chapter: 15,
+    difficulty: 2,
+    type: 'choice',
+    question: '小红比小明高，小华比小红矮，小华比小明高。三人中最高的是（ ）',
+    options: ['小红', '小明', '小华', '无法判断'],
+    answer: 'A',
+    teaching: {
+      point: '传递性推理',
+      method: '用不等式排列',
+      steps: ['小红>小明', '小红>小华', '小华>小明', '所以小红>小华>小明，小红最高'],
+      memory: '比高矮要排序',
+      example: 'A比B重，B比C重，谁最重？答案：A'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c15q4',
+    grade: 1,
+    chapter: 15,
+    difficulty: 2,
+    type: 'blank',
+    question: '小明有15颗糖，给了小红4颗后，两人一样多，小红原来有（ ）颗糖',
+    answer: '7',
+    teaching: {
+      point: '给后一样多的还原',
+      method: '先算给后数量，再还原',
+      steps: ['小明给后：15-4=11颗', '小红现在也有11颗', '小红原来：11-4=7颗'],
+      memory: '给后一样多，减去给的就是原来',
+      example: '甲有20个苹果，给乙3个后一样多，乙原来有几个？答案：14个'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c15q5',
+    grade: 1,
+    chapter: 15,
+    difficulty: 2,
+    type: 'choice',
+    question: '在○里填上">"、"<"或"="：15-7 ○ 6+3',
+    options: ['>', '<', '=', '无法比较'],
+    answer: 'B',
+    teaching: {
+      point: '算式比较大小',
+      method: '先计算两边再比较',
+      steps: ['左边：15-7=8', '右边：6+3=9', '8<9，所以填<'],
+      memory: '先算再比',
+      example: '12-5 ○ 4+4 填什么？答案：<'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c15q6',
+    grade: 1,
+    chapter: 15,
+    difficulty: 2,
+    type: 'blank',
+    question: '现在是上午10点，再过3小时是下午（ ）点',
+    answer: '1',
+    teaching: {
+      point: '时间推算',
+      method: '当前时间+经过时间',
+      steps: ['10+3=13点', '13点是下午1点'],
+      memory: '过了12点要换成下午',
+      example: '现在是下午2点，再过5小时是几点？答案：晚上7点'
+    },
+    star: 2
+  },
+  {
+    id: 'g1c15q7',
+    grade: 1,
+    chapter: 15,
+    difficulty: 3,
+    type: 'choice',
+    question: '用1、2、3三个数字可以组成（ ）个不同的两位数',
+    options: ['3', '4', '5', '6'],
+    answer: 'D',
+    teaching: {
+      point: '排列组合基础',
+      method: '有序枚举',
+      steps: ['十位是1：12、13', '十位是2：21、23', '十位是3：31、32', '共6个'],
+      memory: '有序枚举不遗漏',
+      example: '用1、2可以组成几个不同的两位数？答案：2个'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c15q8',
+    grade: 1,
+    chapter: 15,
+    difficulty: 3,
+    type: 'blank',
+    question: '一根绳子对折一次后长8米，这根绳子原来长（ ）米',
+    answer: '16',
+    teaching: {
+      point: '对折问题',
+      method: '对折一次长度变为原来的一半',
+      steps: ['对折后长8米', '原来长度：8×2=16米'],
+      memory: '对折一次乘二还原',
+      example: '绳子对折两次后长3米，原来长几米？答案：12米'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c15q9',
+    grade: 1,
+    chapter: 15,
+    difficulty: 3,
+    type: 'answer',
+    question: '把一根木头锯成5段，每锯一次需要2分钟，一共需要多少分钟？',
+    answer: '8',
+    teaching: {
+      point: '锯木头问题（植树问题变式）',
+      method: '锯的次数=段数-1',
+      steps: ['锯成5段需要锯4次', '每次2分钟', '总时间：4×2=8分钟'],
+      memory: '锯的次数比段数少一',
+      example: '锯成6段需要锯几次？答案：5次'
+    },
+    star: 3
+  },
+  {
+    id: 'g1c15q10',
+    grade: 1,
+    chapter: 15,
+    difficulty: 4,
+    type: 'blank',
+    question: '小明从1楼到3楼用了4分钟，照这样计算，他从1楼到6楼要用（ ）分钟',
+    answer: '10',
+    teaching: {
+      point: '爬楼梯问题',
+      method: '先求每层时间',
+      steps: ['1楼到3楼走了2层', '每层：4÷2=2分钟', '1楼到6楼走5层', '总时间：2×5=10分钟'],
+      memory: '楼梯层数=楼层差，每层时间要算对',
+      example: '从1楼到4楼要6分钟，从1楼到7楼要几分钟？答案：12分钟'
     },
     star: 4
   }

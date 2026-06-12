@@ -1,0 +1,48 @@
+{
+  "name": "math-questions-expansion",
+  "leadAgentId": "b71200abd6ab45ba9a6d152de5ba0f4d",
+  "workspacePath": "e:/internal_safe/math_small",
+  "createdAt": "2026-06-11T14:38:03.236Z",
+  "options": {
+    "workspacePath": "e:/internal_safe/math_small",
+    "isAutoTeam": false
+  },
+  "members": [
+    {
+      "memberId": "team-lead@math-questions-expansion",
+      "name": "team-lead",
+      "role": "Team Lead - coordinates the team and interacts with the user"
+    },
+    {
+      "memberId": "grade1-writer@math-questions-expansion",
+      "name": "grade1-writer",
+      "role": "Write grade 1 new chapters 11-15"
+    },
+    {
+      "memberId": "grade2-writer@math-questions-expansion",
+      "name": "grade2-writer",
+      "role": "Write grade 2 new chapters 11-15"
+    },
+    {
+      "memberId": "grade3-writer@math-questions-expansion",
+      "name": "grade3-writer",
+      "role": "Write grade 3 new chapters 11-15"
+    },
+    {
+      "memberId": "grade4-writer@math-questions-expansion",
+      "name": "grade4-writer",
+      "role": "Write grade 4 new chapters 11-15"
+    },
+    {
+      "memberId": "grade5-writer@math-questions-expansion",
+      "name": "grade5-writer",
+      "role": "Write grade 5 new chapters 11-15"
+    },
+    {
+      "memberId": "grade6-writer@math-questions-expansion",
+      "name": "grade6-writer",
+      "role": "Write grade 6 new chapters 11-15"
+    }
+  ],
+  "isAutoTeam": false
+}

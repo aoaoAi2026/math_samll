@@ -107,6 +107,47 @@ export const grade1Topics: KnowledgeChapter[] = [
       { id: 1002, name: '竞赛真题', difficulty: 4, description: '历年竞赛精选题' },
     ]
   },
+  {
+    id: 11,
+    name: '单数与双数',
+    topics: [
+      { id: 1101, name: '单双数识别', difficulty: 1, description: '认识单数和双数' },
+      { id: 1102, name: '单双数加减规律', difficulty: 2, description: '单双数相加的奇偶性' },
+      { id: 1103, name: '单双数应用', difficulty: 3, description: '单双数在生活中的应用' },
+    ]
+  },
+  {
+    id: 12,
+    name: '数阵图入门',
+    topics: [
+      { id: 1201, name: '简单数阵', difficulty: 2, description: '三角形、正方形填数' },
+      { id: 1202, name: '三阶幻方', difficulty: 3, description: '三阶幻方的性质与填法' },
+    ]
+  },
+  {
+    id: 13,
+    name: '巧移火柴棒',
+    topics: [
+      { id: 1301, name: '移动火柴变等式', difficulty: 2, description: '移动火柴棒使等式成立' },
+      { id: 1302, name: '火柴棒图形变换', difficulty: 3, description: '移动火柴棒改变图形' },
+    ]
+  },
+  {
+    id: 14,
+    name: '排队问题进阶',
+    topics: [
+      { id: 1401, name: '复杂排队', difficulty: 2, description: '多人排队位置关系' },
+      { id: 1402, name: '方阵排队', difficulty: 3, description: '方阵中的位置计算' },
+    ]
+  },
+  {
+    id: 15,
+    name: '综合提高',
+    topics: [
+      { id: 1501, name: '多知识点综合', difficulty: 3, description: '多个知识点综合运用' },
+      { id: 1502, name: '竞赛模拟', difficulty: 4, description: '模拟竞赛题训练' },
+    ]
+  },
 ];
 
 // 二年级知识点（25+类型）
@@ -212,6 +253,38 @@ export const grade2Topics: KnowledgeChapter[] = [
     topics: [
       { id: 1101, name: '综合训练', difficulty: 3, description: '多知识点综合' },
       { id: 1102, name: '竞赛真题', difficulty: 4, description: '历年竞赛精选' },
+    ]
+  },
+  {
+    id: 12,
+    name: '数阵图与幻方',
+    topics: [
+      { id: 1201, name: '三阶幻方', difficulty: 2, description: '三阶幻方填法与性质' },
+      { id: 1202, name: '数阵图推理', difficulty: 3, description: '三角形、辐射型数阵' },
+    ]
+  },
+  {
+    id: 13,
+    name: '一笔画问题',
+    topics: [
+      { id: 1301, name: '一笔画判断', difficulty: 2, description: '奇点偶点与一笔画' },
+      { id: 1302, name: '一笔画应用', difficulty: 3, description: '最少笔画数与实际应用' },
+    ]
+  },
+  {
+    id: 14,
+    name: '巧算与速算',
+    topics: [
+      { id: 1401, name: '凑整法', difficulty: 2, description: '凑整与基准数法' },
+      { id: 1402, name: '乘法巧算', difficulty: 3, description: '乘法分配律与凑整' },
+    ]
+  },
+  {
+    id: 15,
+    name: '综合提高',
+    topics: [
+      { id: 1501, name: '多知识点综合', difficulty: 3, description: '多个知识点综合运用' },
+      { id: 1502, name: '竞赛模拟', difficulty: 4, description: '模拟竞赛题训练' },
     ]
   },
 ];
@@ -328,6 +401,30 @@ export const grade3Topics: KnowledgeChapter[] = [
     topics: [
       { id: 1201, name: '综合训练', difficulty: 3, description: '多知识点综合' },
       { id: 1202, name: '竞赛真题', difficulty: 4, description: '历年竞赛精选' },
+    ]
+  },
+  {
+    id: 13,
+    name: '等差数列',
+    topics: [
+      { id: 1301, name: '等差数列基础', difficulty: 2, description: '公差、项数、求和公式' },
+      { id: 1302, name: '等差数列应用', difficulty: 3, description: '高斯求和与实际应用' },
+    ]
+  },
+  {
+    id: 14,
+    name: '植树问题进阶',
+    topics: [
+      { id: 1401, name: '植树变式', difficulty: 2, description: '锯木头、爬楼梯、敲钟问题' },
+      { id: 1402, name: '植树综合', difficulty: 3, description: '多种植树问题综合' },
+    ]
+  },
+  {
+    id: 15,
+    name: '综合提高',
+    topics: [
+      { id: 1501, name: '多知识点综合', difficulty: 3, description: '多个知识点综合运用' },
+      { id: 1502, name: '竞赛模拟', difficulty: 4, description: '模拟竞赛题训练' },
     ]
   },
 ];
@@ -457,6 +554,30 @@ export const grade4Topics: KnowledgeChapter[] = [
       { id: 1202, name: '竞赛真题', difficulty: 4, description: '历年竞赛精选' },
     ]
   },
+  {
+    id: 13,
+    name: '博弈与策略',
+    topics: [
+      { id: 1301, name: '取物游戏', difficulty: 3, description: '取石子、抢数等游戏策略' },
+      { id: 1302, name: '必胜策略', difficulty: 4, description: '分析必胜必败局面' },
+    ]
+  },
+  {
+    id: 14,
+    name: '行程问题进阶',
+    topics: [
+      { id: 1401, name: '火车过桥', difficulty: 3, description: '车长与桥长问题' },
+      { id: 1402, name: '环形跑道', difficulty: 3, description: '环形相遇追及' },
+    ]
+  },
+  {
+    id: 15,
+    name: '综合提高',
+    topics: [
+      { id: 1501, name: '多知识点综合', difficulty: 3, description: '多个知识点综合运用' },
+      { id: 1502, name: '竞赛模拟', difficulty: 4, description: '模拟竞赛题训练' },
+    ]
+  },
 ];
 
 // 五年级知识点（40+类型）
@@ -577,6 +698,30 @@ export const grade5Topics: KnowledgeChapter[] = [
       { id: 1202, name: '竞赛真题', difficulty: 4, description: '历年竞赛精选' },
     ]
   },
+  {
+    id: 13,
+    name: '钟表问题',
+    topics: [
+      { id: 1301, name: '时针分针重合', difficulty: 3, description: '时针分针追及问题' },
+      { id: 1302, name: '快慢钟问题', difficulty: 4, description: '钟表误差问题' },
+    ]
+  },
+  {
+    id: 14,
+    name: '流水行船',
+    topics: [
+      { id: 1401, name: '顺水逆水', difficulty: 3, description: '顺水逆水速度计算' },
+      { id: 1402, name: '流水行船应用', difficulty: 4, description: '丢物漂流、两船相遇' },
+    ]
+  },
+  {
+    id: 15,
+    name: '综合提高',
+    topics: [
+      { id: 1501, name: '多知识点综合', difficulty: 3, description: '多个知识点综合运用' },
+      { id: 1502, name: '竞赛模拟', difficulty: 4, description: '模拟竞赛题训练' },
+    ]
+  },
 ];
 
 // 六年级知识点（40+类型）
@@ -688,6 +833,38 @@ export const grade6Topics: KnowledgeChapter[] = [
       { id: 1101, name: '综合复习', difficulty: 3, description: '知识点综合' },
       { id: 1102, name: '模拟测试', difficulty: 4, description: '综合测试题' },
       { id: 1103, name: '竞赛真题', difficulty: 4, description: '历年竞赛真题' },
+    ]
+  },
+  {
+    id: 12,
+    name: '浓度与经济综合',
+    topics: [
+      { id: 1201, name: '浓度计算', difficulty: 3, description: '配溶液与浓度变化' },
+      { id: 1202, name: '利润与折扣', difficulty: 3, description: '利润率、折扣综合' },
+    ]
+  },
+  {
+    id: 13,
+    name: '分段计费与方案选择',
+    topics: [
+      { id: 1301, name: '阶梯收费', difficulty: 3, description: '水电、出租车分段计费' },
+      { id: 1302, name: '最优方案', difficulty: 4, description: '比较选择最优方案' },
+    ]
+  },
+  {
+    id: 14,
+    name: '计数与排列组合',
+    topics: [
+      { id: 1401, name: '加乘原理', difficulty: 3, description: '分类与分步计数' },
+      { id: 1402, name: '排列组合进阶', difficulty: 4, description: '含限制条件的排列组合' },
+    ]
+  },
+  {
+    id: 15,
+    name: '小升初模拟',
+    topics: [
+      { id: 1501, name: '真题模拟', difficulty: 3, description: '小升初真题模拟训练' },
+      { id: 1502, name: '压轴题训练', difficulty: 4, description: '小升初压轴难题' },
     ]
   },
 ];

@@ -14,6 +14,15 @@ interface KnowledgeTopic {
   name: string;
   difficulty: number;
   description: string;
+  teaching?: TopicTeaching;
+}
+
+export interface TopicTeaching {
+  concept: string;      // 概念讲解
+  method: string;       // 解题方法
+  example: string;      // 例题
+  steps: string[];      // 分步解析
+  memory: string;       // 记忆口诀
 }
 
 // 年级知识点映射

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200">
+<style>
+  text { font-family: Arial, sans-serif; }
+  .label { font-size: 14px; fill: #e2e8f0; text-anchor: middle; dominant-baseline: middle; }
+  .title { font-size: 16px; fill: #fbbf24; text-anchor: middle; font-weight: bold; }
+  .dim { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+  .shape { fill: rgba(147,51,234,0.3); stroke: #a855f7; stroke-width: 2; }
+  .shape-solid { fill: rgba(59,130,246,0.3); stroke: #60a5fa; stroke-width: 2; }
+  .shape-green { fill: rgba(34,197,94,0.3); stroke: #4ade80; stroke-width: 2; }
+  .shape-orange { fill: rgba(251,146,60,0.3); stroke: #fb923c; stroke-width: 2; }
+  .shape-red { fill: rgba(239,68,68,0.3); stroke: #f87171; stroke-width: 2; }
+  .shape-yellow { fill: rgba(250,204,21,0.3); stroke: #facc15; stroke-width: 2; }
+  .line { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+  .dashed { stroke: #64748b; stroke-width: 1; stroke-dasharray: 5,5; fill: none; }
+  .dot { fill: #fbbf24; }
+  .grid-line { stroke: #334155; stroke-width: 0.5; }
+  .axis { stroke: #64748b; stroke-width: 1.5; }
+  .arrow { fill: #94a3b8; }
+</style>
+  <polygon points="30,150 30,40 180,40 180,150 120,100" fill="rgba(147,51,234,0.15)" stroke="#a855f7" stroke-width="2"/>
+  <line x1="30" y1="100" x2="120" y2="100" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="105" y="175" class="dim">割补法：把不规则图形变成规则图形</text>
+</svg>

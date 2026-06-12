@@ -1,0 +1,20 @@
+[
+  {
+    "id": "msg-1781188810318-wtl5tx",
+    "from": "team-lead",
+    "to": "@team",
+    "type": "broadcast",
+    "content": "Please report your current progress - how many questions have you written so far? What chapter are you working on?",
+    "timestamp": "2026-06-11T14:40:10.318Z",
+    "read": true
+  },
+  {
+    "id": "msg-1781188843080-o6nvr4",
+    "from": "team-lead",
+    "to": "@team",
+    "type": "broadcast",
+    "content": "Please report your status. If you have completed writing all 50 questions, reply with \"COMPLETE\". If still working, reply with your progress (e.g., \"Working on chapter 13, 30/50 done\"). If you haven't started yet, please start immediately.",
+    "timestamp": "2026-06-11T14:40:43.080Z",
+    "read": true
+  }
+]
