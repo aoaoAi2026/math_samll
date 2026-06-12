@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MathSmall</string>
+    <string name="title_activity_main">MathSmall</string>
+    <string name="package_name">com.mathsmall.app</string>
+    <string name="custom_url_scheme">com.mathsmall.app</string>
+</resources>

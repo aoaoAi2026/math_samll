@@ -69,6 +69,75 @@ function playSequence(notes: { freq: number; dur: number; delay: number }[], typ
   });
 }
 
+// ========== 文本语音朗读（Web Speech API） ==========
+// 使用浏览器自带的语音合成功能朗读文字内容
+// 支持播放、暂停、停止，适合小朋友"听题"和"听解题方法"
+
+let currentUtterance: SpeechSynthesisUtterance | null = null;
+let speechSpeaking = false;
+
+export function speak(text: string, options?: { rate?: number; pitch?: number; volume?: number; lang?: string; onEnd?: () => void }): void {
+  // 静音则不朗读
+  if (muted) return;
+
+  // 浏览器不支持就直接返回
+  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+  // 内容为空不朗读
+  if (!text || text.trim().length === 0) return;
+
+  try {
+    // 先停止之前正在朗读的内容
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = options?.lang || 'zh-CN';      // 默认中文
+    utterance.rate = options?.rate ?? 0.95;          // 稍慢一点，适合小朋友听
+    utterance.pitch = options?.pitch ?? 1.1;         // 音调稍高，更有亲和力
+    utterance.volume = options?.volume ?? 1;         // 音量最大
+
+    // 尝试选择中文语音（如果有）
+    const voices = window.speechSynthesis.getVoices();
+    const zhVoice = voices.find((v) => v.lang.startsWith('zh'));
+    if (zhVoice) utterance.voice = zhVoice;
+
+    utterance.onstart = () => {
+      speechSpeaking = true;
+    };
+
+    utterance.onend = () => {
+      speechSpeaking = false;
+      currentUtterance = null;
+      if (options?.onEnd) options.onEnd();
+    };
+
+    utterance.onerror = () => {
+      speechSpeaking = false;
+      currentUtterance = null;
+    };
+
+    currentUtterance = utterance;
+    window.speechSynthesis.speak(utterance);
+  } catch {
+    // 静默失败，不影响主流程
+  }
+}
+
+// 停止当前正在朗读的语音
+export function speakStop(): void {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  speechSpeaking = false;
+  currentUtterance = null;
+}
+
+// 判断是否正在朗读
+export function isSpeaking(): boolean {
+  return speechSpeaking;
+}
+
+// ========== 继续原来的音效系统 ==========
+
 export const sound = {
   // 点击按钮
   click() {
