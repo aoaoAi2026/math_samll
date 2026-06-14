@@ -1,0 +1,16 @@
+- generic [ref=e1036]:
+  - generic [ref=e1037]:
+    - generic [ref=e1038]: 🌿
+    - heading "数字草原" [level=1] [ref=e1039]
+    - paragraph [ref=e1040]: 和小兔子一起数数
+  - generic [ref=e1047]:
+    - generic [ref=e1049]: 📖 数数入门
+    - generic [ref=e1051]:
+      - generic [ref=e1052]:
+        - generic [ref=e1053]: 🐰
+        - paragraph [ref=e1056]: 蹦蹦跳跳地说：数数入门！
+      - generic [ref=e1057]: 欢迎来到「数数入门」！我是跳跳兔～
+      - button "知道了，继续 →" [ref=e1058] [cursor=pointer]:
+        - text: 知道了，继续 →
+        - img [ref=e1059]
+  - button "跳过教学，直接答题 →" [ref=e1061] [cursor=pointer]

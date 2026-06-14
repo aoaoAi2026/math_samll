@@ -1,0 +1,14 @@
+- generic [ref=e1036]:
+  - generic [ref=e1037]:
+    - generic [ref=e1038]: 🌿
+    - heading "数字草原" [level=1] [ref=e1039]
+    - paragraph [ref=e1040]: 和小兔子一起数数
+  - generic [ref=e1062]:
+    - generic [ref=e1064]: 💡 今天学什么？
+    - generic [ref=e1066]:
+      - generic [ref=e1067]: 简单排序推理
+      - generic [ref=e1069]: 📖
+      - button "知道了，继续 →" [active] [ref=e1070] [cursor=pointer]:
+        - text: 知道了，继续 →
+        - img [ref=e1071]
+  - button "跳过教学，直接答题 →" [ref=e1061] [cursor=pointer]

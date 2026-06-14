@@ -1,0 +1,40 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "返回" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - img [ref=e6]
+      - text: 返回
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - generic [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e17]: "0"
+  - generic [ref=e19]:
+    - generic [ref=e20]: ⚡
+    - heading "口算挑战" [level=1] [ref=e21]
+    - paragraph [ref=e22]: 限时作答，测测你的反应速度！
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]: 难度
+        - generic [ref=e26]:
+          - button "简单 (20以内)" [ref=e27] [cursor=pointer]
+          - button "中等 (100以内)" [ref=e28] [cursor=pointer]
+          - button "困难 (100以内全运算)" [ref=e29] [cursor=pointer]
+      - generic [ref=e30]:
+        - generic [ref=e31]: 每题限时
+        - generic [ref=e32]:
+          - button "3秒" [ref=e33] [cursor=pointer]
+          - button "4秒" [ref=e34] [cursor=pointer]
+          - button "5秒" [ref=e35] [cursor=pointer]
+          - button "8秒" [ref=e36] [cursor=pointer]
+      - generic [ref=e37]:
+        - generic [ref=e38]: 题量
+        - generic [ref=e39]:
+          - button "10题" [ref=e40] [cursor=pointer]
+          - button "20题" [ref=e41] [cursor=pointer]
+          - button "30题" [ref=e42] [cursor=pointer]
+          - button "50题" [ref=e43] [cursor=pointer]
+      - button "开始挑战" [ref=e44] [cursor=pointer]:
+        - img [ref=e45]
+        - text: 开始挑战

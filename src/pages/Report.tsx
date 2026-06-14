@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, TrendingUp, Award, ChevronLeft, Calendar, Zap, BookOpen, AlertCircle, Target } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
+import { safeGet } from '@/utils/storage';
 
 export default function Report() {
   const { userProgress } = useGameStore();
@@ -20,8 +21,7 @@ export default function Report() {
 
   // 本周统计数据（从localStorage读取）
   const stats = useMemo(() => {
-    const stored = localStorage.getItem('math-weekly-stats');
-    const all: Record<string, { answered: number; correct: number; stars: number; timeMinutes: number }> = stored ? JSON.parse(stored) : {};
+    const all = safeGet<Record<string, { answered: number; correct: number; stars: number; timeMinutes: number }>>('math-weekly-stats', {});
     const key = startOfWeek.toDateString();
     const weekData = all[key] || { answered: 0, correct: 0, stars: 0, timeMinutes: 0 };
 
@@ -39,8 +39,7 @@ export default function Report() {
       const d = new Date(startOfWeek);
       d.setDate(startOfWeek.getDate() + i);
       const key = d.toDateString();
-      const stored = localStorage.getItem('math-daily-stats');
-      const all = stored ? JSON.parse(stored) : {};
+      const all = safeGet<Record<string, { answered: number; correct: number }>>('math-daily-stats', {});
       const day = all[key] || { answered: 0, correct: 0 };
       days.push({
         label: ['日', '一', '二', '三', '四', '五', '六'][d.getDay()],

@@ -1,0 +1,69 @@
+- generic [ref=e171]:
+  - navigation [ref=e172]:
+    - link "返回" [ref=e174] [cursor=pointer]:
+      - /url: /grade/1
+      - img [ref=e175]
+      - generic [ref=e177]: 返回
+    - generic [ref=e179]:
+      - img [ref=e180]
+      - generic [ref=e182]: "0"
+  - generic [ref=e183]:
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - generic [ref=e186]:
+          - generic [ref=e187]: 第202章
+          - generic [ref=e188]: "|"
+          - generic [ref=e189]: 1/20
+        - generic [ref=e190]:
+          - img [ref=e191]
+          - img [ref=e193]
+          - img [ref=e195]
+          - img [ref=e197]
+          - generic [ref=e199]: 🌿 中等
+      - generic [ref=e200]:
+        - button "上一题" [disabled] [ref=e201]:
+          - img [ref=e202]
+          - text: 上一题
+        - button "下一题" [ref=e204] [cursor=pointer]:
+          - text: 下一题
+          - img [ref=e205]
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - generic [ref=e209]: 🔤 选择题
+        - generic [ref=e210]: 图形计数
+      - generic [ref=e211]: 下图有（ ）个三角形
+      - img "题目图片" [ref=e213]
+      - generic [ref=e214]:
+        - button "A 3" [ref=e215] [cursor=pointer]:
+          - generic [ref=e216]: A
+          - generic [ref=e217]: "3"
+        - button "B 4" [ref=e218] [cursor=pointer]:
+          - generic [ref=e219]: B
+          - generic [ref=e220]: "4"
+        - button "C 5" [ref=e221] [cursor=pointer]:
+          - generic [ref=e222]: C
+          - generic [ref=e223]: "5"
+        - button "D 6" [ref=e224] [cursor=pointer]:
+          - generic [ref=e225]: D
+          - generic [ref=e226]: "6"
+    - generic [ref=e227]:
+      - button "第1题" [ref=e228] [cursor=pointer]
+      - button "第2题" [ref=e229] [cursor=pointer]
+      - button "第3题" [ref=e230] [cursor=pointer]
+      - button "第4题" [ref=e231] [cursor=pointer]
+      - button "第5题" [ref=e232] [cursor=pointer]
+      - button "第6题" [ref=e233] [cursor=pointer]
+      - button "第7题" [ref=e234] [cursor=pointer]
+      - button "第8题" [ref=e235] [cursor=pointer]
+      - button "第9题" [ref=e236] [cursor=pointer]
+      - button "第10题" [ref=e237] [cursor=pointer]
+      - button "第11题" [ref=e238] [cursor=pointer]
+      - button "第12题" [ref=e239] [cursor=pointer]
+      - button "第13题" [ref=e240] [cursor=pointer]
+      - button "第14题" [ref=e241] [cursor=pointer]
+      - button "第15题" [ref=e242] [cursor=pointer]
+      - button "第16题" [ref=e243] [cursor=pointer]
+      - button "第17题" [ref=e244] [cursor=pointer]
+      - button "第18题" [ref=e245] [cursor=pointer]
+      - button "第19题" [ref=e246] [cursor=pointer]
+      - button "第20题" [ref=e247] [cursor=pointer]

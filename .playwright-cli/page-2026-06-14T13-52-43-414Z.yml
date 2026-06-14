@@ -1,0 +1,45 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "返回学习中心" [ref=e5] [cursor=pointer]:
+      - /url: /learn/1
+      - img [ref=e6]
+      - text: 返回学习中心
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - generic [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e17]: "0"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 📐
+      - heading "图形计数" [level=1] [ref=e21]
+      - generic [ref=e22]: 🌿 ⭐⭐中等
+      - paragraph [ref=e23]: 数图形个数、分类计数
+    - generic [ref=e25]:
+      - button "📖 概念" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]: 📖
+        - generic [ref=e28]: 概念
+      - button "🧠 方法" [ref=e29] [cursor=pointer]:
+        - generic [ref=e30]: 🧠
+        - generic [ref=e31]: 方法
+      - button "📝 例题" [ref=e32] [cursor=pointer]:
+        - generic [ref=e33]: 📝
+        - generic [ref=e34]: 例题
+      - button "🎵 口诀" [ref=e35] [cursor=pointer]:
+        - generic [ref=e36]: 🎵
+        - generic [ref=e37]: 口诀
+      - button "🚀 练习" [ref=e38] [cursor=pointer]:
+        - generic [ref=e39]: 🚀
+        - generic [ref=e40]: 练习
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e45]: 📖
+        - heading "概念讲解" [level=2] [ref=e46]
+        - button "朗读" [ref=e48] [cursor=pointer]:
+          - img [ref=e49]
+          - text: 朗读
+      - paragraph [ref=e54]: 图形计数就是数一数图中有多少个某种图形。有时图形会重叠在一起或者嵌套在一起，数的时候要有顺序，不能漏掉也不能重复数。
+      - button "下一步：解题方法" [ref=e55] [cursor=pointer]:
+        - text: 下一步：解题方法
+        - img [ref=e56]

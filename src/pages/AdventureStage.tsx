@@ -10,8 +10,10 @@ import {
   ArrowLeft, Heart, Star, Zap, CheckCircle, XCircle,
   Lightbulb, Swords, Gem, Home, Trophy, Timer, Sparkles, Shield
 } from 'lucide-react';
-import { getQuestionById } from '@/data/questions';
+import { getQuestionById, allQuestions } from '@/data/questions';
 import { getStageById, getWorldById } from '@/data/adventure/adventureData';
+import { sound } from '@/utils/sound';
+import { resolveQuestionsImages } from '@/utils/resolveQuestionImage';
 import type { Question } from '@/data/questions/types';
 import { useAdventureStore } from '@/store/adventureStore';
 import { useGameStore } from '@/store/gameStore';
@@ -66,13 +68,19 @@ export default function AdventureStage() {
   const isBoss = stage?.type === 'boss';
   const currentQuestion = questions[currentIdx];
 
-  // 加载题目
+  // 加载题目（同步获取，确保教学阶段结束时数据已就绪）
   useEffect(() => {
-    if (!stage) return;
-    const qs = stage.questionIds
+    if (!stage) { setQuestions([]); return; }
+    const qs = resolveQuestionsImages(stage.questionIds
       .map(id => getQuestionById(id))
-      .filter((q): q is Question => q !== undefined);
-    setQuestions(qs);
+      .filter((q): q is Question => q !== undefined));
+    if (qs.length === 0) {
+      // 兜底：如果指定题目全失败，随机取5道题
+      const fallback = resolveQuestionsImages(allQuestions.sort(() => Math.random() - 0.5).slice(0, 5));
+      setQuestions(fallback);
+    } else {
+      setQuestions(qs);
+    }
   }, [stage]);
 
   // 段位升级监听
@@ -128,14 +136,18 @@ export default function AdventureStage() {
   }, [useItem, shieldActive, starActive, crystalUsed, retryActive, currentQuestion]);
 
   // 答题提交
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(() => handleSubmitWithAnswer(), [userAnswer, showResult, currentQuestion]);
+
+  const handleSubmitWithAnswer = useCallback((forcedAnswer?: string) => {
     if (!currentQuestion || showResult) return;
+    const answer = forcedAnswer ?? userAnswer;
+    if (!answer.trim()) return;
 
     let correct = false;
     if (currentQuestion.type === 'choice') {
-      correct = userAnswer.toUpperCase() === currentQuestion.answer.toUpperCase();
+      correct = answer.toUpperCase() === currentQuestion.answer.toUpperCase();
     } else {
-      correct = userAnswer.trim() === currentQuestion.answer.trim();
+      correct = answer.trim() === currentQuestion.answer.trim();
     }
 
     setIsCorrect(correct);
@@ -282,7 +294,7 @@ export default function AdventureStage() {
   // ====== 加载中 ======
   if (!stage || !world || questions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-indigo-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-indigo-950 flex flex-col items-center justify-center gap-6">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
@@ -290,7 +302,10 @@ export default function AdventureStage() {
         >
           🗺️
         </motion.div>
-        <span className="text-white/60 ml-3">正在打开冒险关卡...</span>
+        <span className="text-white/60">正在打开冒险关卡...</span>
+        <Link to="/adventure" className="text-white/40 hover:text-white/70 text-sm transition-colors">
+          ← 返回冒险地图
+        </Link>
       </div>
     );
   }
@@ -359,8 +374,8 @@ export default function AdventureStage() {
     if (!treasureOpened) {
       // 第一阶段：开宝箱动画
       const stars = correctCount >= 5 ? 3 : correctCount >= 4 ? 2 : correctCount >= 3 ? 1 : 0;
-      const gemsEarned = stage.rewardGems + (stars === 3 ? 10 : 0);
-      const isFirstClear = !isStageCompleted(stage.id);
+      const gemsEarned = (stage?.rewardGems ?? 0) + (stars === 3 ? 10 : 0);
+      const isFirstClear = !isStageCompleted(stage?.id ?? '');
 
       return (
         <div
@@ -450,7 +465,14 @@ export default function AdventureStage() {
   }
 
   // ====== 答题界面 ======
-  if (!currentQuestion) return null;
+  if (!currentQuestion) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <motion.div animate={{ rotate: 360 }} transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }} className="text-4xl">⚔️</motion.div>
+        <span className="text-white/60 ml-3">准备题目中...</span>
+      </div>
+    );
+  }
 
   const progressPct = questions.length > 0 ? ((currentIdx) / questions.length) * 100 : 0;
   const comboEffect = getComboEffect(combo);
@@ -642,11 +664,12 @@ export default function AdventureStage() {
 
           {/* 图片 */}
           {currentQuestion.image && (
-            <div className="mb-4 flex justify-center">
+            <div className="mb-4 -mx-2">
               <img
                 src={currentQuestion.image}
                 alt="题目图片"
-                className="max-w-full h-auto rounded-2xl shadow-lg"
+                className="w-full h-auto rounded-2xl shadow-lg" style={{ maxHeight: '60vh' }}
+                onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
               />
             </div>
           )}
@@ -674,7 +697,13 @@ export default function AdventureStage() {
                   <motion.button
                     key={letter}
                     disabled={showResult}
-                    onClick={() => setUserAnswer(letter)}
+                    onClick={() => {
+                      if (showResult) return;
+                      // 单选：选中后自动提交
+                      sound.navigate();
+                      setUserAnswer(letter);
+                      setTimeout(() => handleSubmitWithAnswer(letter), 50);
+                    }}
                     whileHover={!showResult ? { scale: 1.02 } : {}}
                     whileTap={!showResult ? { scale: 0.98 } : {}}
                     className={`w-full p-3.5 rounded-2xl border text-left flex items-center gap-3 transition-all font-medium ${bgClass} ${showResult ? 'cursor-default' : 'cursor-pointer'}`}
@@ -786,7 +815,8 @@ export default function AdventureStage() {
       {/* 底部操作栏 */}
       <footer className="sticky bottom-0 bg-slate-900/90 backdrop-blur-xl border-t border-white/10 p-4">
         <div className="max-w-2xl mx-auto">
-          {!showResult ? (
+          {/* 提交按钮：仅非选择题显示 */}
+          {!showResult && currentQuestion?.type !== 'choice' && (
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -800,7 +830,9 @@ export default function AdventureStage() {
             >
               {isBoss ? '⚔️ 攻击！' : '✨ 提交答案'}
             </motion.button>
-          ) : (
+          )}
+
+          {showResult && (
             <div className="space-y-2">
               {/* 答题反馈 */}
               <motion.div

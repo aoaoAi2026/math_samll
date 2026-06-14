@@ -90,7 +90,7 @@ export default function ExamQuestions() {
     if (answers[questionId]) return;
     const q = questions.find(x => x.id === questionId);
     if (!q) return;
-    const correct = q.options[q.answer].trim();
+    const correct = q.options?.[q.answer]?.trim?.() ?? '';
     const isCorrect = answer.trim() === correct;
 
     setAnswers(prev => ({ ...prev, [questionId]: answer }));
@@ -346,6 +346,11 @@ export default function ExamQuestions() {
                       </span>
                     </div>
                     <p className="text-white text-sm mb-3">{q.question}</p>
+                    {q.image && (
+                      <div className="mb-3 flex justify-center">
+                        <img src={q.image} alt="题目图片" className="max-w-full h-auto rounded-xl" style={{ maxHeight: '30vh' }} onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }} />
+                      </div>
+                    )}
                     <div className="grid grid-cols-2 gap-2 mb-3">
                       {q.options.map((opt, i) => (
                         <div key={i} className={`p-2.5 rounded-xl text-sm ${
@@ -490,9 +495,15 @@ export default function ExamQuestions() {
           </div>
 
           {/* 题目内容 */}
-          <div className="text-xl sm:text-2xl text-white mb-6 leading-relaxed font-medium">
+          <div className="text-xl sm:text-2xl text-white mb-4 leading-relaxed font-medium">
             {currentQuestion?.question}
           </div>
+
+          {currentQuestion?.image && (
+            <div className="mb-4 -mx-2">
+              <img src={currentQuestion.image} alt="题目图片" className="w-full h-auto rounded-2xl shadow-lg" style={{ maxHeight: '60vh' }} onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }} />
+            </div>
+          )}
 
           {/* 选项 —— 点击即判对错 */}
           <div className="space-y-2.5">

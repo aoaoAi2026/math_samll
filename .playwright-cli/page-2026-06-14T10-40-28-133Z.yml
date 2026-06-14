@@ -1,0 +1,27 @@
+- generic [ref=e29]:
+  - banner [ref=e30]:
+    - generic [ref=e31]:
+      - link [ref=e32] [cursor=pointer]:
+        - /url: /adventure
+        - img [ref=e33]
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]: 🌿
+          - generic [ref=e38]: 数字草原
+        - generic [ref=e39]: 比大小
+      - generic [ref=e40]:
+        - button "🎒" [ref=e42] [cursor=pointer]
+        - generic [ref=e43]:
+          - img [ref=e45]
+          - img [ref=e48]
+          - img [ref=e51]
+  - generic [ref=e53]:
+    - generic [ref=e54]:
+      - generic [ref=e55]: 第 1/5 题
+      - generic [ref=e57]: ✅ 0
+    - generic [ref=e58]:
+      - generic [ref=e60]: 填空题
+      - generic [ref=e61]: 小王、小李、小张三人赛跑，小王不是最快的，小李不是最慢的，（ ）跑得最快
+      - textbox "在这里输入答案..." [ref=e63]
+  - contentinfo [ref=e64]:
+    - button "✨ 提交答案" [disabled] [ref=e66]

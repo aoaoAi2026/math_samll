@@ -68,7 +68,17 @@ export default function ConfettiEffect({ onDone, count = 40, duration = 2200 }: 
         />
       );
     }
-    return null;
+    // circle (默认)
+    return (
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: '50%',
+          backgroundColor: 'currentColor',
+        }}
+      />
+    );
   };
 
   return (

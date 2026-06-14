@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Star, ChevronRight, Lock, CheckCircle, Play, BookOpen } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { getQuestionsByChapter, knowledgePoints } from '@/data/questions';
+import { resolveQuestionsImages } from '@/utils/resolveQuestionImage';
 
 export default function ChapterPractice() {
   const { grade: gradeParam, chapter: chapterParam } = useParams<{ grade: string; chapter: string }>();
@@ -11,7 +12,7 @@ export default function ChapterPractice() {
 
   const gradeData = knowledgePoints.find(kp => kp.grade === grade);
   const chapterData = gradeData?.chapters.find(c => c.id === chapter);
-  const questions = getQuestionsByChapter(grade, chapter);
+  const questions = resolveQuestionsImages(getQuestionsByChapter(grade, chapter));
 
   if (!chapterData) {
     return (

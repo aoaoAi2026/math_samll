@@ -1,0 +1,65 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "← 返回首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e6]:
+      - img [ref=e7]
+      - generic [ref=e9]: "0"
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e13]: 🎯
+      - heading "模拟考试" [level=1] [ref=e14]
+      - paragraph [ref=e15]: 检验你的奥数学习成果，准备好了吗？
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: 📚 选择年级
+          - generic [ref=e20]:
+            - button "🌱 1年级" [ref=e21] [cursor=pointer]:
+              - generic [ref=e22]: 🌱
+              - generic [ref=e23]: 1年级
+            - button "🌿 2年级" [ref=e24] [cursor=pointer]:
+              - generic [ref=e25]: 🌿
+              - generic [ref=e26]: 2年级
+            - button "🌳 3年级" [ref=e27] [cursor=pointer]:
+              - generic [ref=e28]: 🌳
+              - generic [ref=e29]: 3年级
+            - button "🍎 4年级" [ref=e30] [cursor=pointer]:
+              - generic [ref=e31]: 🍎
+              - generic [ref=e32]: 4年级
+            - button "🏆 5年级" [ref=e33] [cursor=pointer]:
+              - generic [ref=e34]: 🏆
+              - generic [ref=e35]: 5年级
+            - button "👑 6年级" [ref=e36] [cursor=pointer]:
+              - generic [ref=e37]: 👑
+              - generic [ref=e38]: 6年级
+        - generic [ref=e39]:
+          - generic [ref=e40]: 📝 题目数量
+          - generic [ref=e41]:
+            - button "10 题" [ref=e42] [cursor=pointer]:
+              - generic [ref=e43]: "10"
+              - generic [ref=e44]: 题
+            - button "20 题" [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]: "20"
+              - generic [ref=e47]: 题
+            - button "30 题" [ref=e48] [cursor=pointer]:
+              - generic [ref=e49]: "30"
+              - generic [ref=e50]: 题
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - img [ref=e53]
+          - generic [ref=e56]: ⏱️ 预计 30 分钟
+        - generic [ref=e57]:
+          - img [ref=e58]
+          - generic [ref=e62]: 共 10 道题
+    - button "🚀 开始考试" [ref=e63] [cursor=pointer]:
+      - img [ref=e64]
+      - text: 🚀 开始考试
+      - img [ref=e66]
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - img [ref=e70]
+        - heading "📋 考试历史" [level=2] [ref=e76]
+      - generic [ref=e77]:
+        - generic [ref=e78]: 📝
+        - text: 还没有参加过考试哦～

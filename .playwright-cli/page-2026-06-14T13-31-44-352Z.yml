@@ -1,0 +1,64 @@
+- generic [ref=e146]:
+  - navigation [ref=e147]:
+    - link "返回" [ref=e149] [cursor=pointer]:
+      - /url: /grade/2
+      - img [ref=e150]
+      - generic [ref=e152]: 返回
+    - generic [ref=e154]:
+      - img [ref=e155]
+      - generic [ref=e157]: "0"
+  - generic [ref=e158]:
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e162]: 第202章
+          - generic [ref=e163]: "|"
+          - generic [ref=e164]: 1/15
+        - generic [ref=e165]:
+          - img [ref=e166]
+          - img [ref=e168]
+          - img [ref=e170]
+          - img [ref=e172]
+          - generic [ref=e174]: 🌿 中等
+      - generic [ref=e175]:
+        - button "上一题" [disabled] [ref=e176]:
+          - img [ref=e177]
+          - text: 上一题
+        - button "下一题" [ref=e179] [cursor=pointer]:
+          - text: 下一题
+          - img [ref=e180]
+    - generic [ref=e182]:
+      - generic [ref=e183]:
+        - generic [ref=e184]: 🔤 选择题
+        - generic [ref=e185]: 图形找规律
+      - generic [ref=e186]: 第1题：10×5=?
+      - img "题目图片" [ref=e188]
+      - generic [ref=e189]:
+        - button "A 50" [ref=e190] [cursor=pointer]:
+          - generic [ref=e191]: A
+          - generic [ref=e192]: "50"
+        - button "B 55" [ref=e193] [cursor=pointer]:
+          - generic [ref=e194]: B
+          - generic [ref=e195]: "55"
+        - button "C 60" [ref=e196] [cursor=pointer]:
+          - generic [ref=e197]: C
+          - generic [ref=e198]: "60"
+        - button "D 65" [ref=e199] [cursor=pointer]:
+          - generic [ref=e200]: D
+          - generic [ref=e201]: "65"
+    - generic [ref=e202]:
+      - button "第1题" [ref=e203] [cursor=pointer]
+      - button "第2题" [ref=e204] [cursor=pointer]
+      - button "第3题" [ref=e205] [cursor=pointer]
+      - button "第4题" [ref=e206] [cursor=pointer]
+      - button "第5题" [ref=e207] [cursor=pointer]
+      - button "第6题" [ref=e208] [cursor=pointer]
+      - button "第7题" [ref=e209] [cursor=pointer]
+      - button "第8题" [ref=e210] [cursor=pointer]
+      - button "第9题" [ref=e211] [cursor=pointer]
+      - button "第10题" [ref=e212] [cursor=pointer]
+      - button "第11题" [ref=e213] [cursor=pointer]
+      - button "第12题" [ref=e214] [cursor=pointer]
+      - button "第13题" [ref=e215] [cursor=pointer]
+      - button "第14题" [ref=e216] [cursor=pointer]
+      - button "第15题" [ref=e217] [cursor=pointer]

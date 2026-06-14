@@ -3,6 +3,7 @@ import { Star, BookOpen, Target, Trophy, Play, Sparkles } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { difficultyLabels, getTopicById } from '@/data/knowledge';
 import { generateMockQuestions } from '@/utils/generateMockQuestions';
+import { resolveQuestionsImages } from '@/utils/resolveQuestionImage';
 import { useState, useEffect } from 'react';
 import type { Question } from '@/data/questions/types';
 
@@ -33,21 +34,21 @@ export default function TopicPractice() {
       })
       .then(data => {
         if (data.questions && data.questions.length > 0) {
-          const processed = data.questions.map((q: any) => ({
+          const processed = resolveQuestionsImages(data.questions.map((q: any) => ({
             ...q,
             chapter: q.chapter || topicId
-          }));
+          })));
           setQuestions(processed);
           sessionStorage.setItem(`questions_${grade}_${topicId}`, JSON.stringify(processed));
         } else {
-          const mockData = generateMockQuestions(grade, topicId);
+          const mockData = resolveQuestionsImages(generateMockQuestions(grade, topicId));
           setQuestions(mockData);
           sessionStorage.setItem(`questions_${grade}_${topicId}`, JSON.stringify(mockData));
         }
         setLoading(false);
       })
       .catch(() => {
-        const mockData = generateMockQuestions(grade, topicId);
+        const mockData = resolveQuestionsImages(generateMockQuestions(grade, topicId));
         setQuestions(mockData);
         sessionStorage.setItem(`questions_${grade}_${topicId}`, JSON.stringify(mockData));
         setLoading(false);

@@ -1,0 +1,57 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "返回首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - img [ref=e6]
+      - text: 返回首页
+    - generic [ref=e8]:
+      - img [ref=e9]
+      - generic [ref=e11]: "0"
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - img [ref=e15]
+      - generic [ref=e17]:
+        - heading "家长控制" [level=1] [ref=e18]
+        - paragraph [ref=e19]: 设置学习规则与数据管理
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - img [ref=e23]
+          - generic [ref=e26]: 每日练习时长上限
+        - paragraph [ref=e27]: 超过时长后无法继续答题，0表示不限
+        - generic [ref=e28]:
+          - button "不限" [ref=e29] [cursor=pointer]
+          - button "30分钟" [ref=e30] [cursor=pointer]
+          - button "1小时" [ref=e31] [cursor=pointer]
+          - button "2小时" [ref=e32] [cursor=pointer]
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - img [ref=e35]
+          - generic [ref=e38]: 休息提醒间隔
+        - paragraph [ref=e39]: 每学习一段时间提醒孩子休息，0表示不提醒
+        - generic [ref=e40]:
+          - button "不提醒" [ref=e41] [cursor=pointer]
+          - button "20分钟" [ref=e42] [cursor=pointer]
+          - button "30分钟" [ref=e43] [cursor=pointer]
+          - button "45分钟" [ref=e44] [cursor=pointer]
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - img [ref=e47]
+          - generic [ref=e49]: 最高难度限制
+        - paragraph [ref=e50]: 限制可练习的题目难度上限
+        - generic [ref=e51]:
+          - button "⭐简单" [ref=e52] [cursor=pointer]
+          - button "⭐⭐中等" [ref=e53] [cursor=pointer]
+          - button "⭐⭐⭐困难" [ref=e54] [cursor=pointer]
+          - button "⭐⭐⭐⭐极难" [ref=e55] [cursor=pointer]
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]: 🔊
+          - generic [ref=e59]: 音效开关
+        - button "🔊 音效已开启" [ref=e60] [cursor=pointer]
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - img [ref=e63]
+          - generic [ref=e66]: 数据管理
+        - paragraph [ref=e67]: 重置所有学习进度数据（不可恢复）
+        - button "重置所有数据" [ref=e68] [cursor=pointer]

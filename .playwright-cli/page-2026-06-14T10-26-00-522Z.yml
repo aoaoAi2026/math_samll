@@ -1,0 +1,43 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "返回学习中心" [ref=e5] [cursor=pointer]:
+      - /url: /learn/2
+      - img [ref=e6]
+      - text: 返回学习中心
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - generic [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e17]: "0"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 📖
+      - heading "正方形展开图" [level=1] [ref=e21]
+      - generic [ref=e22]: 🔥 ⭐⭐⭐困难
+      - paragraph [ref=e23]: 正方体的11种展开图
+    - generic [ref=e25]:
+      - button "📖 概念" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]: 📖
+        - generic [ref=e28]: 概念
+      - button "🧠 方法" [ref=e29] [cursor=pointer]:
+        - generic [ref=e30]: 🧠
+        - generic [ref=e31]: 方法
+      - button "📝 例题" [ref=e32] [cursor=pointer]:
+        - generic [ref=e33]: 📝
+        - generic [ref=e34]: 例题
+      - button "🎵 口诀" [ref=e35] [cursor=pointer]:
+        - generic [ref=e36]: 🎵
+        - generic [ref=e37]: 口诀
+      - button "🚀 练习" [active] [ref=e38] [cursor=pointer]:
+        - generic [ref=e39]: 🚀
+        - generic [ref=e40]: 练习
+    - generic [ref=e58]:
+      - generic [ref=e59]: 🚀
+      - heading "学完了，来练练手吧！" [level=2] [ref=e60]
+      - paragraph [ref=e61]: 你已经了解了知识点、解题方法和记忆口诀，现在去实战吧！
+      - link "🚀 开始练习" [ref=e63] [cursor=pointer]:
+        - /url: /topic/2/203
+        - img [ref=e64]
+        - text: 🚀 开始练习
+      - button "← 重新学习" [ref=e66] [cursor=pointer]

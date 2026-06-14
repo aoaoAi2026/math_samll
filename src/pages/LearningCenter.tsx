@@ -80,8 +80,9 @@ export default function LearningCenter() {
         {/* 知识点章节卡片列表（每个章节一个大卡片） */}
         <div className="space-y-5">
           {knowledgeChapters.map((chapter) => {
-            const chapterProgress = userProgress.progress[grade]?.chapters?.[chapter.id] || { completed: 0, total: chapter.topics.length };
-            const chapterDone = chapterProgress.completed >= chapter.topics.length;
+            const topicsProgress = userProgress.progress[grade]?.topics || {};
+            const completedTopics = chapter.topics.filter((t: { id: number }) => (topicsProgress[t.id]?.completed || 0) > 0).length;
+            const chapterDone = completedTopics >= chapter.topics.length;
             return (
               <div key={chapter.id} className="bg-white/10 backdrop-blur-lg rounded-3xl border-2 border-white/20 overflow-hidden">
                 {/* 章节标题区 */}

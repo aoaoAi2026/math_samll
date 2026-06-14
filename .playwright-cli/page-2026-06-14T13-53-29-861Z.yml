@@ -1,0 +1,90 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "奥数闯关王" [ref=e5] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e6]:
+      - img [ref=e7]
+      - generic [ref=e9]: "0"
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - img [ref=e13]
+      - heading "学习导航" [level=1] [ref=e15]
+      - paragraph [ref=e16]: 发现更多优质奥数学习平台
+    - generic [ref=e17]:
+      - link "奥数题库 海量精选奥数题目，覆盖各年级各难度" [ref=e18] [cursor=pointer]:
+        - /url: /grade
+        - img [ref=e20]
+        - heading "奥数题库" [level=3] [ref=e22]
+        - paragraph [ref=e23]: 海量精选奥数题目，覆盖各年级各难度
+      - link "模拟考试 智能生成试卷，检验学习成果" [ref=e24] [cursor=pointer]:
+        - /url: /exam
+        - img [ref=e26]
+        - heading "模拟考试" [level=3] [ref=e29]
+        - paragraph [ref=e30]: 智能生成试卷，检验学习成果
+      - link "学习社区 与小伙伴一起学习，共同进步" [ref=e31] [cursor=pointer]:
+        - /url: /
+        - img [ref=e33]
+        - heading "学习社区" [level=3] [ref=e38]
+        - paragraph [ref=e39]: 与小伙伴一起学习，共同进步
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - heading "推荐奥数学习平台" [level=2] [ref=e42]
+        - paragraph [ref=e43]: 以下是一些优质的奥数学习平台，供你参考学习
+      - generic [ref=e44]:
+        - link "学而思 知名教育机构，提供优质奥数课程" [ref=e45] [cursor=pointer]:
+          - /url: https://www.xueersi.com
+          - generic [ref=e46]:
+            - img [ref=e48]
+            - generic [ref=e51]:
+              - generic [ref=e52]: 学而思
+              - generic [ref=e53]: 知名教育机构，提供优质奥数课程
+          - img [ref=e54]
+        - link "猿辅导 在线教育平台，丰富的奥数资源" [ref=e58] [cursor=pointer]:
+          - /url: https://www.yuanfudao.com
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - generic [ref=e63]:
+              - generic [ref=e64]: 猿辅导
+              - generic [ref=e65]: 在线教育平台，丰富的奥数资源
+          - img [ref=e66]
+        - link "作业帮 题库丰富，拍照搜题方便" [ref=e70] [cursor=pointer]:
+          - /url: https://www.zuoyebang.com
+          - generic [ref=e71]:
+            - img [ref=e73]
+            - generic [ref=e76]:
+              - generic [ref=e77]: 作业帮
+              - generic [ref=e78]: 题库丰富，拍照搜题方便
+          - img [ref=e79]
+        - link "网易有道 智能学习助手，奥数学习好帮手" [ref=e83] [cursor=pointer]:
+          - /url: https://www.youdao.com
+          - generic [ref=e84]:
+            - img [ref=e86]
+            - generic [ref=e88]:
+              - generic [ref=e89]: 网易有道
+              - generic [ref=e90]: 智能学习助手，奥数学习好帮手
+          - img [ref=e91]
+        - link "腾讯课堂 腾讯旗下在线教育平台" [ref=e95] [cursor=pointer]:
+          - /url: https://ke.qq.com
+          - generic [ref=e96]:
+            - img [ref=e98]
+            - generic [ref=e101]:
+              - generic [ref=e102]: 腾讯课堂
+              - generic [ref=e103]: 腾讯旗下在线教育平台
+          - img [ref=e104]
+        - link "新东方 老牌教育机构，师资力量雄厚" [ref=e108] [cursor=pointer]:
+          - /url: https://www.neworiental.org
+          - generic [ref=e109]:
+            - img [ref=e111]
+            - generic [ref=e116]:
+              - generic [ref=e117]: 新东方
+              - generic [ref=e118]: 老牌教育机构，师资力量雄厚
+          - img [ref=e119]
+    - generic [ref=e124]:
+      - img [ref=e126]
+      - generic [ref=e128]:
+        - heading "学习小贴士" [level=3] [ref=e129]
+        - list [ref=e130]:
+          - listitem [ref=e131]: • 每天坚持练习10-20分钟，效果更好
+          - listitem [ref=e132]: • 遇到难题不要放弃，仔细阅读解析
+          - listitem [ref=e133]: • 多做举一反三的练习，加深理解
+          - listitem [ref=e134]: • 定期参加模拟考试，检验学习成果

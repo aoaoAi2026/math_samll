@@ -8,6 +8,7 @@ export interface ExamQuestion {
   options: string[];
   answer: number;
   explanation: string;
+  image?: string;
 }
 
 const competitions = ['希望杯', 'YMO', '迎春杯', '华杯赛', 'IMC'] as const;

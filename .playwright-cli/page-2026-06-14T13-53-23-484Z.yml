@@ -1,0 +1,86 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "返回首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - img [ref=e6]
+      - text: 返回首页
+    - generic [ref=e8]:
+      - img [ref=e9]
+      - generic [ref=e11]: "0"
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - img [ref=e15]
+      - generic [ref=e21]:
+        - heading "排行榜" [level=1] [ref=e22]
+        - paragraph [ref=e23]:
+          - text: "本地模拟排行 · 你的排名:"
+          - generic [ref=e24]: 第6名
+    - generic [ref=e25]:
+      - button "💎 星星榜" [ref=e26] [cursor=pointer]:
+        - img [ref=e27]
+        - text: 💎 星星榜
+      - button "🔥 坚持榜" [ref=e29] [cursor=pointer]:
+        - img [ref=e30]
+        - text: 🔥 坚持榜
+      - button "✅ 正确率榜" [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+        - text: ✅ 正确率榜
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]: "#"
+        - generic [ref=e40]: 玩家
+        - generic [ref=e41]: 段位
+        - generic [ref=e42]: 星星
+        - generic [ref=e43]: 🏅
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]: 🥇
+          - generic [ref=e47]: 小明
+          - generic [ref=e48]: 🏆 宗师
+          - generic [ref=e49]: "520"
+          - generic [ref=e50]: 🦅
+        - generic [ref=e51]:
+          - generic [ref=e52]: 🥈
+          - generic [ref=e53]: 小红
+          - generic [ref=e54]: 🧠 天才
+          - generic [ref=e55]: "380"
+          - generic [ref=e56]: 🦉
+        - generic [ref=e57]:
+          - generic [ref=e58]: 🥉
+          - generic [ref=e59]: 数学小王子
+          - generic [ref=e60]: 🎖️ 大师
+          - generic [ref=e61]: "280"
+          - generic [ref=e62]: 🦉
+        - generic [ref=e63]:
+          - generic [ref=e64]: "4"
+          - generic [ref=e65]: 奥数达人
+          - generic [ref=e66]: 📚 学霸
+          - generic [ref=e67]: "190"
+          - generic [ref=e68]: 🐥
+        - generic [ref=e69]:
+          - generic [ref=e70]: "5"
+          - generic [ref=e71]: 速算小能手
+          - generic [ref=e72]: 📚 学霸
+          - generic [ref=e73]: "150"
+          - generic [ref=e74]: 🐥
+        - generic [ref=e75]:
+          - generic [ref=e76]: "6"
+          - generic [ref=e77]: 我 ⭐
+          - generic [ref=e78]: 🌰 种子
+          - generic [ref=e79]: "0"
+          - generic [ref=e80]: 🐣
+    - generic [ref=e81]:
+      - paragraph [ref=e82]: 排行榜数据为本地模拟，仅供激励参考
+      - paragraph [ref=e83]: 你的真实排名只有在连接服务器后才会显示
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - img [ref=e86]
+        - generic [ref=e92]: 你的段位进度
+      - generic [ref=e93]:
+        - generic [ref=e94]: 🌰 种子
+        - generic [ref=e95]: 🌟 大神
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - img [ref=e99]
+          - generic [ref=e101]: "0"
+        - generic [ref=e102]: "目标: 1000 (🌟奥数之神)"

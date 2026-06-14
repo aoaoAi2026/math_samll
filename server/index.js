@@ -333,9 +333,10 @@ app.get('/api/questions', (req, res) => {
   const total = filtered.length;
   const start = (parseInt(page) - 1) * parseInt(limit);
   const end = start + parseInt(limit);
+  const paged = filtered.slice(start, end);
   
   res.json({
-    questions: filtered.slice(start, end),
+    questions: paged,
     total,
     page: parseInt(page),
     totalPages: Math.ceil(total / parseInt(limit)),

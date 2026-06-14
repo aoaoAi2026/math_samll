@@ -1,0 +1,52 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "← 返回1年级" [ref=e5] [cursor=pointer]:
+      - /url: /grade/1
+    - generic [ref=e6]:
+      - link "模拟考试" [ref=e7] [cursor=pointer]:
+        - /url: /exam
+        - img [ref=e8]
+        - generic [ref=e14]: 模拟考试
+      - generic [ref=e15]:
+        - img [ref=e16]
+        - generic [ref=e18]: "0"
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - img [ref=e22]
+      - generic [ref=e24]:
+        - heading "20以内加减法" [level=1] [ref=e25]:
+          - text: 20以内加减法
+          - img [ref=e26]
+        - paragraph [ref=e28]: 1年级 · 🌱 ⭐简单
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]: ...
+        - generic [ref=e32]: 📝 题目数量
+      - generic [ref=e33]:
+        - generic [ref=e34]: "0"
+        - generic [ref=e35]: ✅ 已完成
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - img [ref=e38]
+          - img [ref=e40]
+          - img [ref=e42]
+          - img [ref=e44]
+        - generic [ref=e46]: ⭐ 获得星星
+    - generic [ref=e48]: 🔍 加载题目中...
+    - generic [ref=e49]:
+      - heading "💡 知识点详解" [level=3] [ref=e50]:
+        - img [ref=e51]
+        - text: 💡 知识点详解
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e57]: 题型名称
+          - generic [ref=e58]: 20以内加减法
+        - generic [ref=e59]:
+          - generic [ref=e60]: 难度等级
+          - generic [ref=e61]: 🌱 ⭐简单
+        - generic [ref=e62]:
+          - generic [ref=e63]: 题型描述
+          - generic [ref=e64]: 凑十法、破十法应用
+        - generic [ref=e65]:
+          - generic [ref=e66]: 解题技巧
+          - generic [ref=e67]: 认真分析题意，找准解题方法 💡

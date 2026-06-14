@@ -1,0 +1,116 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "← 返回1年级" [ref=e5] [cursor=pointer]:
+      - /url: /grade/1
+    - generic [ref=e6]:
+      - link "模拟考试" [ref=e7] [cursor=pointer]:
+        - /url: /exam
+        - img [ref=e8]
+        - generic [ref=e14]: 模拟考试
+      - generic [ref=e15]:
+        - img [ref=e16]
+        - generic [ref=e18]: "0"
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - img [ref=e22]
+      - generic [ref=e24]:
+        - heading "图形计数" [level=1] [ref=e25]:
+          - text: 图形计数
+          - img [ref=e26]
+        - paragraph [ref=e28]: 1年级 · 🌿 ⭐⭐中等
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]: "20"
+        - generic [ref=e32]: 📝 题目数量
+      - generic [ref=e33]:
+        - generic [ref=e34]: "0"
+        - generic [ref=e35]: ✅ 已完成
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - img [ref=e38]
+          - img [ref=e40]
+          - img [ref=e42]
+          - img [ref=e44]
+        - generic [ref=e46]: ⭐ 获得星星
+    - generic [ref=e47]:
+      - link "1" [ref=e48] [cursor=pointer]:
+        - /url: /practice/g1t202q001
+        - generic [ref=e49]: "1"
+      - link "2" [ref=e53] [cursor=pointer]:
+        - /url: /practice/g1t202q002
+        - generic [ref=e54]: "2"
+      - link "3" [ref=e58] [cursor=pointer]:
+        - /url: /practice/g1t202q003
+        - generic [ref=e59]: "3"
+      - link "4" [ref=e63] [cursor=pointer]:
+        - /url: /practice/g1t202q004
+        - generic [ref=e64]: "4"
+      - link "5" [ref=e68] [cursor=pointer]:
+        - /url: /practice/g1t202q005
+        - generic [ref=e69]: "5"
+      - link "6" [ref=e73] [cursor=pointer]:
+        - /url: /practice/g1t202q006
+        - generic [ref=e74]: "6"
+      - link "7" [ref=e78] [cursor=pointer]:
+        - /url: /practice/g1t202q007
+        - generic [ref=e79]: "7"
+      - link "8" [ref=e83] [cursor=pointer]:
+        - /url: /practice/g1t202q008
+        - generic [ref=e84]: "8"
+      - link "9" [ref=e88] [cursor=pointer]:
+        - /url: /practice/g1t202q009
+        - generic [ref=e89]: "9"
+      - link "10" [ref=e93] [cursor=pointer]:
+        - /url: /practice/g1t202q010
+        - generic [ref=e94]: "10"
+      - link "11" [ref=e98] [cursor=pointer]:
+        - /url: /practice/g1t202q011
+        - generic [ref=e99]: "11"
+      - link "12" [ref=e103] [cursor=pointer]:
+        - /url: /practice/g1t202q012
+        - generic [ref=e104]: "12"
+      - link "13" [ref=e108] [cursor=pointer]:
+        - /url: /practice/g1t202q013
+        - generic [ref=e109]: "13"
+      - link "14" [ref=e113] [cursor=pointer]:
+        - /url: /practice/g1t202q014
+        - generic [ref=e114]: "14"
+      - link "15" [ref=e118] [cursor=pointer]:
+        - /url: /practice/g1t202q015
+        - generic [ref=e119]: "15"
+      - link "16" [ref=e123] [cursor=pointer]:
+        - /url: /practice/g1t202q016
+        - generic [ref=e124]: "16"
+      - link "17" [ref=e128] [cursor=pointer]:
+        - /url: /practice/g1t202q017
+        - generic [ref=e129]: "17"
+      - link "18" [ref=e133] [cursor=pointer]:
+        - /url: /practice/g1t202q018
+        - generic [ref=e134]: "18"
+      - link "19" [ref=e138] [cursor=pointer]:
+        - /url: /practice/g1t202q019
+        - generic [ref=e139]: "19"
+      - link "20" [ref=e143] [cursor=pointer]:
+        - /url: /practice/g1t202q020
+        - generic [ref=e144]: "20"
+    - link "🚀 开始练习" [ref=e149] [cursor=pointer]:
+      - /url: /practice/g1t202q001
+      - img [ref=e150]
+      - text: 🚀 开始练习
+    - generic [ref=e152]:
+      - heading "💡 知识点详解" [level=3] [ref=e153]:
+        - img [ref=e154]
+        - text: 💡 知识点详解
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - generic [ref=e160]: 题型名称
+          - generic [ref=e161]: 图形计数
+        - generic [ref=e162]:
+          - generic [ref=e163]: 难度等级
+          - generic [ref=e164]: 🌿 ⭐⭐中等
+        - generic [ref=e165]:
+          - generic [ref=e166]: 题型描述
+          - generic [ref=e167]: 数图形个数、分类计数
+        - generic [ref=e168]:
+          - generic [ref=e169]: 解题技巧
+          - generic [ref=e170]: 认真分析题意，找准解题方法 💡

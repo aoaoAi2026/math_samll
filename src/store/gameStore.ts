@@ -24,9 +24,13 @@ interface AddWrongQuestionPayload {
   };
 }
 
-interface GameState {
+// 仅需要持久化的数据字段（排除函数、临时状态）
+interface PersistedGameState {
   userProgress: UserProgress;
   dailyMissions: Record<string, number>;
+}
+
+interface GameState extends PersistedGameState {
   rankJustChanged: string | null;
   setUserName: (name: string) => void;
   setCurrentGrade: (grade: number) => void;
@@ -78,35 +82,91 @@ function saveDailyMissions(progress: Record<string, number>) {
   localStorage.setItem(MISSIONS_KEY, JSON.stringify({ date: today, progress }));
 }
 
-// ---- 数据迁移 ----
-function migrateData(data: unknown): unknown {
-  if (!data || typeof data !== 'object') return data;
-  const d = data as Record<string, unknown>;
-  const state = d.state as Record<string, unknown> | undefined;
-  if (!state?.userProgress) return data;
+// ---- 深合并：确保 progress 等嵌套对象被正确合并 ----
+function deepMerge<T extends Record<string, any>>(target: T, source: Partial<T>): T {
+  if (!source) return target;
+  const result: Record<string, any> = { ...target };
+  for (const key of Object.keys(source)) {
+    const sourceVal = source[key];
+    const targetVal = result[key];
+    if (
+      sourceVal &&
+      typeof sourceVal === 'object' &&
+      !Array.isArray(sourceVal) &&
+      targetVal &&
+      typeof targetVal === 'object' &&
+      !Array.isArray(targetVal)
+    ) {
+      result[key] = deepMerge(targetVal as Record<string, any>, sourceVal as Record<string, any>);
+    } else if (sourceVal !== undefined) {
+      result[key] = sourceVal;
+    }
+  }
+  return result as T;
+}
 
-  const version = (state._dataVersion as number) || 0;
-  const progress = state.userProgress as Record<string, unknown>;
+// ---- 解析题目 ID：g1c1q1 => { grade: 1, chapter: 1, question: 1 } ----
+function parseQuestionId(id: string): { grade: number; chapter: number; question: number } {
+  // 格式：g{年级}c{章节}q{题号}，例如 g1c1q1、g11c12q34
+  const match = id.match(/^g(\d+)c(\d+)q(\d+)$/);
+  if (match) {
+    return {
+      grade: parseInt(match[1], 10),
+      chapter: parseInt(match[2], 10),
+      question: parseInt(match[3], 10),
+    };
+  }
+  // 兼容旧格式：按字符位置解析
+  const grade = parseInt(id[1] || '1', 10);
+  const chapterMatch = id.match(/c(\d+)/);
+  const chapter = chapterMatch ? parseInt(chapterMatch[1], 10) : 0;
+  return { grade: isNaN(grade) ? 1 : grade, chapter: isNaN(chapter) ? 1 : chapter, question: 0 };
+}
 
+// ---- 数据迁移（zustand v5 migrate 接收 state 对象本身） ----
+function migrateState(state: any, version: number): PersistedGameState {
+  if (!state || typeof state !== 'object') {
+    return { userProgress: defaultProgress, dailyMissions: {} };
+  }
+
+  const userProgress: UserProgress = state.userProgress || { ...defaultProgress };
+
+  // 确保 progress 对象存在
+  if (!userProgress.progress || typeof userProgress.progress !== 'object') {
+    userProgress.progress = {};
+  }
+  // 确保其他必需字段存在
+  if (typeof userProgress.userName !== 'string') userProgress.userName = '小数学家';
+  if (typeof userProgress.currentGrade !== 'number') userProgress.currentGrade = 1;
+  if (!Array.isArray(userProgress.examHistory)) userProgress.examHistory = [];
+  if (typeof userProgress.totalStars !== 'number') userProgress.totalStars = 0;
+  if (typeof userProgress.rank !== 'string') userProgress.rank = '🌰 数学小种子';
+  if (!Array.isArray(userProgress.wrongQuestions)) userProgress.wrongQuestions = [];
+
+  // v0 → v1：错题补充章节和难度字段
   if (version < 1) {
-    const wrongQuestions = (progress.wrongQuestions as WrongQuestionRecord[]) || [];
-    progress.wrongQuestions = wrongQuestions.map(w => ({
+    userProgress.wrongQuestions = userProgress.wrongQuestions.map((w: any) => ({
       ...w,
-      chapter: (w as unknown as Record<string, unknown>).chapter || 0,
-      difficulty: (w as unknown as Record<string, unknown>).difficulty || 1,
+      chapter: w.chapter ?? 0,
+      difficulty: w.difficulty ?? 1,
     }));
   }
 
+  // v1 → v2：错题补充 teaching 字段
   if (version < 2) {
-    const wrongQuestions = (progress.wrongQuestions as WrongQuestionRecord[]) || [];
-    progress.wrongQuestions = wrongQuestions.map(w => ({
+    userProgress.wrongQuestions = userProgress.wrongQuestions.map((w: any) => ({
       ...w,
-      teaching: (w as unknown as Record<string, unknown>).teaching || undefined,
+      teaching: w.teaching ?? undefined,
     }));
   }
 
-  state._dataVersion = DATA_VERSION;
-  return data;
+  // dailyMissions：从独立 localStorage 读取（如果 state 中没有的话）
+  let dailyMissions: Record<string, number> = state.dailyMissions;
+  if (!dailyMissions || typeof dailyMissions !== 'object' || Array.isArray(dailyMissions)) {
+    dailyMissions = loadDailyMissions();
+  }
+
+  return { userProgress, dailyMissions };
 }
 
 function getExplanationFromQuestion(payload: AddWrongQuestionPayload): string {
@@ -135,7 +195,7 @@ function computeRank(totalStars: number): string {
 }
 
 export const useGameStore = create(
-  persist<GameState>(
+  persist(
     (set, get) => ({
       userProgress: defaultProgress,
       dailyMissions: loadDailyMissions(),
@@ -156,8 +216,7 @@ export const useGameStore = create(
       // ====== 答题进度 ======
       updateQuestionProgress: (questionId, passed) => {
         const state = get().userProgress;
-        const grade = parseInt(questionId[1]);
-        const chapter = parseInt(questionId[3]);
+        const { grade } = parseQuestionId(questionId);
 
         const existingProgress = state.progress[grade]?.questions?.[questionId];
         const wrongCount = existingProgress?.wrongCount || 0;
@@ -199,6 +258,7 @@ export const useGameStore = create(
       updateChapterStars: (grade, chapter, stars) => {
         const state = get().userProgress;
         const currentStars = state.progress[grade]?.chapters?.[chapter]?.stars || 0;
+        const isNewPassed = stars >= 3 && currentStars < 3;
 
         const newProgress = {
           ...state.progress,
@@ -214,8 +274,24 @@ export const useGameStore = create(
           },
         };
 
+        // 累计章节通关星星到 totalStars
+        let totalStars = state.totalStars;
+        if (stars > currentStars) {
+          totalStars += (stars - currentStars);
+        }
+
+        const oldRank = state.rank;
+        const newRank = computeRank(totalStars);
+        const rankChanged = oldRank !== newRank ? newRank : null;
+
         set({
-          userProgress: { ...state, progress: newProgress },
+          userProgress: {
+            ...state,
+            progress: newProgress,
+            totalStars,
+            rank: newRank,
+          },
+          rankJustChanged: rankChanged ?? null,
         });
       },
 
@@ -349,8 +425,26 @@ export const useGameStore = create(
     {
       name: 'math-olympiad-storage',
       version: DATA_VERSION,
-      migrate: (persistedState, version) => {
-        return migrateData(persistedState) as GameState;
+      // 只持久化数据字段，排除函数和临时状态
+      partialize: (state: GameState) => ({
+        userProgress: state.userProgress,
+        dailyMissions: state.dailyMissions,
+      }),
+      // 深合并，确保嵌套的 progress 对象被正确恢复
+      merge: (persistedState: any, currentState: GameState): GameState => {
+        if (!persistedState || typeof persistedState !== 'object') return currentState;
+        const persisted = persistedState as Partial<Pick<GameState, 'userProgress' | 'dailyMissions'>>;
+        return {
+          ...currentState,
+          userProgress: persisted.userProgress
+            ? deepMerge(currentState.userProgress, persisted.userProgress)
+            : currentState.userProgress,
+          dailyMissions: persisted.dailyMissions || currentState.dailyMissions,
+        };
+      },
+      migrate: (persistedState: any, version: number) => {
+        const migrated = migrateState(persistedState, version);
+        return migrated;
       },
     }
   )

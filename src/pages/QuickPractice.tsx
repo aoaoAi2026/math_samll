@@ -4,6 +4,7 @@ import { Star, ChevronLeft, ChevronRight, CheckCircle, XCircle, Lightbulb, BookO
 import { useGameStore } from '@/store/gameStore';
 import { allQuestions, getDifficultyLabel } from '@/data/questions';
 import type { Question } from '@/data/questions/types';
+import { resolveQuestionImage } from '@/utils/resolveQuestionImage';
 import ConfettiEffect from '@/components/ConfettiEffect';
 import RankUpModal from '@/components/RankUpModal';
 import { sound } from '@/utils/sound';
@@ -29,12 +30,14 @@ export default function QuickPractice() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showRankUp, setShowRankUp] = useState(false);
 
+  const difficultyEmojis = ['🌱', '🌿', '🔥', '💎'];
+
   const getRandomQuestion = () => {
-    // 避免短时间内重复出现同一题
     let available = allQuestions.filter(q => !questionHistory.slice(-10).includes(q.id));
     if (available.length === 0) available = [...allQuestions];
     const randomQuestion = available[Math.floor(Math.random() * available.length)];
-    setQuestion(randomQuestion);
+    const resolved = { ...randomQuestion, image: resolveQuestionImage(randomQuestion) || (randomQuestion as any).image };
+    setQuestion(resolved);
     setQuestionHistory(prev => [...prev.slice(-20), randomQuestion.id]);
     setUserAnswer('');
     setShowResult(false);
@@ -47,26 +50,20 @@ export default function QuickPractice() {
     getRandomQuestion();
   }, []);
 
-  if (!question) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 flex items-center justify-center">
-        <div className="text-white text-xl animate-bounce">🎲 正在随机抽题...</div>
-      </div>
-    );
-  }
+  const handleSubmit = () => handleSubmitWithAnswer();
 
-  const handleSubmit = () => {
-    if (!userAnswer.trim()) return;
+  const handleSubmitWithAnswer = (forcedAnswer?: string) => {
+    const answer = forcedAnswer ?? userAnswer;
+    if (!answer.trim()) return;
     
     let correct = false;
     if (question.type === 'choice' && question.options) {
-      const answerIndex = userAnswer.charCodeAt(0) - 65;
+      const answerIndex = answer.charCodeAt(0) - 65;
       if (answerIndex >= 0 && answerIndex < question.options.length) {
-        const selectedOption = question.options[answerIndex];
-        correct = selectedOption === question.answer;
+        correct = question.options[answerIndex] === question.answer;
       }
     } else {
-      correct = userAnswer.trim().toLowerCase() === question.answer.toLowerCase();
+      correct = answer.trim().toLowerCase() === question.answer.toLowerCase();
     }
     
     setIsCorrect(correct);
@@ -122,7 +119,14 @@ export default function QuickPractice() {
     getRandomQuestion();
   };
 
-  const difficultyEmojis = ['🌱', '🌿', '🔥', '💎'];
+  if (!question) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 flex flex-col items-center justify-center gap-6">
+        <div className="text-white text-xl animate-bounce">🎲 正在随机抽题...</div>
+        <Link to="/" className="text-white/50 hover:text-white/80 text-sm underline">← 返回首页</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 relative overflow-hidden">
@@ -229,49 +233,70 @@ export default function QuickPractice() {
             <span className="text-white/40 text-sm">{question.grade}年级 · 第{question.chapter}章</span>
           </div>
           
-          <div className="text-xl sm:text-2xl text-white mb-6 leading-relaxed font-medium">
+          <div className="text-xl sm:text-2xl text-white mb-4 leading-relaxed font-medium">
             {question.question}
           </div>
 
+          {question.image && (
+            <div className="mb-4 -mx-2">
+              <img
+                src={question.image}
+                alt="题目图片"
+                className="w-full h-auto rounded-2xl shadow-lg" style={{ maxHeight: '60vh' }}
+                onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
+              />
+            </div>
+          )}
+
           {question.type === 'choice' && question.options && (
             <div className="space-y-2.5">
-              {question.options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => !showResult && setUserAnswer(String.fromCharCode(65 + index))}
-                  disabled={showResult}
-                  className={`w-full p-4 rounded-2xl border-2 text-left transition-all duration-300 flex items-center gap-3 ${
-                    showResult
-                      ? option === question.answer
-                        ? 'bg-green-500/20 border-green-400 text-green-300 shadow-lg shadow-green-500/10'
-                        : userAnswer === String.fromCharCode(65 + index) && !isCorrect
-                          ? 'bg-red-500/20 border-red-400 text-red-300'
-                          : 'bg-white/5 border-white/10 text-white/40'
-                      : userAnswer === String.fromCharCode(65 + index)
-                        ? 'bg-white/20 border-yellow-400/50 text-white shadow-lg shadow-yellow-500/10 scale-[1.02]'
-                        : 'bg-white/10 border-white/20 text-white/80 hover:border-white/40 hover:bg-white/15'
-                  }`}
-                >
-                  <span className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${
-                    showResult && option === question.answer
-                      ? 'bg-green-500 text-white'
-                      : showResult && userAnswer === String.fromCharCode(65 + index) && !isCorrect
-                        ? 'bg-red-500 text-white'
-                        : userAnswer === String.fromCharCode(65 + index) && !showResult
-                          ? 'bg-yellow-400 text-white'
-                          : 'bg-white/10 text-white/60'
-                  }`}>
-                    {String.fromCharCode(65 + index)}
-                  </span>
-                  <span className="flex-1">{option}</span>
-                  {showResult && option === question.answer && (
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  )}
-                  {showResult && userAnswer === String.fromCharCode(65 + index) && !isCorrect && (
-                    <XCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                  )}
-                </button>
-              ))}
+              {question.options.map((option, index) => {
+                const letter = String.fromCharCode(65 + index);
+                const isSelected = userAnswer === letter;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (showResult) return;
+                      // 单选：选中后自动提交
+                      sound.navigate();
+                      setUserAnswer(letter);
+                      setTimeout(() => handleSubmitWithAnswer(letter), 50);
+                    }}
+                    disabled={showResult}
+                    className={`w-full p-4 rounded-2xl border-2 text-left transition-all duration-300 flex items-center gap-3 ${
+                      showResult
+                        ? option === question.answer
+                          ? 'bg-green-500/20 border-green-400 text-green-300 shadow-lg shadow-green-500/10'
+                          : isSelected && option !== question.answer
+                            ? 'bg-red-500/20 border-red-400 text-red-300'
+                            : 'bg-white/5 border-white/10 text-white/40'
+                        : isSelected
+                          ? 'bg-white/20 border-yellow-400/50 text-white shadow-lg shadow-yellow-500/10 scale-[1.02]'
+                          : 'bg-white/10 border-white/20 text-white/80 hover:border-white/40 hover:bg-white/15'
+                    }`}
+                  >
+                    <span className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${
+                      showResult && option === question.answer
+                        ? 'bg-green-500 text-white'
+                        : showResult && isSelected && option !== question.answer
+                          ? 'bg-red-500 text-white'
+                          : isSelected && !showResult
+                            ? 'bg-yellow-400 text-white'
+                            : 'bg-white/10 text-white/60'
+                    }`}>
+                      {letter}
+                    </span>
+                    <span className="flex-1">{option}</span>
+                    {showResult && option === question.answer && (
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    )}
+                    {showResult && isSelected && option !== question.answer && (
+                      <XCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -289,7 +314,8 @@ export default function QuickPractice() {
             </div>
           )}
 
-          {!showResult && (
+          {/* 提交按钮：仅非选择题显示 */}
+          {!showResult && question.type !== 'choice' && (
             <button
               onClick={handleSubmit}
               disabled={!userAnswer.trim()}

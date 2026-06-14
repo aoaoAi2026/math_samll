@@ -42,19 +42,15 @@ export default function SpeedCalc() {
   const [res, setRes] = useState<{ q: CalcQ; u: number | null; ok: boolean }[]>([]);
   const ref = useRef<HTMLInputElement>(null);
 
-  useEffect(() => { if (phase === 'cd' && cd <= 0) setPhase('play'); if (phase === 'cd') { const t = setTimeout(() => setCd(c => c - 1), 1000); return () => clearTimeout(t); } }, [phase, cd]);
-  useEffect(() => { if (phase !== 'play') return; if (timer <= 0) { timeout(); return; } const iv = setInterval(() => setTimer(t => t <= 1 ? (clearInterval(iv), 0) : t - 1), 1000); return () => clearInterval(iv); });
-  useEffect(() => { if (phase === 'play') ref.current?.focus(); }, [phase, idx]);
-
+  const nxt = () => { if (idx + 1 >= total) { setPhase('result'); if (score >= total * 0.8) setCf(true); } else { setIdx(i => i + 1); setAns(''); setTimer(secPerQ); } };
+  const timeout = useCallback(() => {
+    setRes(r => [...r, { q: qs[idx], u: null, ok: false }]); setCombo(0); sound.wrong(); nxt();
+  }, [idx]);
   const start = () => {
     const list: CalcQ[] = []; const { ops, max } = DIFFICULTIES[diff];
     for (let i = 0; i < total; i++) list.push(gen(ops, max));
     setQs(list); setIdx(0); setScore(0); setCombo(0); setMaxC(0); setAns(''); setRes([]); setTimer(secPerQ); setPhase('cd'); setCd(3); sound.navigate();
   };
-  const timeout = useCallback(() => {
-    setRes(r => [...r, { q: qs[idx], u: null, ok: false }]); setCombo(0); sound.wrong(); nxt();
-  }, [idx]);
-  const nxt = () => { if (idx + 1 >= total) { setPhase('result'); if (score >= total * 0.8) setCf(true); } else { setIdx(i => i + 1); setAns(''); setTimer(secPerQ); } };
   const sub = () => {
     const q = qs[idx]; const n = parseInt(ans); if (isNaN(n)) return;
     const ok = n === q.answer; setRes(r => [...r, { q, u: n, ok }]);
@@ -62,6 +58,10 @@ export default function SpeedCalc() {
     else { sound.wrong(); setCombo(0); }
     nxt();
   };
+
+  useEffect(() => { if (phase === 'cd' && cd <= 0) setPhase('play'); if (phase === 'cd') { const t = setTimeout(() => setCd(c => c - 1), 1000); return () => clearTimeout(t); } }, [phase, cd]);
+  useEffect(() => { if (phase !== 'play') return; if (timer <= 0) { timeout(); return; } const iv = setInterval(() => setTimer(t => t <= 1 ? (clearInterval(iv), 0) : t - 1), 1000); return () => clearInterval(iv); }, [phase, timer, timeout]);
+  useEffect(() => { if (phase === 'play') ref.current?.focus(); }, [phase, idx]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 relative overflow-hidden">

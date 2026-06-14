@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Trophy, ChevronLeft, Flame, Target, BookOpen, Zap } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
+import { safeGet } from '@/utils/storage';
 
 const RANKS = ['🌰 种子', '🐣 萌新', '🌱 新星', '⭐ 达人', '📚 学霸', '🎖️ 大师', '🧠 天才', '🏆 宗师', '👑 传奇', '🌟 大神'];
 
@@ -28,8 +29,7 @@ export default function Leaderboard() {
 
   // 读取连续打卡天数
   const streakDays = useMemo(() => {
-    const stored = localStorage.getItem('math-checkin-dates');
-    const dates: string[] = stored ? JSON.parse(stored) : [];
+    const dates = safeGet<string[]>('math-checkin-dates', []);
     let count = 0; const d = new Date();
     for (let i = 0; i < 30; i++) {
       const cd = new Date(d.getTime() - i * 86400000).toDateString();

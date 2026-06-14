@@ -1,0 +1,16 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: 🔷
+    - heading "图形森林" [level=1] [ref=e6]
+    - paragraph [ref=e7]: 和猫头鹰探秘形状
+  - generic [ref=e14]:
+    - generic [ref=e16]: 📖 认识图形
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: 🐱
+        - paragraph [ref=e23]: 歪着头地说：认识图形！
+      - generic [ref=e24]: 欢迎来到「认识图形」！我是拼拼猫～
+      - button "知道了，继续 →" [ref=e25] [cursor=pointer]:
+        - text: 知道了，继续 →
+        - img [ref=e26]
+  - button "跳过教学，直接答题 →" [ref=e28] [cursor=pointer]

@@ -1,0 +1,31 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "🎮 奥数闯关王" [ref=e5] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e7]:
+      - img [ref=e8]
+      - generic [ref=e10]: "0"
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - img [ref=e14]
+        - generic [ref=e20]: 🎲 快速练习
+        - generic [ref=e21]: "|"
+        - generic [ref=e22]: 已练 0 题
+      - generic [ref=e23]:
+        - img [ref=e24]
+        - img [ref=e26]
+        - img [ref=e28]
+        - img [ref=e30]
+        - generic [ref=e32]: 🌱 简单
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: ✏️ 填空题
+        - generic [ref=e36]: 4年级 · 第10章
+      - generic [ref=e37]: 学校买了3箱图书，每箱48本，平均分给6个班，每个班分到（ ）本
+      - textbox "✍️ 在这里输入你的答案..." [ref=e39]
+      - button "✨ 提交答案" [disabled] [ref=e40]
+    - link "返回首页" [ref=e42] [cursor=pointer]:
+      - /url: /
+      - img [ref=e43]
+      - text: 返回首页

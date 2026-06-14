@@ -1,0 +1,39 @@
+- generic [ref=e1084]:
+  - banner [ref=e1085]:
+    - generic [ref=e1086]:
+      - link [ref=e1087] [cursor=pointer]:
+        - /url: /adventure
+        - img [ref=e1088]
+      - generic [ref=e1090]:
+        - generic [ref=e1091]:
+          - generic [ref=e1092]: 🌿
+          - generic [ref=e1093]: 数字草原
+        - generic [ref=e1094]: 数数入门
+      - generic [ref=e1095]:
+        - button "🎒" [ref=e1097] [cursor=pointer]
+        - generic [ref=e1098]:
+          - img [ref=e1100]
+          - img [ref=e1103]
+          - img [ref=e1106]
+  - generic [ref=e1108]:
+    - generic [ref=e1109]:
+      - generic [ref=e1110]: 第 1/5 题
+      - generic [ref=e1112]: ✅ 0
+    - generic [ref=e1113]:
+      - generic [ref=e1115]: 选择题
+      - generic [ref=e1116]: 三个小朋友比高矮，小明说"我比小红高"，小丽说"我比小明高"，（ ）最矮
+      - generic [ref=e1117]:
+        - button "A 小明" [ref=e1118] [cursor=pointer]:
+          - generic [ref=e1119]: A
+          - generic [ref=e1120]: 小明
+        - button "B 小红" [ref=e1121] [cursor=pointer]:
+          - generic [ref=e1122]: B
+          - generic [ref=e1123]: 小红
+        - button "C 小丽" [ref=e1124] [cursor=pointer]:
+          - generic [ref=e1125]: C
+          - generic [ref=e1126]: 小丽
+        - button "D 无法确定" [ref=e1127] [cursor=pointer]:
+          - generic [ref=e1128]: D
+          - generic [ref=e1129]: 无法确定
+  - contentinfo [ref=e1130]:
+    - button "✨ 提交答案" [disabled] [ref=e1132]

@@ -1,0 +1,50 @@
+- generic [ref=e3]:
+  - navigation [ref=e111]:
+    - generic [ref=e112]:
+      - generic [ref=e113]: 🏆 希望杯 2024年
+      - generic [ref=e114]: "|"
+      - generic [ref=e115]: 1/5
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - img [ref=e118]
+        - generic [ref=e121]: 15:00
+      - generic [ref=e122]:
+        - img [ref=e123]
+        - generic [ref=e127]: 1/5
+  - generic [ref=e128]:
+    - generic [ref=e130]:
+      - generic [ref=e131]:
+        - generic [ref=e132]: 🏆 希望杯
+        - generic [ref=e133]: 2024年
+        - generic [ref=e134]: 3年级
+        - generic [ref=e135]: 🌱 简单
+      - generic [ref=e136]: 计算：(1234+2341+3412+4123)÷(1+2+3+4)=________。
+      - generic [ref=e137]:
+        - button "A 1000" [ref=e138] [cursor=pointer]:
+          - generic [ref=e139]: A
+          - generic [ref=e140]: "1000"
+        - button "B 1111" [ref=e141] [cursor=pointer]:
+          - generic [ref=e142]: B
+          - generic [ref=e143]: "1111"
+        - button "C 1234" [ref=e144] [cursor=pointer]:
+          - generic [ref=e145]: C
+          - generic [ref=e146]: "1234"
+        - button "D 1444" [ref=e147] [cursor=pointer]:
+          - generic [ref=e148]: D
+          - generic [ref=e149]: "1444"
+    - generic [ref=e150]:
+      - button "上一题" [disabled] [ref=e151]:
+        - img [ref=e152]
+        - text: 上一题
+      - generic [ref=e154]:
+        - button "1" [ref=e155] [cursor=pointer]
+        - button "2" [ref=e156] [cursor=pointer]
+        - button "3" [ref=e157] [cursor=pointer]
+        - button "4" [ref=e158] [cursor=pointer]
+        - button "5" [ref=e159] [cursor=pointer]
+      - button "下一题" [disabled] [ref=e160]:
+        - text: 下一题
+        - img [ref=e161]
+    - generic [ref=e163]:
+      - text: 已作答 0/5 题
+      - generic [ref=e164]: （还剩 5 题）

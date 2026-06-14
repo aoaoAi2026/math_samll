@@ -1,0 +1,516 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - img [ref=e9]
+      - generic [ref=e12]:
+        - img [ref=e13]
+        - heading "数学大冒险" [level=1] [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - img [ref=e20]
+          - generic [ref=e23]: "0"
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - generic [ref=e31]: 0/13
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e36]: 0/75
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - generic:
+        - generic:
+          - generic: 🗺️
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - img [ref=e41]
+          - generic [ref=e43]: 冒险日志
+        - heading "小数学家 的探险之旅" [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - generic [ref=e46]: 🗺️ 探索 1/15 个世界
+          - generic [ref=e47]: ⭐ 0 关已通
+          - generic [ref=e48]: ⚔️ 0/15 Boss击败
+        - generic [ref=e51]: 0%
+        - generic [ref=e52]:
+          - button "🎰 每日转盘" [ref=e53] [cursor=pointer]
+          - button "Boss图鉴" [ref=e54] [cursor=pointer]:
+            - img [ref=e55]
+            - text: Boss图鉴
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - img [ref=e66]
+        - heading "探索世界" [level=3] [ref=e69]
+        - generic [ref=e70]: 0/75 关卡
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e73]: 🌿
+          - generic [ref=e74]:
+            - heading "数字草原" [level=3] [ref=e76]
+            - paragraph [ref=e77]: 和小兔子一起数数
+            - generic [ref=e80]: 0/5
+        - paragraph [ref=e81]: 在青青草原上，帮助小动物们数苹果、比较大小，认识数字的魔法！
+        - generic [ref=e82]:
+          - generic [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: 当前
+            - generic [ref=e88]: "1"
+            - generic [ref=e89]:
+              - generic [ref=e90]: 数数入门
+              - generic [ref=e91]:
+                - img [ref=e92]
+                - text: "+10"
+          - generic [ref=e97] [cursor=pointer]:
+            - img [ref=e99]
+            - generic [ref=e103]: 比大小
+          - generic [ref=e106] [cursor=pointer]:
+            - img [ref=e108]
+            - generic [ref=e112]: 数字排队
+          - generic [ref=e115] [cursor=pointer]:
+            - img [ref=e117]
+            - generic [ref=e121]: 单双数大作战
+          - generic [ref=e124] [cursor=pointer]:
+            - img [ref=e126]
+            - generic [ref=e129]:
+              - generic [ref=e130]: 草原守护者
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - generic [ref=e134]: Boss
+        - button "🚀 开始冒险" [ref=e135] [cursor=pointer]:
+          - text: 🚀 开始冒险
+          - img [ref=e136]
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - generic [ref=e140]: 💧
+          - generic [ref=e141]:
+            - generic [ref=e142]:
+              - heading "计算溪谷" [level=3] [ref=e143]
+              - img [ref=e144]
+            - paragraph [ref=e147]: 跟着小鱼学计算
+            - generic [ref=e150]: 0/5
+        - paragraph [ref=e151]: 清澈的溪谷里，和小鱼一起练习加减法，搭建通往对岸的石桥！
+        - generic [ref=e152]:
+          - generic [ref=e154] [cursor=pointer]:
+            - img [ref=e156]
+            - generic [ref=e160]: 加法魔法
+          - generic [ref=e163] [cursor=pointer]:
+            - img [ref=e165]
+            - generic [ref=e169]: 减法秘诀
+          - generic [ref=e172] [cursor=pointer]:
+            - img [ref=e174]
+            - generic [ref=e178]: 加加减减
+          - generic [ref=e181] [cursor=pointer]:
+            - img [ref=e183]
+            - generic [ref=e187]: 凑十法
+          - generic [ref=e190] [cursor=pointer]:
+            - img [ref=e192]
+            - generic [ref=e195]:
+              - generic [ref=e196]: 溪谷水怪
+              - generic [ref=e197]:
+                - img [ref=e198]
+                - generic [ref=e200]: Boss
+        - generic [ref=e201]: 🔒 完成前一个世界解锁
+      - generic [ref=e202]:
+        - generic [ref=e203]:
+          - generic [ref=e204]: ⏰
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - heading "时间之城" [level=3] [ref=e207]
+              - img [ref=e208]
+            - paragraph [ref=e211]: 帮小闹钟找回指针
+            - generic [ref=e214]: 0/5
+        - paragraph [ref=e215]: 嘀嗒嘀嗒！时间之城的时间乱了套，帮小闹钟认识钟表、学会看时间！
+        - generic [ref=e216]:
+          - generic [ref=e218] [cursor=pointer]:
+            - img [ref=e220]
+            - generic [ref=e224]: 认识钟表
+          - generic [ref=e227] [cursor=pointer]:
+            - img [ref=e229]
+            - generic [ref=e233]: 时间计算
+          - generic [ref=e236] [cursor=pointer]:
+            - img [ref=e238]
+            - generic [ref=e242]: 时分秒换算
+          - generic [ref=e245] [cursor=pointer]:
+            - img [ref=e247]
+            - generic [ref=e251]: 日历与日期
+          - generic [ref=e254] [cursor=pointer]:
+            - img [ref=e256]
+            - generic [ref=e259]:
+              - generic [ref=e260]: 时钟巨像
+              - generic [ref=e261]:
+                - img [ref=e262]
+                - generic [ref=e264]: Boss
+        - generic [ref=e265]: 🔒 完成前一个世界解锁
+      - generic [ref=e266]:
+        - generic [ref=e267]:
+          - generic [ref=e268]: 📏
+          - generic [ref=e269]:
+            - generic [ref=e270]:
+              - heading "测量山谷" [level=3] [ref=e271]
+              - img [ref=e272]
+            - paragraph [ref=e275]: 和矮人学丈量世界
+            - generic [ref=e278]: 0/5
+        - paragraph [ref=e279]: 矮人们在山谷中建造房屋，需要你帮忙测量长度、称重量、算容积！
+        - generic [ref=e280]:
+          - generic [ref=e282] [cursor=pointer]:
+            - img [ref=e284]
+            - generic [ref=e288]: 长度探秘
+          - generic [ref=e291] [cursor=pointer]:
+            - img [ref=e293]
+            - generic [ref=e297]: 重量称量
+          - generic [ref=e300] [cursor=pointer]:
+            - img [ref=e302]
+            - generic [ref=e306]: 容积初识
+          - generic [ref=e309] [cursor=pointer]:
+            - img [ref=e311]
+            - generic [ref=e315]: 单位大练兵
+          - generic [ref=e318] [cursor=pointer]:
+            - img [ref=e320]
+            - generic [ref=e323]:
+              - generic [ref=e324]: 山谷巨人
+              - generic [ref=e325]:
+                - img [ref=e326]
+                - generic [ref=e328]: Boss
+        - generic [ref=e329]: 🔒 完成前一个世界解锁
+      - generic [ref=e330]:
+        - generic [ref=e331]:
+          - generic [ref=e332]: 🔷
+          - generic [ref=e333]:
+            - generic [ref=e334]:
+              - heading "图形森林" [level=3] [ref=e335]
+              - img [ref=e336]
+            - paragraph [ref=e339]: 和猫头鹰探秘形状
+            - generic [ref=e342]: 0/5
+        - paragraph [ref=e343]: 神秘的图形森林里，圆形、三角形、正方形都藏着秘密等你发现！
+        - generic [ref=e344]:
+          - generic [ref=e346] [cursor=pointer]:
+            - img [ref=e348]
+            - generic [ref=e352]: 认识图形
+          - generic [ref=e355] [cursor=pointer]:
+            - img [ref=e357]
+            - generic [ref=e361]: 图形拼接
+          - generic [ref=e364] [cursor=pointer]:
+            - img [ref=e366]
+            - generic [ref=e370]: 图形计数
+          - generic [ref=e373] [cursor=pointer]:
+            - img [ref=e375]
+            - generic [ref=e379]: 立体图形
+          - generic [ref=e382] [cursor=pointer]:
+            - img [ref=e384]
+            - generic [ref=e387]:
+              - generic [ref=e388]: 森林巨人
+              - generic [ref=e389]:
+                - img [ref=e390]
+                - generic [ref=e392]: Boss
+        - generic [ref=e393]: 🔒 完成前一个世界解锁
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - generic [ref=e396]: 🧩
+          - generic [ref=e397]:
+            - generic [ref=e398]:
+              - heading "规律迷宫" [level=3] [ref=e399]
+              - img [ref=e400]
+            - paragraph [ref=e403]: 和聪明狐狸解谜
+            - generic [ref=e406]: 0/5
+        - paragraph [ref=e407]: 弯弯绕绕的迷宫里，只有找出规律才能找到出口。准备好了吗？
+        - generic [ref=e408]:
+          - generic [ref=e410] [cursor=pointer]:
+            - img [ref=e412]
+            - generic [ref=e416]: 找规律入门
+          - generic [ref=e419] [cursor=pointer]:
+            - img [ref=e421]
+            - generic [ref=e425]: 图形规律
+          - generic [ref=e428] [cursor=pointer]:
+            - img [ref=e430]
+            - generic [ref=e434]: 数字规律
+          - generic [ref=e437] [cursor=pointer]:
+            - img [ref=e439]
+            - generic [ref=e443]: 数列填空
+          - generic [ref=e446] [cursor=pointer]:
+            - img [ref=e448]
+            - generic [ref=e451]:
+              - generic [ref=e452]: 迷宫之主
+              - generic [ref=e453]:
+                - img [ref=e454]
+                - generic [ref=e456]: Boss
+        - generic [ref=e457]: 🔒 完成前一个世界解锁
+      - generic [ref=e458]:
+        - generic [ref=e459]:
+          - generic [ref=e460]: ⛰️
+          - generic [ref=e461]:
+            - generic [ref=e462]:
+              - heading "乘除山峰" [level=3] [ref=e463]
+              - img [ref=e464]
+            - paragraph [ref=e467]: 和雄鹰一起攀登
+            - generic [ref=e470]: 0/5
+        - paragraph [ref=e471]: 高耸的山峰需要乘法和除法的力量才能登顶。雄鹰在顶峰等你！
+        - generic [ref=e472]:
+          - generic [ref=e474] [cursor=pointer]:
+            - img [ref=e476]
+            - generic [ref=e480]: 乘法口诀山脚
+          - generic [ref=e483] [cursor=pointer]:
+            - img [ref=e485]
+            - generic [ref=e489]: 除法入门
+          - generic [ref=e492] [cursor=pointer]:
+            - img [ref=e494]
+            - generic [ref=e498]: 乘除混合
+          - generic [ref=e501] [cursor=pointer]:
+            - img [ref=e503]
+            - generic [ref=e507]: 巧算乘除
+          - generic [ref=e510] [cursor=pointer]:
+            - img [ref=e512]
+            - generic [ref=e515]:
+              - generic [ref=e516]: 山巅巨龙
+              - generic [ref=e517]:
+                - img [ref=e518]
+                - generic [ref=e520]: Boss
+        - generic [ref=e521]: 🔒 完成前一个世界解锁
+      - generic [ref=e522]:
+        - generic [ref=e523]:
+          - generic [ref=e524]: 🏰
+          - generic [ref=e525]:
+            - generic [ref=e526]:
+              - heading "智慧城堡" [level=3] [ref=e527]
+              - img [ref=e528]
+            - paragraph [ref=e531]: 挑战城堡守卫的谜题
+            - generic [ref=e534]: 0/5
+        - paragraph [ref=e535]: 古老的智慧城堡里住着会出谜题的石像守卫，用逻辑推理打败它们！
+        - generic [ref=e536]:
+          - generic [ref=e538] [cursor=pointer]:
+            - img [ref=e540]
+            - generic [ref=e544]: 逻辑判断
+          - generic [ref=e547] [cursor=pointer]:
+            - img [ref=e549]
+            - generic [ref=e553]: 植树与排队
+          - generic [ref=e556] [cursor=pointer]:
+            - img [ref=e558]
+            - generic [ref=e562]: 鸡兔同笼
+          - generic [ref=e565] [cursor=pointer]:
+            - img [ref=e567]
+            - generic [ref=e571]: 数字推理
+          - generic [ref=e574] [cursor=pointer]:
+            - img [ref=e576]
+            - generic [ref=e579]:
+              - generic [ref=e580]: 城堡守卫长
+              - generic [ref=e581]:
+                - img [ref=e582]
+                - generic [ref=e584]: Boss
+        - generic [ref=e585]: 🔒 完成前一个世界解锁
+      - generic [ref=e586]:
+        - generic [ref=e587]:
+          - generic [ref=e588]: 📐
+          - generic [ref=e589]:
+            - generic [ref=e590]:
+              - heading "几何王国" [level=3] [ref=e591]
+              - img [ref=e592]
+            - paragraph [ref=e595]: 建造宏伟的数学宫殿
+            - generic [ref=e598]: 0/5
+        - paragraph [ref=e599]: 在几何王国里，周长、面积和角度是你建造宫殿的魔法工具！
+        - generic [ref=e600]:
+          - generic [ref=e602] [cursor=pointer]:
+            - img [ref=e604]
+            - generic [ref=e608]: 周长探险
+          - generic [ref=e611] [cursor=pointer]:
+            - img [ref=e613]
+            - generic [ref=e617]: 面积魔法
+          - generic [ref=e620] [cursor=pointer]:
+            - img [ref=e622]
+            - generic [ref=e626]: 图形分割
+          - generic [ref=e629] [cursor=pointer]:
+            - img [ref=e631]
+            - generic [ref=e635]: 体积与角度
+          - generic [ref=e638] [cursor=pointer]:
+            - img [ref=e640]
+            - generic [ref=e643]:
+              - generic [ref=e644]: 王国巨像
+              - generic [ref=e645]:
+                - img [ref=e646]
+                - generic [ref=e648]: Boss
+        - generic [ref=e649]: 🔒 完成前一个世界解锁
+      - generic [ref=e650]:
+        - generic [ref=e651]:
+          - generic [ref=e652]: 💰
+          - generic [ref=e653]:
+            - generic [ref=e654]:
+              - heading "商业广场" [level=3] [ref=e655]
+              - img [ref=e656]
+            - paragraph [ref=e659]: 当一回小小大掌柜
+            - generic [ref=e662]: 0/5
+        - paragraph [ref=e663]: 热闹的商业广场里，买卖东西算价钱，当一回精明的小掌柜！
+        - generic [ref=e664]:
+          - generic [ref=e666] [cursor=pointer]:
+            - img [ref=e668]
+            - generic [ref=e672]: 认识钱币
+          - generic [ref=e675] [cursor=pointer]:
+            - img [ref=e677]
+            - generic [ref=e681]: 购物达人
+          - generic [ref=e684] [cursor=pointer]:
+            - img [ref=e686]
+            - generic [ref=e690]: 利润密码
+          - generic [ref=e693] [cursor=pointer]:
+            - img [ref=e695]
+            - generic [ref=e699]: 精打细算
+          - generic [ref=e702] [cursor=pointer]:
+            - img [ref=e704]
+            - generic [ref=e707]:
+              - generic [ref=e708]: 铁算盘老板
+              - generic [ref=e709]:
+                - img [ref=e710]
+                - generic [ref=e712]: Boss
+        - generic [ref=e713]: 🔒 完成前一个世界解锁
+      - generic [ref=e714]:
+        - generic [ref=e715]:
+          - generic [ref=e716]: 🌊
+          - generic [ref=e717]:
+            - generic [ref=e718]:
+              - heading "应用之海" [level=3] [ref=e719]
+              - img [ref=e720]
+            - paragraph [ref=e723]: 和海豚一起航海解题
+            - generic [ref=e726]: 0/5
+        - paragraph [ref=e727]: 广阔的应用之海上，每一道应用题都是一次惊险的航海冒险！
+        - generic [ref=e728]:
+          - generic [ref=e730] [cursor=pointer]:
+            - img [ref=e732]
+            - generic [ref=e736]: 和差问题
+          - generic [ref=e739] [cursor=pointer]:
+            - img [ref=e741]
+            - generic [ref=e745]: 倍数问题
+          - generic [ref=e748] [cursor=pointer]:
+            - img [ref=e750]
+            - generic [ref=e754]: 行程问题
+          - generic [ref=e757] [cursor=pointer]:
+            - img [ref=e759]
+            - generic [ref=e763]: 盈亏与容斥
+          - generic [ref=e766] [cursor=pointer]:
+            - img [ref=e768]
+            - generic [ref=e771]:
+              - generic [ref=e772]: 海怪克拉肯
+              - generic [ref=e773]:
+                - img [ref=e774]
+                - generic [ref=e776]: Boss
+        - generic [ref=e777]: 🔒 完成前一个世界解锁
+      - generic [ref=e778]:
+        - generic [ref=e779]:
+          - generic [ref=e780]: ⚖️
+          - generic [ref=e781]:
+            - generic [ref=e782]:
+              - heading "方程天平" [level=3] [ref=e783]
+              - img [ref=e784]
+            - paragraph [ref=e787]: 用天平找到未知数
+            - generic [ref=e790]: 0/5
+        - paragraph [ref=e791]: 在天平世界，左右必须平衡！用方程的力量找出隐藏的未知数吧！
+        - generic [ref=e792]:
+          - generic [ref=e794] [cursor=pointer]:
+            - img [ref=e796]
+            - generic [ref=e800]: 等式的秘密
+          - generic [ref=e803] [cursor=pointer]:
+            - img [ref=e805]
+            - generic [ref=e809]: 解方程入门
+          - generic [ref=e812] [cursor=pointer]:
+            - img [ref=e814]
+            - generic [ref=e818]: 列方程解题
+          - generic [ref=e821] [cursor=pointer]:
+            - img [ref=e823]
+            - generic [ref=e827]: 比例大冒险
+          - generic [ref=e830] [cursor=pointer]:
+            - img [ref=e832]
+            - generic [ref=e835]:
+              - generic [ref=e836]: 天平守护者
+              - generic [ref=e837]:
+                - img [ref=e838]
+                - generic [ref=e840]: Boss
+        - generic [ref=e841]: 🔒 完成前一个世界解锁
+      - generic [ref=e842]:
+        - generic [ref=e843]:
+          - generic [ref=e844]: 🌌
+          - generic [ref=e845]:
+            - generic [ref=e846]:
+              - heading "分数星云" [level=3] [ref=e847]
+              - img [ref=e848]
+            - paragraph [ref=e851]: 乘坐火箭探索星空
+            - generic [ref=e854]: 0/5
+        - paragraph [ref=e855]: 璀璨的星云中，分数、小数、百分数和负数像星星一样闪烁。收集星光，掌握数字新世界！
+        - generic [ref=e856]:
+          - generic [ref=e858] [cursor=pointer]:
+            - img [ref=e860]
+            - generic [ref=e864]: 认识分数
+          - generic [ref=e867] [cursor=pointer]:
+            - img [ref=e869]
+            - generic [ref=e873]: 分数加减
+          - generic [ref=e876] [cursor=pointer]:
+            - img [ref=e878]
+            - generic [ref=e882]: 小数世界
+          - generic [ref=e885] [cursor=pointer]:
+            - img [ref=e887]
+            - generic [ref=e891]: 百分数与负数
+          - generic [ref=e894] [cursor=pointer]:
+            - img [ref=e896]
+            - generic [ref=e899]:
+              - generic [ref=e900]: 星云之主
+              - generic [ref=e901]:
+                - img [ref=e902]
+                - generic [ref=e904]: Boss
+        - generic [ref=e905]: 🔒 完成前一个世界解锁
+      - generic [ref=e906]:
+        - generic [ref=e907]:
+          - generic [ref=e908]: 📊
+          - generic [ref=e909]:
+            - generic [ref=e910]:
+              - heading "数据之塔" [level=3] [ref=e911]
+              - img [ref=e912]
+            - paragraph [ref=e915]: 探索数字的秘密
+            - generic [ref=e918]: 0/5
+        - paragraph [ref=e919]: 数据之塔里藏着海量信息！学会分类、统计、算平均，你就是数据大师！
+        - generic [ref=e920]:
+          - generic [ref=e922] [cursor=pointer]:
+            - img [ref=e924]
+            - generic [ref=e928]: 分类与整理
+          - generic [ref=e931] [cursor=pointer]:
+            - img [ref=e933]
+            - generic [ref=e937]: 统计图表
+          - generic [ref=e940] [cursor=pointer]:
+            - img [ref=e942]
+            - generic [ref=e946]: 平均数
+          - generic [ref=e949] [cursor=pointer]:
+            - img [ref=e951]
+            - generic [ref=e955]: 可能性
+          - generic [ref=e958] [cursor=pointer]:
+            - img [ref=e960]
+            - generic [ref=e963]:
+              - generic [ref=e964]: 数据魔像
+              - generic [ref=e965]:
+                - img [ref=e966]
+                - generic [ref=e968]: Boss
+        - generic [ref=e969]: 🔒 完成前一个世界解锁
+      - generic [ref=e970]:
+        - generic [ref=e971]:
+          - generic [ref=e972]: 👑
+          - generic [ref=e973]:
+            - generic [ref=e974]:
+              - heading "终极试炼" [level=3] [ref=e975]
+              - img [ref=e976]
+            - paragraph [ref=e979]: 成为数学冒险王
+            - generic [ref=e982]: 0/5
+        - paragraph [ref=e983]: 最终的试炼之地！所有学到的知识将在这里汇聚，证明你是真正的数学冒险王！
+        - generic [ref=e984]:
+          - generic [ref=e986] [cursor=pointer]:
+            - img [ref=e988]
+            - generic [ref=e992]: 综合大考验
+          - generic [ref=e995] [cursor=pointer]:
+            - img [ref=e997]
+            - generic [ref=e1001]: 数论探秘
+          - generic [ref=e1004] [cursor=pointer]:
+            - img [ref=e1006]
+            - generic [ref=e1010]: 组合与策略
+          - generic [ref=e1013] [cursor=pointer]:
+            - img [ref=e1015]
+            - generic [ref=e1019]: 决战集训
+          - generic [ref=e1022] [cursor=pointer]:
+            - img [ref=e1024]
+            - generic [ref=e1027]:
+              - generic [ref=e1028]: 最终Boss
+              - generic [ref=e1029]:
+                - img [ref=e1030]
+                - generic [ref=e1032]: Boss
+        - generic [ref=e1033]: 🔒 完成前一个世界解锁
+    - paragraph [ref=e1035]: 🌟 选择第一个世界，开始你的数学冒险之旅吧！

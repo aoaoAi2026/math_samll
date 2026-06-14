@@ -1,0 +1,43 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "🎮 奥数闯关王" [ref=e5] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e7]:
+      - img [ref=e8]
+      - generic [ref=e10]: "0"
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - img [ref=e14]
+        - generic [ref=e20]: 🎲 快速练习
+        - generic [ref=e21]: "|"
+        - generic [ref=e22]: 已练 0 题
+      - generic [ref=e23]:
+        - img [ref=e24]
+        - img [ref=e26]
+        - img [ref=e28]
+        - img [ref=e30]
+        - generic [ref=e32]: 🌿 中等
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: 🔤 选择题
+        - generic [ref=e36]: 4年级 · 第13章
+      - generic [ref=e37]: 两个正方形重叠部分是一个边长为2厘米的小正方形，大正方形边长为8厘米，小正方形边长为6厘米，两个正方形覆盖的总面积是（ ）平方厘米
+      - img "题目图片" [ref=e39]
+      - generic [ref=e40]:
+        - button "A 84" [ref=e41] [cursor=pointer]:
+          - generic [ref=e42]: A
+          - generic [ref=e43]: "84"
+        - button "B 88" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: B
+          - generic [ref=e46]: "88"
+        - button "C 92" [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: C
+          - generic [ref=e49]: "92"
+        - button "D 96" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: D
+          - generic [ref=e52]: "96"
+    - link "返回首页" [ref=e54] [cursor=pointer]:
+      - /url: /
+      - img [ref=e55]
+      - text: 返回首页

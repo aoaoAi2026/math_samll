@@ -112,7 +112,23 @@ export default function StageTeaching({ world, stage, questions, onStart }: Prop
   }, [stage, firstTeaching, isBoss, char]);
 
   const current = steps[step];
-  if (!current) return null;
+  if (!current) {
+    // 兜底：当教学步骤数据异常时，直接跳转到练习
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-5xl mb-4">{world.emoji || '📖'}</div>
+          <p className="text-white font-bold text-lg mb-2">准备进入「{stage.name}」</p>
+          <p className="text-white/50 text-sm mb-6">让我们开始吧！</p>
+          <button onClick={onStart}
+            className="px-10 py-4 rounded-2xl font-black text-lg shadow-2xl text-white"
+            style={{ background: `linear-gradient(135deg, ${world.themeColor}, ${world.lightColor})` }}>
+            🚀 开始闯关
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const stepTypeConfig = {
     greeting: {

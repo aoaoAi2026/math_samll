@@ -15,6 +15,7 @@ import type { SpinPrize } from '@/data/adventure/items';
 import { useGameStore } from '@/store/gameStore';
 
 const ADVENTURE_KEY = 'math-adventure-v1';
+const ADVENTURE_DATA_VERSION = 1;
 
 function getDefaultProgress(): AdventureProgress {
   return {
@@ -25,6 +26,20 @@ function getDefaultProgress(): AdventureProgress {
     totalChallengesCompleted: 0,
     inventory: {},
     lastSpinDate: '',
+  };
+}
+
+// 深合并冒险进度
+function deepMergeAdventure(target: AdventureProgress, source: Partial<AdventureProgress>): AdventureProgress {
+  if (!source) return target;
+  return {
+    completedStages: Array.isArray(source.completedStages) ? source.completedStages : target.completedStages,
+    stageStars: source.stageStars && typeof source.stageStars === 'object' ? { ...target.stageStars, ...source.stageStars } : target.stageStars,
+    gems: typeof source.gems === 'number' ? source.gems : target.gems,
+    badges: Array.isArray(source.badges) ? source.badges : target.badges,
+    totalChallengesCompleted: typeof source.totalChallengesCompleted === 'number' ? source.totalChallengesCompleted : target.totalChallengesCompleted,
+    inventory: source.inventory && typeof source.inventory === 'object' ? { ...target.inventory, ...source.inventory } : target.inventory,
+    lastSpinDate: typeof source.lastSpinDate === 'string' ? source.lastSpinDate : target.lastSpinDate,
   };
 }
 
@@ -72,7 +87,7 @@ function computeWorldProgress(completedStages: string[], worldId: string): { com
 }
 
 export const useAdventureStore = create(
-  persist<AdventureStore>(
+  persist(
     (set, get) => ({
       progress: getDefaultProgress(),
 
@@ -328,7 +343,37 @@ export const useAdventureStore = create(
     }),
     {
       name: ADVENTURE_KEY,
-      version: 1,
+      version: ADVENTURE_DATA_VERSION,
+      // 只持久化 progress，不持久化函数
+      partialize: (state: AdventureStore) => ({ progress: state.progress }),
+      // 深合并嵌套 progress
+      merge: (persistedState: any, currentState: AdventureStore): AdventureStore => {
+        if (!persistedState || typeof persistedState !== 'object') return currentState;
+        const persisted = persistedState as { progress?: Partial<AdventureProgress> };
+        return {
+          ...currentState,
+          progress: persisted.progress
+            ? deepMergeAdventure(currentState.progress, persisted.progress)
+            : currentState.progress,
+        };
+      },
+      migrate: (persistedState: any, version: number) => {
+        if (!persistedState || typeof persistedState !== 'object') {
+          return { progress: getDefaultProgress() };
+        }
+        const p = persistedState as { progress?: any };
+        // 确保 progress 字段完整
+        const defaultP = getDefaultProgress();
+        const progress = { ...defaultP, ...(p.progress || {}) };
+        if (!Array.isArray(progress.completedStages)) progress.completedStages = [];
+        if (!progress.stageStars || typeof progress.stageStars !== 'object') progress.stageStars = {};
+        if (typeof progress.gems !== 'number') progress.gems = 0;
+        if (!Array.isArray(progress.badges)) progress.badges = [];
+        if (typeof progress.totalChallengesCompleted !== 'number') progress.totalChallengesCompleted = 0;
+        if (!progress.inventory || typeof progress.inventory !== 'object') progress.inventory = {};
+        if (typeof progress.lastSpinDate !== 'string') progress.lastSpinDate = '';
+        return { progress };
+      },
     }
   )
 );

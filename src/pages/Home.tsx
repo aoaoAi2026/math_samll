@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Star, Trophy, BookOpen, Target, Zap, Gamepad2, BookMarked, AlertCircle, Sparkles, Flame, CalendarCheck, Medal, Compass, Volume2, VolumeX, BarChart3, Settings, Users, Lightbulb, ChevronRight } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { sound, isMuted, toggleMute } from '@/utils/sound';
+import { safeGet } from '@/utils/storage';
 
 const GRADES = [1, 2, 3, 4, 5, 6];
 const GRADE_EMOJIS = ['🌱', '🌿', '🌳', '🍎', '🏆', '👑'];
@@ -41,8 +42,7 @@ export default function Home() {
 
   // 每日打卡计算
   useEffect(() => {
-    const stored = localStorage.getItem('math-checkin-dates');
-    const dates: string[] = stored ? JSON.parse(stored) : [];
+    const dates = safeGet<string[]>('math-checkin-dates', []);
     let count = 0;
     const d = new Date();
     for (let i = 0; i < 7; i++) {
@@ -60,8 +60,7 @@ export default function Home() {
 
   const handleCheckIn = () => {
     const today = new Date().toDateString();
-    const stored = localStorage.getItem('math-checkin-dates');
-    const dates: string[] = stored ? JSON.parse(stored) : [];
+    const dates = safeGet<string[]>('math-checkin-dates', []);
     if (!dates.includes(today)) {
       dates.push(today);
       localStorage.setItem('math-checkin-dates', JSON.stringify(dates));
@@ -78,8 +77,7 @@ export default function Home() {
   };
 
   const today = new Date().toDateString();
-  const stored = localStorage.getItem('math-checkin-dates');
-  const dates: string[] = stored ? JSON.parse(stored) : [];
+  const dates = safeGet<string[]>('math-checkin-dates', []);
   const checkedInToday = dates.includes(today);
 
   // 宠物进化阶段
@@ -388,8 +386,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-7 gap-2 mb-4">
             {(() => {
-              const stored = localStorage.getItem('math-checkin-dates');
-              const dts: string[] = stored ? JSON.parse(stored) : [];
+              const dts = safeGet<string[]>('math-checkin-dates', []);
               const cells = [];
               for (let i = 13; i >= 0; i--) {
                 const d = new Date();
