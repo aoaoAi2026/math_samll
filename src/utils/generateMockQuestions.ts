@@ -247,29 +247,29 @@ const g1ShapeCountNested = (): Partial<Question> => {
   let img = '', question = '', correct = '', pointDesc = '', methodDesc = '';
 
   if (variant === 0) {
-    // 大三角形被分割线分成多个小三角形（含组合三角形）
-    const smallCounts = [5, 7, 8, 9];
-    const actualCount = smallCounts[randInt(0, smallCounts.length - 1)];
-    const w = 260, h = 220;
+    // 大三角形从顶点向底边引n条等分线，形成 (n+1)*(n+2)/2 个三角形
+    const nLines = randInt(2, 4); // 2~4条分割线 → 6,10,15个三角形
+    const actualCount = (nLines + 1) * (nLines + 2) / 2;
+    const w = 280, h = 230;
     const topX = w / 2, topY = 30, leftX = 30, leftY = h - 30, rightX = w - 30, rightY = h - 30;
-    let lines = '';
     const pal = SHAPE_PALETTES[seed % SHAPE_PALETTES.length];
-    lines += `<polygon points="${topX},${topY} ${rightX},${rightY} ${leftX},${leftY}" fill="none" stroke="${pal.stroke}" stroke-width="2.5" stroke-linejoin="round"/>`;
-    const innerTopX = topX + randInt(-15, 15);
-    const innerTopY = topY + (rightY - topY) * 0.35;
-    lines += `<line x1="${innerTopX}" y1="${innerTopY}" x2="${leftX + (rightX - leftX) * 0.25}" y2="${rightY - 15}" stroke="${pal.stroke}" stroke-width="1.8" stroke-dasharray="6,3" opacity="0.7"/>`;
-    lines += `<line x1="${innerTopX}" y1="${innerTopY}" x2="${leftX + (rightX - leftX) * 0.75}" y2="${rightY - 15}" stroke="${pal.stroke}" stroke-width="1.8" stroke-dasharray="6,3" opacity="0.7"/>`;
-    const midY = topY + (rightY - topY) * 0.55;
-    lines += `<line x1="${leftX + 25}" y1="${midY}" x2="${rightX - 25}" y2="${midY}" stroke="${pal.stroke}" stroke-width="1.8" opacity="0.6"/>`;
+    let lines = `<polygon points="${topX},${topY} ${rightX},${rightY} ${leftX},${leftY}" fill="${pal.fill}" stroke="${pal.stroke}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    // 从顶点向底边画等分线，每条线在底边上等间距
+    for (let li = 1; li <= nLines; li++) {
+      const t = li / (nLines + 1);
+      const bx = leftX + t * (rightX - leftX);
+      const by = leftY;
+      lines += `<line x1="${topX}" y1="${topY}" x2="${bx}" y2="${by}" stroke="${pal.stroke}" stroke-width="1.8" stroke-dasharray="6,3" opacity="0.8"/>`;
+    }
     img = toDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
       <rect width="${w}" height="${h}" fill="none"/>
       ${lines}
-      <text x="${w/2}" y="${h-8}" text-anchor="middle" font-size="11" fill="#94a3b8">注意数出所有三角形（含大三角形）</text>
+      <text x="${w/2}" y="${h-8}" text-anchor="middle" font-size="11" fill="#94a3b8">注意数出所有三角形（含大三角形及组合三角形）</text>
     </svg>`);
     correct = String(actualCount);
     question = '下图大三角形被分割成若干小三角形，数一数图中一共有多少个三角形？';
     pointDesc = '嵌套图形计数';
-    methodDesc = '按大小分类：先数最小的三角形，再数由几个小三角形组成的大三角形';
+    methodDesc = '按大小分类：先数最小的三角形（每相邻两条线组成一个），再数由几个小三角形组成的大三角形';
   } else if (variant === 1) {
     // 嵌套正方形：一个大正方形内有一个小正方形，数所有正方形
     const w = 280, h = 220;
@@ -290,19 +290,23 @@ const g1ShapeCountNested = (): Partial<Question> => {
   } else {
     // 行格计数 —— 类似2×2或3×2格子
     const rows = randInt(2, 3), cols = randInt(2, 3);
+    // 正方形计数：sum_{k=1}^{min(rows,cols)} (rows-k+1)*(cols-k+1)
+    const minDim = Math.min(rows, cols);
+    let total = 0;
+    for (let k = 1; k <= minDim; k++) {
+      total += (rows - k + 1) * (cols - k + 1);
+    }
     const cell = 55, gap = 4, pad = 20;
     const w = cols * (cell + gap) + pad * 2, h = rows * (cell + gap) + pad * 2 + 30;
     let cells = '';
     for (let r = 0; r < rows; r++)
       for (let c = 0; c < cols; c++)
         cells += `<rect x="${pad + c * (cell + gap)}" y="${pad + r * (cell + gap)}" width="${cell}" height="${cell}" rx="3" fill="rgba(147,51,234,0.12)" stroke="#a855f7" stroke-width="2"/>`;
-    // 总数 = C(rows+1,2) * C(cols+1,2)
-    const total = (rows * (rows + 1) / 2) * (cols * (cols + 1) / 2);
     img = toDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${cells}<text x="${w/2}" y="${h-10}" text-anchor="middle" font-size="11" fill="#94a3b8">${rows}行${cols}列方格</text></svg>`);
     correct = String(total);
     question = `一个${rows}行${cols}列的方格图中，一共有多少个正方形？`;
     pointDesc = '方格中正方形计数';
-    methodDesc = '分大小数：1×1的小正方形几个，2×2的几个... 注意正方形=边长相等';
+    methodDesc = '分大小数：1×1的有几个，2×2的有几个... 正方形要求边长相等';
   }
   const options = makeOpts(correct, ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']);
   return {
@@ -331,7 +335,11 @@ const g1ShapeCountByColor = (): Partial<Question> => {
     const cy = pad + randInt(0, h - pad * 2);
     const size = 22 + randInt(0, 8);
     const ci = i % colors.length;
-    const pal = { fill: colors[ci].replace(')', ',0.25)').replace('rgb', 'rgba'), stroke: colors[ci] };
+    const hex = colors[ci];
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    const pal = { fill: `rgba(${r},${g},${b},0.25)`, stroke: hex };
     shapes += drawShape(kind, cx, cy, size, pal);
     if (ci === 0) redCount++; // 红色
   }
@@ -387,7 +395,7 @@ const SOLID_SHAPES = [
 const g1SolidShape = (): Partial<Question> => {
   const item = pickArr(SOLID_SHAPES);
   const correct = item.name;
-  const options = makeOpts(correct, ['正方体', '长方体', '圆柱', '球', '圆锥', '正方体']);
+  const options = makeOpts(correct, ['正方体', '长方体', '圆柱', '球', '圆锥', '三棱柱']);
   return {
     question: '图中是什么立体图形？', options, answer: correct, image: item.img,
     teaching: {
@@ -404,7 +412,8 @@ const g1ShapePattern = (): Partial<Question> => {
   const patterns = ['△○□', '○□△', '□△○', '△△○', '○○□', '□○△'];
   const seq = pickArr(patterns);
   const chars = seq.slice(1) + seq[0];
-  const correct = seq[0];
+  // SVG展示: seq[1] → seq[2] → seq[1] → seq[2] → ?，规律ABAB，下一个是A=seq[1]
+  const correct = seq[1];
   const options = makeOpts(correct, ['△', '○', '□']);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 120" width="340" height="120">
     <text x="60" y="55" text-anchor="middle" font-size="28" fill="#a855f7">${seq[1]}</text>
@@ -515,7 +524,7 @@ const g1Time = (): Partial<Question> => {
   // 动态生成钟面 SVG
   const cx = 100, cy = 100, r = 80;
   const hourRad = ((k === '整' ? hour : hour + 0.5) % 12) * (Math.PI / 6) - Math.PI / 2;
-  const minRad = (k === '整' ? 0 : 6) * (Math.PI / 30) - Math.PI / 2;
+  const minRad = (k === '整' ? 0 : 30) * (Math.PI / 30) - Math.PI / 2;
   const hx = cx + r * 0.5 * Math.cos(hourRad), hy = cy + r * 0.5 * Math.sin(hourRad);
   const mx = cx + r * 0.75 * Math.cos(minRad), my = cy + r * 0.75 * Math.sin(minRad);
   let ticks = '';
@@ -877,7 +886,7 @@ const g3App = (): Partial<Question> => {
     const extra = per * people - total;
     const correct = String(extra) + '个';
     const options = makeOpts(correct, ['2个', '3个', '4个', '5个', '6个', String(per) + '个']);
-    return { question: `把${total}个本子分给学生，每人${per}本，还差几个？`, options, answer: correct,
+    return { question: `把${total}个本子分给${people}个学生，每人${per}本，还差几个？`, options, answer: correct,
       teaching: { point: '盈亏问题', method: '亏数=需要的总数-现有的总数', steps: [`每人${per}本，${people}人需${per*people}本`, `现有${total}本`, `还差${extra}本`, '验证'], memory: '盈加亏除差', example: `${people}人*${per}-${total}=${extra}本` },
     };
   } else if (variant === 2) {
@@ -1207,19 +1216,19 @@ const g4Tree = (): Partial<Question> => {
     };
   } else if (variant === 1) {
     const n = rand(5, 12), d = rand(4, 8);
-    const ans = n * d;
+    const ans = (n + 1) * d; // 两端不种：间隔数=棵数+1
     const q = `在一条路的一边两端都不种树，每隔${d}米种一棵，共种${n}棵，这条路长多少米？`;
     const correct = String(ans) + '米';
-    const options = makeOpts(correct, ['30米', '40米', '48米', '56米', '60米', String((n - 1) * d) + '米', String((n + 1) * d) + '米']);
+    const options = makeOpts(correct, ['30米', '40米', '48米', '56米', '60米', String((n - 1) * d) + '米', String(n * d) + '米']);
     return { question: q, options, answer: correct,
       teaching: { point: '植树问题（两端不种）', method: '间隔数=棵数+1，路长=间隔数×间距', steps: [`间隔数=${n}+1=${n + 1}`, `路长=${n + 1}×${d}`, `=${ans}米`, '验算'], memory: '两端不种，间隔数=棵数+1', example: `${n}棵树${n+1}个间隔，每段${d}米，共${ans}米` },
     };
   } else {
     const n = rand(8, 16), d = rand(3, 6);
-    const ans = (n - 1) * d;
+    const ans = n * d; // 封闭图形：棵数=间隔数
     const q = `圆形花坛周围每隔${d}米种一棵树，共种${n}棵，花坛周长多少米？`;
     const correct = String(ans) + '米';
-    const options = makeOpts(correct, ['20米', '30米', '40米', '50米', '60米', String(n * d) + '米', String((n + 1) * d) + '米']);
+    const options = makeOpts(correct, ['20米', '30米', '40米', '50米', '60米', String((n - 1) * d) + '米', String((n + 1) * d) + '米']);
     return { question: q, options, answer: correct,
       teaching: { point: '植树问题（封闭图形）', method: '封闭图形：棵数=间隔数，周长=棵数×间距', steps: [`棵数=间隔数=${n}`, `周长=${n}×${d}`, `=${ans}米`, '验算'], memory: '封闭图形，棵数等于间隔数', example: `圆形花坛种${n}棵，每段${d}米，周长=${n}×${d}=${ans}米` },
     };
@@ -1257,7 +1266,7 @@ const g4App = (): Partial<Question> => {
     const extra = per * people - total;
     const correct = String(extra) + '个';
     const options = makeOpts(correct, ['2个', '3个', '4个', '5个', '6个', '8个', '10个', String(per) + '个']);
-    return { question: `把${total}个苹果分给小朋友，每人分${per}个，还差几个？`, options, answer: correct,
+    return { question: `把${total}个苹果分给${people}个小朋友，每人分${per}个，还差几个？`, options, answer: correct,
       teaching: { point: '盈亏问题', method: '还差=需要总数-现有总数', steps: [`每人${per}个，${people}人需${per*people}个`, `现有${total}个`, `还差${extra}个`, '验算'], memory: '盈加亏除差，分来分去巧推算', example: `${people}人*${per}-${total}=${extra}，还差${extra}个` },
     };
   } else if (variant === 4) {
@@ -1315,7 +1324,7 @@ const g4Puzzle = (): Partial<Question> => {
 const g4Logic = (): Partial<Question> => {
   const problems = [
     { q: '四人比赛名次互不相同。甲：我不是第一。乙：丙是第一。丙：丁是第一。丁：丙说的不对。只有一人说真话，谁是第一？', ans: '甲', opts: ['甲', '乙', '丙', '丁'] },
-    { q: 'ABCD四人猜手中的糖果数量。A：有3颗。B：有5颗。C：不是3颗也不是5颗。D：有4颗。只有一人猜对，实际有几颗？', ans: '4颗', opts: ['3颗', '4颗', '5颗', '其他数量'] },
+    { q: 'ABCD四人猜手中的糖果数量。A：有3颗。B：有5颗。C：不是3颗也不是5颗。D：有4颗。只有一人猜对，实际有几颗？', ans: '3颗', opts: ['3颗', '4颗', '5颗', '其他数量'] },
     { q: '教室里有人打破了窗户。甲说：不是我。乙说：是丙。丙说：是丁。丁说：丙冤枉我。只有一人说真话，谁打破的？', ans: '甲', opts: ['甲', '乙', '丙', '丁'] },
   ];
   const p = pickArr(problems);
