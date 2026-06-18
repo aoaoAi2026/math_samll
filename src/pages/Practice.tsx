@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { Star, ChevronLeft, ChevronRight, CheckCircle, XCircle, Lightbulb, BookOpen, Home, ArrowRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, CheckCircle, XCircle, Lightbulb, BookOpen, Home } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { getQuestionById, getQuestionsByChapter, getDifficultyLabel } from '@/data/questions';
 import type { Question } from '@/data/questions/types';
@@ -24,6 +24,7 @@ export default function Practice() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [showTeaching, setShowTeaching] = useState(false);
   const [teachingStep, setTeachingStep] = useState(-1); // -1=折叠, 0=展开但未逐步, 1+=逐步显现
+  const [teachingExpanded, setTeachingExpanded] = useState(false); // 一键展开所有内容
   const [combo, setCombo] = useState(0);
   const [showComboEffect, setShowComboEffect] = useState(false);
   const [feedbackEmoji, setFeedbackEmoji] = useState('');
@@ -69,6 +70,7 @@ export default function Practice() {
     setShowResult(false);
     setShowTeaching(false);
     setTeachingStep(-1);
+    setTeachingExpanded(false);
     setShowComboEffect(false);
     setFeedbackEmoji('');
   };
@@ -153,8 +155,19 @@ export default function Practice() {
       const currentStars = chapterProgress?.stars || 0;
       const newStars = Math.min(4, currentStars + (combo >= 3 ? 2 : 1));
       updateChapterStars(grade, chapter, newStars);
+      
+      // 答题正确后自动跳转下一题
+      if (nextQuestion) {
+        setTimeout(() => {
+          sound.navigate();
+          navigate(`/practice/${nextQuestion.id}`);
+        }, 1500); // 1.5秒后自动跳转
+      }
     } else {
       setCombo(0);
+      // 答题错误，自动展开教学解析全部内容
+      setShowTeaching(true);
+      setTeachingExpanded(true);
     }
   };
 
@@ -446,7 +459,12 @@ export default function Practice() {
         {showResult && question.teaching && (
           <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden mb-4 shadow-lg">
             <button
-              onClick={() => { const open = !showTeaching; setShowTeaching(open); setTeachingStep(open ? 0 : -1); }}
+              onClick={() => { 
+                const open = !showTeaching; 
+                setShowTeaching(open); 
+                if (open) setTeachingExpanded(true); // 一键展开所有内容
+                setTeachingStep(open ? 999 : -1); // 展开时设置为足够大的值，显示所有内容
+              }}
               className="w-full p-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
             >
               <div className="flex items-center gap-3">
@@ -463,51 +481,42 @@ export default function Practice() {
             
             {showTeaching && (
               <div className="px-5 pb-5 space-y-4">
-                {teachingStep >= 0 && (
-                  <div className="animate-[fadeIn_0.3s_ease]">
-                    <div className="flex items-center gap-2 mb-2"><Lightbulb className="w-4 h-4 text-yellow-400" /><span className="text-yellow-400 font-bold">💡 知识点</span></div>
-                    <div className="text-white/80 pl-6">{question.teaching.point}</div>
-                    {teachingStep === 0 && (
-                      <button onClick={() => { sound.navigate(); setTeachingStep(1); }} className="mt-3 flex items-center gap-1 text-yellow-400 text-sm font-bold hover:text-yellow-300 transition-colors">
-                        看解题思路 <ArrowRight className="w-3 h-3" />
-                      </button>
-                    )}
-                  </div>
-                )}
-                {teachingStep >= 1 && (
-                  <div className="animate-[fadeIn_0.3s_ease]">
-                    <div className="flex items-center gap-2 mb-2"><span className="text-blue-400 font-bold">🧭 解题思路</span></div>
-                    <div className="text-white/80 pl-6">{question.teaching.method}</div>
-                    {teachingStep === 1 && (
-                      <button onClick={() => { sound.navigate(); setTeachingStep(2); }} className="mt-3 flex items-center gap-1 text-blue-400 text-sm font-bold hover:text-blue-300 transition-colors">
-                        看分步解析 <ArrowRight className="w-3 h-3" />
-                      </button>
-                    )}
-                  </div>
-                )}
-                {teachingStep >= 2 && question.teaching.steps.map((step, index) => (
-                  <div key={index} className={`${index < teachingStep - 1 ? '' : 'animate-[fadeIn_0.3s_ease]'}`}>
-                    {index === 0 && <div className="flex items-center gap-2 mb-2"><span className="text-green-400 font-bold">📋 分步解析</span></div>}
-                    <div className="text-white/80 pl-6 flex items-start gap-2">
+                {/* 知识点 - 始终显示 */}
+                <div className="animate-[fadeIn_0.3s_ease]">
+                  <div className="flex items-center gap-2 mb-2"><Lightbulb className="w-4 h-4 text-yellow-400" /><span className="text-yellow-400 font-bold">💡 知识点</span></div>
+                  <div className="text-white/80 pl-6">{question.teaching.point}</div>
+                </div>
+                
+                {/* 解题思路 - 始终显示 */}
+                <div className="animate-[fadeIn_0.3s_ease]">
+                  <div className="flex items-center gap-2 mb-2"><span className="text-blue-400 font-bold">🧭 解题思路</span></div>
+                  <div className="text-white/80 pl-6">{question.teaching.method}</div>
+                </div>
+                
+                {/* 分步解析 - 始终显示所有步骤 */}
+                <div className="animate-[fadeIn_0.3s_ease]">
+                  <div className="flex items-center gap-2 mb-2"><span className="text-green-400 font-bold">📋 分步解析</span></div>
+                  {question.teaching.steps.map((step, index) => (
+                    <div key={index} className="text-white/80 pl-6 flex items-start gap-2 mb-1">
                       <span className="text-green-400 font-bold flex-shrink-0">{index + 1}.</span>
                       <span>{step}</span>
                     </div>
-                    {index === teachingStep - 2 && index < question.teaching.steps.length - 1 && (
-                      <button onClick={() => { sound.navigate(); setTeachingStep(s => s + 1); }} className="ml-6 mt-2 text-green-400 text-xs font-bold hover:text-green-300 flex items-center gap-1">
-                        下一步 <ArrowRight className="w-3 h-3" />
-                      </button>
-                    )}
-                    {index === question.teaching.steps.length - 1 && teachingStep <= question.teaching.steps.length + 1 && (
-                      <button onClick={() => { sound.navigate(); setTeachingStep(question.teaching.steps.length + 2); }} className="ml-6 mt-2 text-purple-400 text-xs font-bold hover:text-purple-300 flex items-center gap-1">
-                        看口诀 <ArrowRight className="w-3 h-3" />
-                      </button>
-                    )}
-                  </div>
-                ))}
-                {teachingStep >= question.teaching.steps.length + 2 && (
+                  ))}
+                </div>
+                
+                {/* 记忆口诀 - 始终显示 */}
+                {question.teaching.memory && (
                   <div className="animate-[fadeIn_0.3s_ease]">
                     <div className="flex items-center gap-2 mb-2"><span className="text-purple-400 font-bold">🎵 记忆口诀</span></div>
                     <div className="text-white/80 pl-6 bg-purple-500/15 p-4 rounded-2xl border border-purple-500/20">{question.teaching.memory}</div>
+                  </div>
+                )}
+                
+                {/* 示例 - 始终显示 */}
+                {question.teaching.example && (
+                  <div className="animate-[fadeIn_0.3s_ease]">
+                    <div className="flex items-center gap-2 mb-2"><span className="text-cyan-400 font-bold">💬 典型例题</span></div>
+                    <div className="text-white/80 pl-6 bg-cyan-500/15 p-4 rounded-2xl border border-cyan-500/20">{question.teaching.example}</div>
                   </div>
                 )}
               </div>
