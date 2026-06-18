@@ -32,8 +32,10 @@ interface PersistedGameState {
 
 interface GameState extends PersistedGameState {
   rankJustChanged: string | null;
+  isDarkMode: boolean;
   setUserName: (name: string) => void;
   setCurrentGrade: (grade: number) => void;
+  toggleDarkMode: () => void;
   updateQuestionProgress: (questionId: string, passed: boolean) => void;
   updateChapterStars: (grade: number, chapter: number, stars: number) => void;
   addExamRecord: (record: ExamRecord) => void;
@@ -200,6 +202,12 @@ export const useGameStore = create(
       userProgress: defaultProgress,
       dailyMissions: loadDailyMissions(),
       rankJustChanged: null,
+      isDarkMode: true, // 默认深色模式
+
+      // ====== 主题切换 ======
+      toggleDarkMode: () => {
+        set((state) => ({ isDarkMode: !state.isDarkMode }));
+      },
 
       // ====== 个人信息 ======
       setUserName: (name) => {
@@ -433,13 +441,14 @@ export const useGameStore = create(
       // 深合并，确保嵌套的 progress 对象被正确恢复
       merge: (persistedState: any, currentState: GameState): GameState => {
         if (!persistedState || typeof persistedState !== 'object') return currentState;
-        const persisted = persistedState as Partial<Pick<GameState, 'userProgress' | 'dailyMissions'>>;
+        const persisted = persistedState as Partial<Pick<GameState, 'userProgress' | 'dailyMissions' | 'isDarkMode'>>;
         return {
           ...currentState,
           userProgress: persisted.userProgress
             ? deepMerge(currentState.userProgress, persisted.userProgress)
             : currentState.userProgress,
           dailyMissions: persisted.dailyMissions || currentState.dailyMissions,
+          isDarkMode: persisted.isDarkMode ?? currentState.isDarkMode,
         };
       },
       migrate: (persistedState: any, version: number) => {

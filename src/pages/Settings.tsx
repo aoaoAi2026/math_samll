@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, Clock, Bell, Shield, Trash2, Star } from 'lucide-react';
+import { ChevronLeft, Clock, Bell, Shield, Trash2, Star, Moon, Sun } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { sound } from '@/utils/sound';
 
@@ -21,7 +21,7 @@ function load(): Settings {
 function save(s: Settings) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
 
 export default function SettingsPage() {
-  const { userProgress, resetProgress } = useGameStore();
+  const { userProgress, resetProgress, isDarkMode, toggleDarkMode } = useGameStore();
   const [settings, setSettings] = useState<Settings>(load);
   const [saved, setSaved] = useState(false);
   const [showReset, setShowReset] = useState(false);
@@ -107,6 +107,18 @@ export default function SettingsPage() {
                 {opt.label}
               </button>
             ))}</div>
+          </div>
+
+          {/* 夜间模式 */}
+          <div className="bg-white/10 rounded-3xl border border-white/20 p-5">
+            <div className="flex items-center gap-2 mb-4"><Moon className="w-5 h-5 text-indigo-400" /><span className="text-white font-bold">夜间模式</span></div>
+            <p className="text-white/40 text-xs mb-3">开启后使用深色主题，适合夜间使用</p>
+            <button onClick={() => { sound.navigate(); toggleDarkMode(); }}
+              className={`w-full py-4 rounded-xl text-base font-bold border-2 transition-all flex items-center justify-center gap-2 ${
+                isDarkMode ? 'bg-indigo-500/30 border-indigo-400/50 text-indigo-300' : 'bg-white/5 border-white/10 text-white/60'
+              }`}>
+              {isDarkMode ? <><Moon className="w-5 h-5" /> 深色模式已开启</> : <><Sun className="w-5 h-5" /> 浅色模式</>}
+            </button>
           </div>
 
           {/* 声音设置 */}

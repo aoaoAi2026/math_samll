@@ -18,6 +18,7 @@ import SettingsPage from "@/pages/Settings";
 import Leaderboard from "@/pages/Leaderboard";
 import { useEffect } from "react";
 import { initSound } from "@/utils/sound";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function App() {
   // 全局点击初始化/恢复音效（浏览器要求用户手势后才能播放声音）
@@ -28,7 +29,8 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
+    <ThemeProvider>
+      <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/grade" element={<GradeSelect />} />
@@ -51,5 +53,6 @@ export default function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </Router>
+    </ThemeProvider>
   );
 }
