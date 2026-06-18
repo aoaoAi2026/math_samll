@@ -21,7 +21,7 @@ function load(): Settings {
 function save(s: Settings) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
 
 export default function SettingsPage() {
-  const { userProgress, resetProgress, isDarkMode, toggleDarkMode } = useGameStore();
+  const { userProgress, resetProgress, themeMode, setThemeMode } = useGameStore();
   const [settings, setSettings] = useState<Settings>(load);
   const [saved, setSaved] = useState(false);
   const [showReset, setShowReset] = useState(false);
@@ -109,16 +109,41 @@ export default function SettingsPage() {
             ))}</div>
           </div>
 
-          {/* 夜间模式 */}
+          {/* 主题模式 */}
           <div className="bg-white/10 rounded-3xl border border-white/20 p-5">
-            <div className="flex items-center gap-2 mb-4"><Moon className="w-5 h-5 text-indigo-400" /><span className="text-white font-bold">夜间模式</span></div>
-            <p className="text-white/40 text-xs mb-3">开启后使用深色主题，适合夜间使用</p>
-            <button onClick={() => { sound.navigate(); toggleDarkMode(); }}
-              className={`w-full py-4 rounded-xl text-base font-bold border-2 transition-all flex items-center justify-center gap-2 ${
-                isDarkMode ? 'bg-indigo-500/30 border-indigo-400/50 text-indigo-300' : 'bg-white/5 border-white/10 text-white/60'
-              }`}>
-              {isDarkMode ? <><Moon className="w-5 h-5" /> 深色模式已开启</> : <><Sun className="w-5 h-5" /> 浅色模式</>}
-            </button>
+            <div className="flex items-center gap-2 mb-4"><Moon className="w-5 h-5 text-indigo-400" /><span className="text-white font-bold">主题模式</span></div>
+            <p className="text-white/40 text-xs mb-3">选择适合的主题样式</p>
+            <div className="grid grid-cols-3 gap-2">
+              <button 
+                onClick={() => { sound.navigate(); setThemeMode('light'); }}
+                className={`py-4 rounded-xl text-sm font-bold border-2 transition-all flex flex-col items-center justify-center gap-2 ${
+                  themeMode === 'light' ? 'bg-blue-500/30 border-blue-400/50 text-blue-300' : 'bg-white/5 border-white/10 text-white/60'
+                }`}>
+                <Sun className="w-6 h-6" />
+                <span>浅色</span>
+              </button>
+              <button 
+                onClick={() => { sound.navigate(); setThemeMode('dark'); }}
+                className={`py-4 rounded-xl text-sm font-bold border-2 transition-all flex flex-col items-center justify-center gap-2 ${
+                  themeMode === 'dark' ? 'bg-purple-500/30 border-purple-400/50 text-purple-300' : 'bg-white/5 border-white/10 text-white/60'
+                }`}>
+                <Moon className="w-6 h-6" />
+                <span>深色</span>
+              </button>
+              <button 
+                onClick={() => { sound.navigate(); setThemeMode('night'); }}
+                className={`py-4 rounded-xl text-sm font-bold border-2 transition-all flex flex-col items-center justify-center gap-2 ${
+                  themeMode === 'night' ? 'bg-gray-800/80 border-gray-600/50 text-gray-200' : 'bg-white/5 border-white/10 text-white/60'
+                }`}>
+                <span className="text-2xl">🌙</span>
+                <span>暗夜</span>
+              </button>
+            </div>
+            <p className="text-white/30 text-xs mt-3 text-center">
+              {themeMode === 'light' && '☀️ 明亮清新的浅色主题'}
+              {themeMode === 'dark' && '🎨 经典的深色渐变主题'}
+              {themeMode === 'night' && '🌙 纯黑背景，护眼暗夜模式'}
+            </p>
           </div>
 
           {/* 声音设置 */}

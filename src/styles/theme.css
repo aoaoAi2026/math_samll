@@ -21,6 +21,26 @@
   --btn-gradient: linear-gradient(to right, #fbbf24, #ea580c);
 }
 
+/* 暗夜模式 (纯黑背景) */
+.night {
+  /* 背景 */
+  --bg-primary: linear-gradient(to bottom right, #000000, #0a0a0a, #0f0f0f);
+  --bg-secondary: rgba(30, 30, 30, 0.8);
+  --bg-card: rgba(20, 20, 20, 0.9);
+  --bg-glass: rgba(15, 15, 15, 0.95);
+  
+  /* 文字颜色 */
+  --text-primary: #e5e5e5;
+  --text-secondary: rgba(229, 229, 229, 0.8);
+  --text-muted: rgba(229, 229, 229, 0.5);
+  
+  /* 边框 */
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* 按钮渐变 */
+  --btn-gradient: linear-gradient(to right, #60a5fa, #818cf8);
+}
+
 /* 浅色模式 */
 .light {
   /* 背景 */
@@ -48,8 +68,15 @@
   background: var(--bg-primary) !important;
 }
 
+.night body,
+.night #root,
+.night .min-h-screen {
+  background: var(--bg-primary) !important;
+}
+
 /* 全局文字颜色 */
-.light body {
+.light body,
+.night body {
   color: var(--text-primary);
 }
 
@@ -67,6 +94,20 @@
   background-color: var(--bg-glass) !important;
 }
 
+/* 暗夜模式下的卡片和容器 */
+.night .bg-white\/10,
+.night .bg-white\/5 {
+  background-color: var(--bg-card) !important;
+}
+
+.night .bg-white\/20 {
+  background-color: rgba(40, 40, 40, 0.8) !important;
+}
+
+.night .bg-white\/80 {
+  background-color: var(--bg-glass) !important;
+}
+
 /* 浅色模式下的文字颜色 */
 .light .text-white {
   color: var(--text-primary) !important;
@@ -80,10 +121,30 @@
   color: var(--text-secondary) !important;
 }
 
+/* 暗夜模式下的文字颜色 */
+.night .text-white {
+  color: var(--text-primary) !important;
+}
+
+.night .text-white\/80,
+.night .text-white\/70,
+.night .text-white\/60,
+.night .text-white\/50,
+.night .text-white\/40 {
+  color: var(--text-secondary) !important;
+}
+
 /* 浅色模式下的边框颜色 */
 .light .border-white\/20,
 .light .border-white\/30,
 .light .border-white\/10 {
+  border-color: var(--border-color) !important;
+}
+
+/* 暗夜模式下的边框颜色 */
+.night .border-white\/20,
+.night .border-white\/30,
+.night .border-white\/10 {
   border-color: var(--border-color) !important;
 }
 
@@ -96,14 +157,34 @@
   --tw-gradient-to: #ea580c !important;
 }
 
+/* 暗夜模式下的渐变按钮 */
+.night .from-yellow-400 {
+  --tw-gradient-from: #60a5fa !important;
+}
+
+.night .to-orange-500 {
+  --tw-gradient-to: #818cf8 !important;
+}
+
 /* 浅色模式下的图标和按钮 */
 .light button,
 .light a {
   filter: none;
 }
 
+/* 暗夜模式下的图标和按钮 */
+.night button,
+.night a {
+  filter: none;
+}
+
 /* 浅色模式下的模糊背景 */
 .light .backdrop-blur-lg {
+  backdrop-filter: blur(12px) !important;
+}
+
+/* 暗夜模式下的模糊背景 */
+.night .backdrop-blur-lg {
   backdrop-filter: blur(12px) !important;
 }
 
@@ -114,8 +195,35 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
+/* 暗夜模式下的阴影 */
+.night .shadow-lg,
+.night .shadow-xl,
+.night .shadow-2xl {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
 /* 浅色模式下的进度条 */
 .light .bg-yellow-400 {
   background-color: #fbbf24 !important;
 }
+
+/* 暗夜模式下的进度条 */
+.night .bg-yellow-400 {
+  background-color: #60a5fa !important;
+}
+
+/* 暗夜模式特殊样式 - 降低背景装饰亮度 */
+.night .bg-pink-400,
+.night .bg-blue-400,
+.night .bg-purple-400 {
+  opacity: 0.1 !important;
+}
+
+/* 暗夜模式下的渐变背景 */
+.night .from-indigo-950,
+.night .via-purple-900,
+.night .to-pink-900 {
+  background: var(--bg-primary) !important;
+}
+
 

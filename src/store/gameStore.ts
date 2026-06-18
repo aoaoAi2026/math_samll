@@ -32,10 +32,10 @@ interface PersistedGameState {
 
 interface GameState extends PersistedGameState {
   rankJustChanged: string | null;
-  isDarkMode: boolean;
+  themeMode: 'light' | 'dark' | 'night'; // light=浅色, dark=深色, night=暗夜
   setUserName: (name: string) => void;
   setCurrentGrade: (grade: number) => void;
-  toggleDarkMode: () => void;
+  setThemeMode: (mode: 'light' | 'dark' | 'night') => void;
   updateQuestionProgress: (questionId: string, passed: boolean) => void;
   updateChapterStars: (grade: number, chapter: number, stars: number) => void;
   addExamRecord: (record: ExamRecord) => void;
@@ -202,11 +202,11 @@ export const useGameStore = create(
       userProgress: defaultProgress,
       dailyMissions: loadDailyMissions(),
       rankJustChanged: null,
-      isDarkMode: true, // 默认深色模式
+      themeMode: 'dark' as const, // 默认深色模式
 
       // ====== 主题切换 ======
-      toggleDarkMode: () => {
-        set((state) => ({ isDarkMode: !state.isDarkMode }));
+      setThemeMode: (mode: 'light' | 'dark' | 'night') => {
+        set({ themeMode: mode });
       },
 
       // ====== 个人信息 ======
@@ -441,14 +441,14 @@ export const useGameStore = create(
       // 深合并，确保嵌套的 progress 对象被正确恢复
       merge: (persistedState: any, currentState: GameState): GameState => {
         if (!persistedState || typeof persistedState !== 'object') return currentState;
-        const persisted = persistedState as Partial<Pick<GameState, 'userProgress' | 'dailyMissions' | 'isDarkMode'>>;
+        const persisted = persistedState as Partial<Pick<GameState, 'userProgress' | 'dailyMissions' | 'themeMode'>>;
         return {
           ...currentState,
           userProgress: persisted.userProgress
             ? deepMerge(currentState.userProgress, persisted.userProgress)
             : currentState.userProgress,
           dailyMissions: persisted.dailyMissions || currentState.dailyMissions,
-          isDarkMode: persisted.isDarkMode ?? currentState.isDarkMode,
+          themeMode: persisted.themeMode ?? currentState.themeMode,
         };
       },
       migrate: (persistedState: any, version: number) => {
