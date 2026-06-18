@@ -603,13 +603,15 @@ const g2MulDiv = (): Partial<Question> => {
   };
 };
 
-const g2Shape = (): Partial<Question> => {
+// ============ 二年级图形与几何题目生成器 ============
+
+// 类型1：方格图长方形计数
+const g2ShapeCount = (): Partial<Question> => {
   const row = rand(2, 3), col = rand(2, 3);
   const total = (row * (row + 1) / 2) * (col * (col + 1) / 2);
   const q = `一个${row}行${col}列的方格图中，一共有多少个长方形（含正方形）？`;
   const correct = String(total);
   const options = makeOpts(correct, [String(row * col), String(row + col), String(total - 2), String(total + 4), '9', '18', '30']);
-  // 动态生成方格 SVG
   const cellW = 45, cellH = 45;
   const w = col * cellW + 20, h = row * cellH + 20;
   let cellsSvg = '';
@@ -622,11 +624,123 @@ const g2Shape = (): Partial<Question> => {
     question: q, options, answer: correct,
     image: toDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${cellsSvg}</svg>`),
     teaching: {
-      point: '图形计数',
+      point: '图形计数进阶',
       method: '数长方形个数：横线组合×竖线组合',
       steps: ['确定行数和列数', '横向线段组合数', '纵向线段组合数', '相乘得总数'],
       memory: '长方个数=横线组合×竖线组合',
       example: '2行2列：C(3,2)×C(3,2)=3×3=9个',
+    },
+  };
+};
+
+// 类型2：图形找规律
+const g2ShapePattern = (): Partial<Question> => {
+  const patterns = [
+    { seq: ['△', '□', '○'], cycle: 3 },
+    { seq: ['☆', '★'], cycle: 2 },
+    { seq: ['🔺', '🔻'], cycle: 2 },
+    { seq: ['●', '○', '●', '●'], cycle: 4 },
+    { seq: ['⬛', '⬜', '⬜'], cycle: 3 },
+    { seq: ['🔵', '🔴', '🟢'], cycle: 3 },
+    { seq: ['❌', '✅'], cycle: 2 },
+    { seq: ['⬆️', '➡️', '⬇️', '⬅️'], cycle: 4 },
+  ];
+  const p = pickArr(patterns);
+  const pos = rand(8, 15);
+  // 生成前(pos-1)个图形，然后问第pos个
+  const displaySeq: string[] = [];
+  for (let i = 0; i < pos - 1; i++) {
+    displaySeq.push(p.seq[i % p.cycle]);
+  }
+  const idx = (pos - 1) % p.cycle;
+  const correct = p.seq[idx];
+  const q = `观察图形排列规律：${displaySeq.join('、')}、？，第${pos}个图形是什么？`;
+  const options = makeOpts(correct, [...new Set([...p.seq, '◇', '◆', '🔷', '🔶', '⬡', '⬢'])]);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: '图形找规律',
+      method: '找出图形的循环规律，用位置除以周期看余数',
+      steps: ['观察图形排列', '找出循环周期', '计算位置÷周期', '余数确定图形'],
+      memory: '图形规律看周期，余几就数第几个',
+      example: '△、□、○、△、□、○...，周期3，第10个：10÷3=3余1，是△',
+    },
+  };
+};
+
+// 类型3：正方形展开图判断
+const g2ShapeNet = (): Partial<Question> => {
+  const validNets = [
+    { name: '1-4-1型', pattern: '  □\n□□□□\n  □', valid: true },
+    { name: '1-4-1型', pattern: '□\n□□□□\n□', valid: true },
+    { name: '1-3-2型', pattern: '  □□\n□□□\n  □', valid: true },
+    { name: '2-3-1型', pattern: '□\n□□□\n□□', valid: true },
+    { name: '3-3型', pattern: '□□□\n  □□□', valid: true },
+    { name: '2-2-2型', pattern: '  □\n□□\n□□', valid: true },
+  ];
+  const invalidNets = [
+    { name: '田字形', pattern: '□□\n□□', valid: false },
+    { name: '凹字形', pattern: '□□□\n  □\n□□', valid: false },
+    { name: 'L形', pattern: '□\n□\n□□', valid: false },
+    { name: '一字长蛇形', pattern: '□□□□□', valid: false },
+    { name: 'T形', pattern: ' □ \n□□□\n   ', valid: false },
+  ];
+  const is_valid = Math.random() > 0.4;
+  const nets = is_valid ? validNets : invalidNets;
+  const net = pickArr(nets);
+  const correct = net.valid ? '能' : '不能';
+  const q = `观察下面的展开图，它能拼成正方体吗？\n\n${net.pattern}`;
+  const options = makeOpts(correct, ['能', '不能']);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: '正方形展开图',
+      method: '正方体展开图有11种基本类型，记忆常见的不能拼成的形状',
+      steps: ['观察展开图形状', '判断是否符合11种类型', '排除田字形、凹字形等'],
+      memory: '田凹不能成正方，11种类型要记牢',
+      example: '1-4-1型可以拼成正方体，田字形不能',
+    },
+  };
+};
+
+// 类型4：复杂图形计数
+const g2ShapeComplex = (): Partial<Question> => {
+  const problems = [
+    { q: '一个正方形被两条对角线分成了几个三角形？', ans: '4', opts: ['2', '4', '6', '8'] },
+    { q: '一个三角形被三条中线分成了几个小三角形？', ans: '6', opts: ['3', '4', '6', '9'] },
+    { q: '两个相同的正方形拼成一个长方形，这个长方形有几个角？', ans: '4', opts: ['4', '6', '8', '10'] },
+    { q: '一个正方体有几个面、几条棱、几个顶点？', ans: '6面12棱8顶点', opts: ['4面8棱4顶点', '6面12棱8顶点', '6面8棱4顶点', '8面12棱6顶点'] },
+    { q: '用3个相同的正方形拼成一个长方形，能数出多少个正方形？', ans: '3', opts: ['2', '3', '4', '5'] },
+  ];
+  const p = pickArr(problems);
+  const options = makeOpts(p.ans, p.opts);
+  return {
+    question: p.q, options, answer: p.ans,
+    teaching: {
+      point: '数图形综合',
+      method: '按顺序、分层次计数，不重复不遗漏',
+      steps: ['识别图形类型', '按大小或位置分类', '逐个计数', '核对总数'],
+      memory: '分类计数，先大后小或先外后内',
+      example: '正方形对角线分4个三角形',
+    },
+  };
+};
+
+// 类型5：数线段问题
+const g2ShapeLines = (): Partial<Question> => {
+  const n = rand(3, 6);
+  const total = n * (n - 1) / 2;
+  const q = `一条线段上有${n}个点（包括端点），一共有多少条不同的线段？`;
+  const correct = String(total);
+  const options = makeOpts(correct, [String(n), String(n - 1), String(total + 1), String(total - 1), String(n * 2)]);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: '线段计数',
+      method: 'n个点的线段总数 = n×(n-1)÷2',
+      steps: ['数出点数', '用公式计算', '或按顺序枚举', '验证结果'],
+      memory: 'n个点，线段数=n(n-1)/2',
+      example: '4个点：4×3/2=6条线段',
     },
   };
 };
@@ -815,7 +929,10 @@ const g3Num = (): Partial<Question> => {
   }
 };
 
-const g3Geo = (): Partial<Question> => {
+// ============ 三年级图形与几何题目生成器 ============
+
+// 类型1：长方形周长与面积
+const g3GeoBasic = (): Partial<Question> => {
   const l = rand(3, 10), w = rand(3, 10);
   const usePerim = Math.random() < 0.5;
   let q: string, ans: number, unit: string;
@@ -823,7 +940,6 @@ const g3Geo = (): Partial<Question> => {
   else { q = `长方形长${l}厘米，宽${w}厘米，面积是多少？`; ans = l * w; unit = '平方厘米'; }
   const correct = String(ans);
   const options = makeOpts(correct, [String(l + w), String(l * 2), String(ans + rand(1, 10)), String(ans - rand(1, 10)), String(w * 2), String(l * w + 5)]);
-  // 动态生成长方形 SVG
   const rw = Math.max(l * 18, 80), rh = Math.max(w * 25, 50);
   const rx = (240 - rw) / 2, ry = (160 - rh) / 2;
   return {
@@ -837,6 +953,75 @@ const g3Geo = (): Partial<Question> => {
       example: usePerim ? '长5宽3：周长=2×(5+3)=16厘米' : '长5宽3：面积=5×3=15平方厘米',
     },
   };
+};
+
+// 类型2：复杂图形面积（割补法）
+const g3GeoComplex = (): Partial<Question> => {
+  const bigL = rand(8, 15), bigW = rand(5, 10);
+  const smallL = rand(2, 4), smallW = rand(2, 3);
+  const ans = bigL * bigW - smallL * smallW;
+  const q = `一个大长方形长${bigL}厘米、宽${bigW}厘米，中间挖去一个长${smallL}厘米、宽${smallW}厘米的小长方形，剩余面积是多少平方厘米？`;
+  const correct = String(ans);
+  const options = makeOpts(correct, [String(bigL * bigW), String(smallL * smallW), String(bigL * bigW + smallL * smallW), String(ans + rand(5, 20)), String(ans - rand(3, 10))]);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: '复杂图形面积',
+      method: '割补法：大面积减小面积',
+      steps: ['计算大面积', '计算小面积', '相减得剩余面积', '检验'],
+      memory: '割补法，大减小',
+      example: `大${bigL}×${bigW}=${bigL*bigW}，小${smallL}×${smallW}=${smallL*smallW}，剩余=${ans}`,
+    },
+  };
+};
+
+// 类型3：正方形面积与周长
+const g3GeoSquare = (): Partial<Question> => {
+  const a = rand(4, 10);
+  const usePerim = Math.random() < 0.4;
+  let q: string, ans: number;
+  if (usePerim) { q = `正方形边长${a}厘米，周长是多少厘米？`; ans = a * 4; }
+  else { q = `正方形边长${a}厘米，面积是多少平方厘米？`; ans = a * a; }
+  const correct = String(ans);
+  const options = makeOpts(correct, [String(a + a), String(a * 2), String(a * 3), String(ans + rand(2, 8)), String(ans - rand(1, 5))]);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: usePerim ? '正方形周长' : '正方形面积',
+      method: usePerim ? '正方形周长=4×边长' : '正方形面积=边长×边长',
+      steps: ['确定边长', '用公式计算', '注意单位', '检验'],
+      memory: usePerim ? '正方形周长=4a' : '正方形面积=a²',
+      example: `边长${a}：${usePerim ? `周长=${a*4}厘米` : `面积=${a*a}平方厘米`}`,
+    },
+  };
+};
+
+// 类型4：格点与面积（皮克定理初步）
+const g3GeoGrid = (): Partial<Question> => {
+  const interior = rand(2, 8);
+  const boundary = rand(4, 12);
+  const ans = interior + boundary / 2 - 1;
+  const q = `一个多边形在方格纸上有${interior}个内部格点，${boundary}个边界格点，它的面积是多少平方单位？`;
+  const correct = String(ans);
+  const options = makeOpts(correct, [String(interior + boundary), String(interior + boundary / 2), String(interior * 2), String(ans + rand(1, 5)), String(ans - rand(1, 3))]);
+  return {
+    question: q, options, answer: correct,
+    teaching: {
+      point: '格点与面积',
+      method: '皮克定理：面积=内部格点数+边界格点数÷2-1',
+      steps: ['数内部格点', '数边界格点', '代入皮克公式', '计算面积'],
+      memory: '皮克定理：S=I+B/2-1',
+      example: `I=${interior}, B=${boundary}, S=${interior}+${boundary}/2-1=${ans}`,
+    },
+  };
+};
+
+const g3Geo = (): Partial<Question> => {
+  const variant = rand(0, 3);
+  if (variant === 0) return g3GeoBasic();
+  if (variant === 1) return g3GeoComplex();
+  if (variant === 2) return g3GeoSquare();
+  return g3GeoGrid();
 };
 
 const g3HD = (): Partial<Question> => {
@@ -1774,7 +1959,10 @@ const generators: { [grade: number]: { keys: string[]; fn: GenFn }[] } = {
   ],
   2: [
     { keys: ['乘法', '除法', '混合运算', '乘除', '巧算与速算'], fn: g2MulDiv },
-    { keys: ['图形计数', '图形找规律', '正方形展开图', '数图形'], fn: g2Shape },
+    { keys: ['图形计数进阶', '数图形综合'], fn: g2ShapeCount },
+    { keys: ['图形找规律'], fn: g2ShapePattern },
+    { keys: ['正方形展开图'], fn: g2ShapeNet },
+    { keys: ['数图形'], fn: g2ShapeLines },
     { keys: ['等差数列', '数表规律', '数列'], fn: g2Seq },
     { keys: ['枚举', '排队', '搭配', '排列'], fn: g2Perm },
     { keys: ['和倍', '差倍', '和差', '年龄', '鸡兔', '应用'], fn: g2App },

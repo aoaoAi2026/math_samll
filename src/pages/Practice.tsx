@@ -310,7 +310,7 @@ export default function Practice() {
             )}
           </div>
           
-          <div className="text-xl sm:text-2xl text-white mb-4 leading-relaxed font-medium">
+          <div className="text-xl sm:text-2xl text-white mb-4 leading-relaxed font-medium whitespace-pre-wrap">
             {question.question}
           </div>
 
